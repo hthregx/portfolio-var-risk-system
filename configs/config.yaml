@@ -9,11 +9,26 @@ data:
     - FPT
     - MWG
 
+  include_market_index: true
   market_index: VNINDEX
-  frequency: 1D
+
+  source: KBS
+  interval: d
+
   start_date: "2020-01-01"
+
+  # Đang làm sớm task 30/07 vào sáng 29/07,
+  # nên chỉ dùng ngày giao dịch đã hoàn thành.
+  end_date: "2026-07-28"
+
   raw_directory: data/raw
   processed_directory: data/processed
+  sample_directory: data/sample
+
+  sample_rows: 10
+
+  # Giá KBS có thể được biểu diễn theo đơn vị nghìn VND.
+  price_unit: thousand_vnd
 
 portfolio:
   default_weights:
