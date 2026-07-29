@@ -1,0 +1,5 @@
+﻿symbol,raw_rows,clean_rows,missing_rows_before_cleaning,duplicate_dates_before_cleaning,invalid_ohlc_rows,start_date,end_date,required,status,retrieval_method,raw_file,sample_file
+HPG,1638,1638,0,0,0,2020-01-02,2026-07-28,True,success,cache,data/raw/HPG.csv,data/sample/HPG_sample.csv
+FPT,1638,1638,0,0,0,2020-01-02,2026-07-28,True,success,cache,data/raw/FPT.csv,data/sample/FPT_sample.csv
+MWG,1638,1638,0,0,0,2020-01-02,2026-07-28,True,success,cache,data/raw/MWG.csv,data/sample/MWG_sample.csv
+VNINDEX,1638,1635,0,0,3,2020-01-02,2026-07-28,False,success,cache,data/raw/VNINDEX.csv,data/sample/VNINDEX_sample.csv
