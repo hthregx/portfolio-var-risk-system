@@ -1,0 +1,41 @@
+# Virtual environment
+.venv/
+venv/
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Environment variables and secrets
+.env
+*.env
+
+# IDE
+.vscode/
+.idea/
+
+# Raw and processed data
+data/raw/*
+data/processed/*
+
+!data/raw/.gitkeep
+!data/processed/.gitkeep
+
+# Generated outputs
+outputs/figures/*
+outputs/tables/*
+
+!outputs/figures/.gitkeep
+!outputs/tables/.gitkeep
+
+# Model artifacts
+*.pkl
+*.joblib
+
+# Operating system
+.DS_Store
+Thumbs.db

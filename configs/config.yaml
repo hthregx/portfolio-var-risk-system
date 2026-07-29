@@ -1,0 +1,41 @@
+project:
+  name: portfolio-var-risk-system
+  start_date: "2026-07-27"
+  end_date: "2026-09-02"
+
+data:
+  tickers:
+    - HPG
+    - FPT
+    - MWG
+
+  market_index: VNINDEX
+  frequency: 1D
+  start_date: "2020-01-01"
+  raw_directory: data/raw
+  processed_directory: data/processed
+
+portfolio:
+  default_weights:
+    HPG: 0.333333
+    FPT: 0.333333
+    MWG: 0.333334
+
+risk:
+  confidence_level: 0.95
+  quantile_alpha: 0.05
+  forecast_horizon: 1
+
+models:
+  historical_simulation:
+    enabled: true
+    window: 250
+
+  ewma:
+    enabled: true
+    decay_factor: 0.94
+
+  gradient_boosting_quantile:
+    enabled: true
+    alpha: 0.05
+    random_state: 42

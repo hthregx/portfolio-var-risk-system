@@ -1,0 +1,14 @@
+column,data_type,description,source,required
+date,datetime,Ngay giao dich,Market data,Yes
+ticker,string,Ma chung khoan,Market data,Yes
+open,float,Gia mo cua,Market data,Yes
+high,float,Gia cao nhat,Market data,Yes
+low,float,Gia thap nhat,Market data,Yes
+close,float,Gia dong cua,Market data,Yes
+volume,integer,Khoi luong giao dich,Market data,Yes
+log_return,float,Loi suat log cua tai san,Derived,Yes
+portfolio_return,float,Loi suat danh muc,Derived,Yes
+historical_var,float,VaR tu Historical Simulation,Derived,Later
+ewma_var,float,VaR tu EWMA,Derived,Later
+gb_quantile,float,Phan vi 5 phan tram tu Gradient Boosting,Derived,Later
+violation,integer,Ngay loi suat vuot nguong VaR,Derived,Later
