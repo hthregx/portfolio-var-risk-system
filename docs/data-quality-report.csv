@@ -1,0 +1,4 @@
+﻿ticker,quality_status,raw_rows,clean_rows,rows_removed,missing_rows,duplicate_date_rows,nonpositive_price_rows,negative_volume_rows,invalid_ohlc_rows,dates_out_of_order,extreme_close_move_rows,start_date,end_date,processed_file,pipeline_status
+HPG,PASS,1638,1638,0,0,0,0,0,0,0,0,2020-01-02,2026-07-28,data/processed/HPG_clean.csv,success
+FPT,PASS,1638,1638,0,0,0,0,0,0,0,0,2020-01-02,2026-07-28,data/processed/FPT_clean.csv,success
+MWG,PASS,1638,1638,0,0,0,0,0,0,0,0,2020-01-02,2026-07-28,data/processed/MWG_clean.csv,success
