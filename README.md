@@ -48,3 +48,138 @@ và Gradient Boosting.
 ## Trạng thái
 
 Project initialization.
+# Environment Setup
+
+Tạo môi trường ảo:
+
+```bash
+python3 -m venv .venv
+```
+
+Kích hoạt:
+
+macOS/Linux
+
+```bash
+source .venv/bin/activate
+```
+
+Windows
+
+```bash
+.venv\Scripts\activate
+```
+
+Cài thư viện:
+
+```bash
+python -m pip install --upgrade pip
+pip install -r requirements.txt
+```
+
+---
+
+# Data Preparation
+
+Dữ liệu được lưu trong:
+
+```text
+data/raw/
+```
+
+Sau khi validation:
+
+```text
+data/processed/
+```
+
+---
+
+# Run Data Loader
+
+```bash
+python src/data_loader.py
+```
+
+---
+
+# Run Validation Pipeline
+
+```bash
+python src/data_validation_pipeline.py
+```
+
+Kết quả:
+
+- dữ liệu sạch trong `data/processed/`
+- báo cáo chất lượng trong `docs/data-quality-report.csv`
+
+---
+
+# Run EDA Notebook
+
+Khởi động Jupyter:
+
+```bash
+python -m jupyter notebook
+```
+
+Notebook EDA chính:
+
+```text
+notebooks/01_eda.ipynb
+```
+
+Notebook Risk EDA:
+
+```text
+notebooks/01_eda_risk_analysis.ipynb
+```
+
+Sau khi mở notebook:
+
+```
+Restart Kernel
+↓
+Run All
+```
+
+---
+
+# Run Tests
+
+```bash
+python -m pytest -v
+```
+
+---
+
+## Cấu trúc dự án
+
+```text
+portfolio-var-risk-system/
+├── app/
+├── data/
+│   ├── raw/
+│   └── processed/
+├── docs/
+├── figures/
+│   └── eda/
+├── notebooks/
+├── reports/
+├── slides/
+├── src/
+├── tests/
+├── requirements.txt
+└── README.md
+```
+
+---
+
+## Trạng thái
+
+- Data loader completed
+-  Data validation pipeline completed
+-  Risk-oriented EDA completed
+-  Portfolio return (in progress)
+-  VaR modelling (upcoming)
