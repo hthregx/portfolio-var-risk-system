@@ -11,6 +11,7 @@ from src.backtesting.walk_forward import (
     walk_forward,
 )
 from src.models.historical_var import historical_var_forecast
+from src.models.ewma_var import ewma_var_forecast
 
 
 def sample_data():
@@ -531,3 +532,83 @@ def test_pinball_loss_fields_available():
 
     assert "actual_return" in result.columns
     assert "quantile_return" in result.columns
+
+def test_runner_works_with_ewma_model():
+    result = walk_forward(
+        sample_data(),
+        partial(
+            ewma_var_forecast,
+            alpha=0.05,
+            decay=0.94,
+        ),
+        window_size=3,
+        mode="expanding",
+        method="ewma",
+    )
+
+    assert len(result) == 3
+    assert (result["method"] == "ewma").all()
+    assert result["quantile_return"].notna().all()
+    assert result["var"].notna().all()
+    assert (result["var"] >= 0.0).all()
+    assert (
+        result["forecast_date"]
+        < result["target_date"]
+    ).all()
+
+
+def test_historical_and_ewma_share_schema():
+    historical = walk_forward(
+        sample_data(),
+        partial(
+            historical_var_forecast,
+            alpha=0.05,
+        ),
+        window_size=3,
+        mode="rolling",
+        method="historical",
+    )
+
+    ewma = walk_forward(
+        sample_data(),
+        partial(
+            ewma_var_forecast,
+            alpha=0.05,
+            decay=0.94,
+        ),
+        window_size=3,
+        mode="expanding",
+        method="ewma",
+    )
+
+    assert historical.columns.tolist() == ewma.columns.tolist()
+    assert historical.columns.tolist() == PREDICTION_COLUMNS
+
+
+def test_ewma_runner_is_deterministic():
+    model = partial(
+        ewma_var_forecast,
+        alpha=0.05,
+        decay=0.94,
+    )
+
+    first = walk_forward(
+        sample_data(),
+        model,
+        window_size=3,
+        mode="expanding",
+        method="ewma",
+    )
+
+    second = walk_forward(
+        sample_data(),
+        model,
+        window_size=3,
+        mode="expanding",
+        method="ewma",
+    )
+
+    pd.testing.assert_frame_equal(
+        first,
+        second,
+    )
