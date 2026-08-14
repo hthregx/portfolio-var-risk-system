@@ -1,0 +1,31 @@
+{
+  "alpha": 0.05,
+  "confidence_level": 0.95,
+  "forecast_horizon": 1,
+  "historical": {
+    "window_size": 250,
+    "evaluation_mode": "rolling"
+  },
+  "ewma": {
+    "decay": 0.94,
+    "evaluation_mode": "expanding",
+    "initialization": "first_squared_return",
+    "distribution": "normal",
+    "mean_assumption": "zero"
+  },
+  "rerun_commands": [
+    "python scripts/generate_ewma_comparison.py",
+    "python scripts/generate_ewma_figures.py",
+    "python scripts/audit_ewma_comparison.py",
+    "python scripts/generate_ewma_metadata.py"
+  ],
+  "commit_hash": "1878a19e6cb6ea121be8ea8be5a409136d988b1a",
+  "runtime_seconds": 0.0013083750091027468,
+  "generated_paths": [
+    "results/ewma_vs_historical.csv",
+    "results/exception_dates.csv",
+    "figures/var/10_historical_var_backtest_release.png",
+    "figures/var/11_ewma_var_backtest.png",
+    "figures/var/12_ewma_vs_historical.png"
+  ]
+}
