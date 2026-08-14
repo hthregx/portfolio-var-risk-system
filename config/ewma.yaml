@@ -1,0 +1,7 @@
+method: ewma
+confidence_level: 0.95
+alpha: 0.05
+decay: 0.94
+initialization: first_squared_return
+distribution: normal
+mean_assumption: zero
