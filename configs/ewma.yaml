@@ -5,3 +5,4 @@ decay: 0.94
 initialization: first_squared_return
 distribution: normal
 mean_assumption: zero
+horizon: 1
