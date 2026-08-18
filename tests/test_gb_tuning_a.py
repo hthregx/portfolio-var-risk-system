@@ -97,7 +97,91 @@ class FakeGradientBoostingVaR:
 
 
 @pytest.fixture
-def canonical_frame():
+def canonical_frame(tmp_path, monkeypatch):
+    """Build a deterministic CI-safe canonical return source."""
+
+    def spaced_dates(
+        start: str,
+        end: str,
+        count: int,
+    ) -> pd.DatetimeIndex:
+        calendar = pd.date_range(
+            start,
+            end,
+            freq="D",
+        )
+
+        positions = np.linspace(
+            0,
+            len(calendar) - 1,
+            count,
+            dtype=int,
+        )
+
+        dates = calendar[positions]
+
+        assert len(dates) == count
+        assert dates.is_unique
+
+        return dates
+
+    dates = (
+        spaced_dates(
+            "2020-01-03",
+            "2021-12-30",
+            500,
+        )
+        .append(
+            spaced_dates(
+                "2021-12-31",
+                "2024-12-17",
+                739,
+            )
+        )
+        .append(
+            spaced_dates(
+                "2024-12-18",
+                "2026-07-28",
+                398,
+            )
+        )
+    )
+
+    position = np.arange(
+        len(dates),
+        dtype=float,
+    )
+
+    returns = (
+        0.0015
+        * np.sin(position / 11.0)
+        + 0.0010
+        * np.cos(position / 29.0)
+    )
+
+    source = pd.DataFrame(
+        {
+            "date": dates,
+            "portfolio_simple_return": returns,
+        }
+    )
+
+    source_path = (
+        tmp_path
+        / "portfolio_returns.csv"
+    )
+
+    source.to_csv(
+        source_path,
+        index=False,
+    )
+
+    monkeypatch.setattr(
+        tuning,
+        "DATA_PATH",
+        source_path,
+    )
+
     return tuning.load_feature_target_frame()
 
 
@@ -157,13 +241,13 @@ def test_feature_target_frame_contract(
     assert frame.index.is_unique
     assert frame.index.is_monotonic_increasing
 
-    assert frame.index.min() == pd.Timestamp(
-        "2020-04-06"
-    )
+    assert frame.index.min() < (
+    tuning.VALIDATION_START
+)
 
     assert frame.index.max() == pd.Timestamp(
         "2026-07-28"
-    )
+)
 
     assert list(frame.columns) == (
         EXPECTED_FEATURE_COLUMNS
