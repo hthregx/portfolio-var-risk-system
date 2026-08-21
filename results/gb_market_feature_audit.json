@@ -1,0 +1,46 @@
+{
+  "feature_family": "market_liquidity",
+  "stocks": [
+    "HPG",
+    "FPT",
+    "MWG"
+  ],
+  "market_series": "VNINDEX",
+  "stock_sources": {
+    "HPG": "data/processed/HPG_clean.csv",
+    "FPT": "data/processed/FPT_clean.csv",
+    "MWG": "data/processed/MWG_clean.csv"
+  },
+  "market_source": "data/raw/VNINDEX.csv",
+  "alignment_policy": "exact_date",
+  "future_backfill": false,
+  "source_max_date_rule": "source_max_date <= forecast_date",
+  "rows": 1638,
+  "columns": [
+    "portfolio_range",
+    "volume_change",
+    "relative_volume_20",
+    "market_return_lag_1",
+    "market_return_lag_5",
+    "market_vol_20"
+  ],
+  "start_date": "2020-01-02",
+  "end_date": "2026-07-28",
+  "finite_rows_after_warmup": 1617,
+  "warmup_rows": 21,
+  "missing_by_feature": {
+    "portfolio_range": 1,
+    "volume_change": 2,
+    "relative_volume_20": 20,
+    "market_return_lag_1": 2,
+    "market_return_lag_5": 6,
+    "market_vol_20": 21
+  },
+  "market_alignment": "PASS",
+  "future_perturbation": "PASS",
+  "determinism": "PASS",
+  "target_date_no_lookahead": "PASS",
+  "missing_volume_policy": "reject",
+  "zero_denominator_policy": "nan",
+  "extreme_volume_policy": "preserve"
+}
