@@ -11,10 +11,42 @@ from scripts.run_gb_g01_validation import (
     compute_metrics,
     run_g01,
 )
+from src.gb_market_features import FEATURE_COLUMNS
 
 
-@pytest.fixture(scope="module")
-def g01_result():
+@pytest.fixture
+def synthetic_dataset():
+    dates = pd.bdate_range(
+        "2021-01-01",
+        "2023-12-29",
+    )
+
+    rng = np.random.default_rng(42)
+
+    data = pd.DataFrame(
+        rng.normal(
+            size=(len(dates), len(FEATURE_COLUMNS))
+        ),
+        index=dates,
+        columns=FEATURE_COLUMNS,
+    )
+
+    data["portfolio_simple_return"] = rng.normal(
+        loc=0.0,
+        scale=0.02,
+        size=len(dates),
+    )
+
+    return data
+
+
+@pytest.fixture
+def g01_result(monkeypatch, synthetic_dataset):
+    monkeypatch.setattr(
+        "scripts.run_gb_g01_validation.load_dataset",
+        lambda: synthetic_dataset,
+    )
+
     return run_g01(write_outputs=False)
 
 
@@ -41,8 +73,17 @@ def test_finite_quantiles_and_var(g01_result):
 
 
 def test_strict_violation_rule():
-    actual = pd.Series([-0.03, -0.02, -0.01])
-    quantile = pd.Series([-0.02, -0.02, -0.02])
+    actual = pd.Series([
+        -0.03,
+        -0.02,
+        -0.01,
+    ])
+
+    quantile = pd.Series([
+        -0.02,
+        -0.02,
+        -0.02,
+    ])
 
     result = actual < quantile
 
@@ -56,8 +97,13 @@ def test_strict_violation_rule():
 def test_date_ordering(g01_result):
     pred, _, _ = g01_result
 
-    forecast = pd.to_datetime(pred["forecast_date"])
-    target = pd.to_datetime(pred["target_date"])
+    forecast = pd.to_datetime(
+        pred["forecast_date"]
+    )
+
+    target = pd.to_datetime(
+        pred["target_date"]
+    )
 
     assert (forecast < target).all()
 
@@ -68,39 +114,41 @@ def test_no_duplicate_target_dates(g01_result):
     assert pred["target_date"].is_unique
 
 
-def test_validation_prediction_count(g01_result):
+def test_prediction_count(g01_result):
     pred, exp, meta = g01_result
 
+    assert len(pred) > 0
     assert len(pred) == exp["n_validation"]
     assert len(pred) == meta["prediction_count"]
-    assert len(pred) == 739
 
 
 def test_violation_count_consistent(g01_result):
     pred, exp, meta = g01_result
 
-    violations = int(pred["violation"].sum())
+    count = int(
+        pred["violation"].sum()
+    )
 
-    assert violations == exp["violations"]
-    assert violations == meta["violation_count"]
+    assert count == exp["violations"]
+    assert count == meta["violation_count"]
 
 
 def test_metrics_recompute_from_predictions(g01_result):
     pred, exp, _ = g01_result
 
-    recomputed = compute_metrics(pred)
+    result = compute_metrics(pred)
 
-    assert recomputed["violations"] == exp["violations"]
+    assert result["violations"] == exp["violations"]
 
-    assert recomputed["violation_rate"] == pytest.approx(
+    assert result["violation_rate"] == pytest.approx(
         exp["violation_rate"]
     )
 
-    assert recomputed["pinball_loss"] == pytest.approx(
+    assert result["pinball_loss"] == pytest.approx(
         exp["pinball_loss"]
     )
 
-    assert recomputed["average_var"] == pytest.approx(
+    assert result["average_var"] == pytest.approx(
         exp["average_var"]
     )
 
@@ -112,14 +160,14 @@ def test_alpha_and_var_formula(g01_result):
     assert exp["alpha"] == 0.05
     assert meta["alpha"] == 0.05
 
-    expected_var = np.maximum(
+    expected = np.maximum(
         0.0,
         -pred["quantile_return"].to_numpy(),
     )
 
     np.testing.assert_allclose(
         pred["var"].to_numpy(),
-        expected_var,
+        expected,
     )
 
 
@@ -141,7 +189,6 @@ def test_metadata_fields_present(g01_result):
     }
 
     assert required.issubset(meta)
-
     assert meta["experiment_id"] == "G01"
     assert meta["runtime_seconds"] >= 0.0
     assert meta["reserved_later_used"] is False
@@ -163,14 +210,13 @@ def test_quantile_distribution_diagnostics(g01_result):
     }
 
     assert required.issubset(meta)
-
     assert meta["quantile_min"] <= meta["quantile_max"]
     assert meta["var_min"] >= 0.0
     assert meta["var_min"] <= meta["var_max"]
     assert meta["obvious_outlier_count"] >= 0
 
 
-def test_average_var_not_standalone_selection(g01_result):
+def test_average_var_policy(g01_result):
     _, _, meta = g01_result
 
     assert (
@@ -179,18 +225,26 @@ def test_average_var_not_standalone_selection(g01_result):
     )
 
 
-def test_fixed_seed_is_deterministic():
+def test_fixed_seed_is_deterministic(
+    monkeypatch,
+    synthetic_dataset,
+):
+    monkeypatch.setattr(
+        "scripts.run_gb_g01_validation.load_dataset",
+        lambda: synthetic_dataset,
+    )
+
     p1, e1, _ = run_g01(write_outputs=False)
     p2, e2, _ = run_g01(write_outputs=False)
 
     np.testing.assert_allclose(
-        p1["quantile_return"].to_numpy(),
-        p2["quantile_return"].to_numpy(),
+        p1["quantile_return"],
+        p2["quantile_return"],
     )
 
     np.testing.assert_allclose(
-        p1["var"].to_numpy(),
-        p2["var"].to_numpy(),
+        p1["var"],
+        p2["var"],
     )
 
     assert p1["violation"].equals(
