@@ -1,0 +1,40 @@
+{
+  "experiment_id": "G01",
+  "target": "portfolio_simple_return",
+  "alpha": 0.05,
+  "horizon": 1,
+  "feature_names": [
+    "portfolio_range",
+    "volume_change",
+    "relative_volume_20",
+    "market_return_lag_1",
+    "market_return_lag_5",
+    "market_vol_20"
+  ],
+  "model_family": "GradientBoostingRegressor",
+  "package_version": "1.9.0",
+  "random_seed": 42,
+  "validation_boundary": {
+    "start": "2021-12-31",
+    "end": "2024-12-17"
+  },
+  "source_commit": "eeaed040421738b21a887d69ba3cc8812d715115",
+  "runtime_seconds": 0.09329187500406988,
+  "reserved_later_used": false,
+  "average_var_selection_policy": "descriptive_only_not_standalone_selection",
+  "violations": 60,
+  "violation_rate": 0.08119079837618404,
+  "pinball_loss": 0.0021897612361690875,
+  "average_var": 0.021171411684163838,
+  "prediction_count": 739,
+  "violation_count": 60,
+  "quantile_min": -0.06390380909568857,
+  "quantile_max": -0.0006457485223488194,
+  "quantile_mean": -0.021171411684163838,
+  "quantile_median": -0.019258946628927385,
+  "quantile_p05": -0.044723259628606384,
+  "quantile_p95": -0.013207083533706164,
+  "var_min": 0.0006457485223488194,
+  "var_max": 0.06390380909568857,
+  "obvious_outlier_count": 43
+}
