@@ -1,0 +1,10 @@
+forecast_date,target_date,method,actual_return,quantile_return,var,violation,runtime_seconds,config_id
+2024-01-02,2024-01-03,historical_simulation,-0.010,-0.020,0.020,False,0.10,hist_v1
+2024-01-02,2024-01-03,ewma,-0.010,-0.015,0.015,False,0.11,ewma_v1
+2024-01-02,2024-01-03,gradient_boosting,-0.010,-0.012,0.012,False,0.12,gb_v1
+2024-01-03,2024-01-04,historical_simulation,-0.030,-0.020,0.020,True,0.10,hist_v1
+2024-01-03,2024-01-04,ewma,-0.030,-0.025,0.025,True,0.11,ewma_v1
+2024-01-03,2024-01-04,gradient_boosting,-0.030,-0.030,0.030,False,0.12,gb_v1
+2024-01-04,2024-01-05,historical_simulation,0.010,0.005,0.000,False,0.10,hist_v1
+2024-01-04,2024-01-05,ewma,0.010,-0.010,0.010,False,0.11,ewma_v1
+2024-01-04,2024-01-05,gradient_boosting,0.010,-0.008,0.008,False,0.12,gb_v1

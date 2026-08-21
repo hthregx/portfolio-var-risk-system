@@ -1,0 +1,4 @@
+method,forecast_count,violation_count,violation_rate,pinball_loss,average_var,minimum_var,maximum_var,total_runtime_seconds,test_start,test_end,config_id
+historical_simulation,3,1,0.3333333333333333,0.003416666666666667,0.013333333333333334,0.0,0.02,0.10,2024-01-03,2024-01-05,hist_v1
+ewma,3,1,0.3333333333333333,0.002,0.016666666666666666,0.01,0.025,0.11,2024-01-03,2024-01-05,ewma_v1
+gradient_boosting,3,0,0.0,0.0003333333333333333,0.016666666666666666,0.008,0.03,0.12,2024-01-03,2024-01-05,gb_v1
