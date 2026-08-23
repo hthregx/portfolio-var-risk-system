@@ -1,0 +1,179 @@
+schema_version: 1
+
+freeze:
+  name: day23_model_freeze
+  date: "2026-08-23"
+  status: frozen
+  scope: canonical_three_method_one_day_95pct_portfolio_var
+  integration_base_sha: "e17ae67b0bae5f3a9e30fedb0ea5a0eb34c40394"
+  purpose: release_hardening_and_reproducibility
+  policy:
+    new_algorithms_allowed: false
+    new_features_allowed: false
+    parameter_retuning_allowed: false
+    evaluation_period_change_allowed: false
+    canonical_prediction_rewrite_allowed: false
+
+portfolio:
+  constituents:
+    - HPG
+    - FPT
+    - MWG
+  weighting: equal_weight
+  asset_return_type: simple_return
+  portfolio_simple_return_definition: weighted_sum_of_asset_simple_returns
+  portfolio_log_return_definition: log1p_portfolio_simple_return
+  forecast_target: portfolio_simple_return
+
+canonical_data:
+  path: data/processed/portfolio_returns.csv
+  version_controlled: false
+  sha256: "88a6dbac04349e40d84001b06c6a7e876ec660ea9eb87267a22aeb00c165f2fe"
+  row_count: 1637
+  start_date: "2020-01-03"
+  end_date: "2026-07-28"
+  duplicate_dates_allowed: false
+  missing_values_allowed: false
+
+evaluation:
+  confidence_level: 0.95
+  alpha: 0.05
+  forecast_horizon_trading_days: 1
+  start_date: "2024-12-18"
+  end_date: "2026-07-28"
+  target_date_count: 398
+  method_count: 3
+  prediction_row_count: 1194
+  used_for_parameter_selection: false
+  pristine_untouched_test_claim: false
+  violation_rule: actual_return < quantile_return
+  var_definition: max(0, -quantile_return)
+  common_target_dates_required: true
+  common_actual_return_required: true
+
+models:
+  historical_simulation:
+    status: frozen
+    config_id: historical_w250
+    selection_status: retained_validation_supported_baseline
+    window: 250
+    mode: rolling
+    alpha: 0.05
+    forecast_horizon_trading_days: 1
+
+  ewma:
+    status: frozen
+    config_id: ewma_d094
+    selection_status: retained_canonical_production_baseline
+    decay: 0.94
+    mode: expanding
+    alpha: 0.05
+    initialization: first_squared_return
+    distribution: normal
+    mean_assumption: zero
+    forecast_horizon_trading_days: 1
+    validation_selected_alternative:
+      decay: 0.90
+      adopted_for_canonical_evaluation: false
+    selection_note: >
+      Decay 0.90 produced stronger validation evidence. Decay 0.94 is
+      frozen because it is the retained canonical baseline used by the
+      existing final evaluation. This freeze must not be described as
+      evidence that decay 0.94 won validation against decay 0.90.
+
+  gradient_boosting:
+    status: frozen
+    config_id: gb_G04
+    experiment_id: G04
+    freeze_role: canonical_evaluated_configuration
+    overall_g01_g07_winner_claim: false
+    loss: quantile
+    alpha: 0.05
+    n_estimators: 100
+    learning_rate: 0.03
+    max_depth: 2
+    min_samples_leaf: 5
+    subsample: 1.0
+    random_state: 42
+    training_protocol: expanding_refit_each_target
+    forecast_horizon_trading_days: 1
+    feature_count: 7
+    features:
+      - return_lag_1
+      - return_lag_2
+      - return_lag_5
+      - rolling_vol_5
+      - rolling_vol_20
+      - rolling_vol_60
+      - drawdown
+    market_features_used_by_canonical_g04: false
+    excluded_from_canonical_g04:
+      - price_range
+      - trading_volume
+      - market_index
+    freeze_note: >
+      G04 is frozen as the configuration already used by the canonical
+      Day-21 final predictions and Day-22 analysis. This freeze is a
+      release and reproducibility decision, not a claim that G04 is the
+      confirmed global winner across all G01-G07 validation experiments.
+
+gradient_boosting_candidate_reconciliation:
+  b_tuning_artifacts_present: true
+  b_candidate_ids:
+    - G01
+    - G05
+    - G06
+    - G07
+  b_feature_count: 13
+  b_feature_specification: return_history_plus_market_liquidity
+  b_lowest_pinball_candidate_on_its_validation_slice: G05
+  b_results_status: validation_evidence_only
+  like_for_like_with_canonical_g04_feature_specification: false
+  used_to_rewrite_canonical_final_predictions: false
+  model_selection_reopened_on_freeze_day: false
+  note: >
+    The integrated B-side tuning artifacts provide additional validation
+    evidence for G01, G05, G06, and G07 using a 13-feature specification
+    that combines return-history and market/liquidity features. They are
+    not a like-for-like continuation of the seven-feature canonical G04
+    final-evaluation specification. The B-side report explicitly retains
+    these results as validation evidence and recommends combining them
+    with the other validation slice before model-selection decisions.
+    Day-23 model freeze therefore does not retroactively replace or
+    regenerate the canonical G04 final predictions.
+
+canonical_artifacts:
+  final_evaluation_config:
+    path: configs/final_evaluation.yaml
+    sha256: "ecbdead2caf371e1f226026d532eaaa422152c396a36293f4caf21c3d37a5373"
+
+  final_predictions:
+    path: results/final_predictions.csv
+    sha256: "1484fba7245688b66c0ab5a4ab9b37a6de7d420d7c9aed26a44bd90e994651f8"
+
+  final_metrics:
+    path: results/final_metrics.csv
+    sha256: "c5a1b2328468cfee8ce523a9dde43c5ed82345a515ea9ec76252403bf353c1f6"
+
+  final_run_metadata:
+    path: results/final_run_metadata.json
+    sha256: "ccb9bb25f56af40297a07f06172e11fa83e94531a54dbbea7f1cdc522d5d94c1"
+
+  final_metric_comparison:
+    path: results/final_metric_comparison.csv
+    sha256: "17c4657ec36e081842d4e4eec7d78e11bac96f13a4488c475869b0c834cc5f57"
+
+  final_pairwise_diagnostics:
+    path: results/final_pairwise_diagnostics.csv
+    sha256: "8f1101114fb4fa487a50ee6e5b41823099b6ee6494615969ebc4bb78c2b5970f"
+
+  final_pairwise_summary:
+    path: results/final_pairwise_summary.csv
+    sha256: "084041c15850022805399821e77b839a3c2ac79a58e4372c7be2dee62804d063"
+
+reproducibility:
+  canonical_runner: scripts/run_final_walk_forward.py
+  canonical_evaluation_config: configs/final_evaluation.yaml
+  gradient_boosting_feature_builder: src.gb_return_features.build_return_features
+  canonical_runner_uses_market_feature_builder: false
+  deterministic_random_state: 42
