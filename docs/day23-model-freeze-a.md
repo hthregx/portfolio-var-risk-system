@@ -351,5 +351,6 @@ Full repository test suite: **PASS**
 
 Tracked canonical-file safety check: **PASS**
 
-Member A Day-23 work remains pending only the planned B-side cross-review
-handoff task.
+Member A's planned B-side cross-review is **DEFERRED** because no Day-23
+B-side integration changes were available on `feature/eda-analysis` at the
+A6 readiness check.
