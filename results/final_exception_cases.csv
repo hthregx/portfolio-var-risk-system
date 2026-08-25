@@ -1,0 +1,6 @@
+case_type,target_date,actual_return,exception_category,cluster_start,cluster_end,exception_dates,method_level_violations
+most_severe_shared,2025-04-03,-0.0698398647427835,shared_all_3,,,,
+most_severe_historical_only,2026-03-23,-0.0349148479622449,historical_only,,,,
+most_severe_ewma_only,2026-07-10,-0.0186337094307368,ewma_only,,,,
+most_severe_gb_only,2026-03-05,-0.0216668850327261,gb_only,,,,
+largest_multi_method_cluster,,-0.069401999313773,cluster,2026-03-02,2026-03-09,5.0,11.0
