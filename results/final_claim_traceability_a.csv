@@ -1,0 +1,25 @@
+claim_id,category,claim,expected,actual,tolerance,status,source
+01,evaluation_contract,"Canonical final prediction row count is 1,194.",1194,1194,1e-12,PASS,results/final_predictions.csv
+02,evaluation_contract,Canonical evaluation contains exactly three methods.,3,3,1e-12,PASS,results/final_predictions.csv
+03,evaluation_contract,Each canonical method has 398 forecasts.,398,398,1e-12,PASS,results/final_predictions.csv
+04,evaluation_contract,Frozen evaluation starts on 2024-12-18.,2024-12-18,2024-12-18,1e-12,PASS,results/final_predictions.csv
+05,evaluation_contract,Frozen evaluation ends on 2026-07-28.,2026-07-28,2026-07-28,1e-12,PASS,results/final_predictions.csv
+06,evaluation_contract,Violations use the strict actual_return < quantile_return rule.,0,0,1e-12,PASS,results/final_predictions.csv
+07,evaluation_contract,"Reported VaR equals max(0, -quantile_return).",0,0,1e-12,PASS,results/final_predictions.csv
+08,frozen_configuration,historical_simulation uses the frozen canonical configuration.,historical_w250,historical_w250,1e-12,PASS,results/final_predictions.csv;configs/model_freeze.yaml
+09,frozen_configuration,ewma uses the frozen canonical configuration.,ewma_d094,ewma_d094,1e-12,PASS,results/final_predictions.csv;configs/model_freeze.yaml
+10,frozen_configuration,gradient_boosting uses the frozen canonical configuration.,gb_G04,gb_G04,1e-12,PASS,results/final_predictions.csv;configs/model_freeze.yaml
+11,aggregate_evidence,EWMA is the violation-rate calibration leader.,ewma,ewma,1e-12,PASS,results/final_metric_comparison.csv
+12,aggregate_evidence,Gradient Boosting has the lowest mean pinball loss.,gradient_boosting,gradient_boosting,1e-12,PASS,results/final_metric_comparison.csv
+13,aggregate_evidence,Historical Simulation has the lowest average reported VaR.,historical_simulation,historical_simulation,1e-12,PASS,results/final_metric_comparison.csv
+14,aggregate_evidence,The frozen final evidence declares no single overall model winner.,true,true,1e-12,PASS,docs/day24-final-evidence-a.md;configs/model_freeze.yaml
+15,aggregate_evidence,Lower average VaR is not treated as automatic model superiority.,true,true,1e-12,PASS,docs/day24-final-evidence-a.md
+16,pairwise_evidence,gb_vs_historical daily lower-loss counts match frozen evidence.,151|247,151|247,1e-12,PASS,results/final_pairwise_summary.csv
+17,pairwise_evidence,gb_vs_historical mean pinball-loss delta matches frozen evidence.,-0.00013833328170849459,-0.00013833328170849459,1e-12,PASS,results/final_pairwise_summary.csv
+18,pairwise_evidence,gb_vs_ewma daily lower-loss counts match frozen evidence.,231|167,231|167,1e-12,PASS,results/final_pairwise_summary.csv
+19,pairwise_evidence,gb_vs_ewma mean pinball-loss delta matches frozen evidence.,-0.00021019030172751563,-0.00021019030172751563,1e-12,PASS,results/final_pairwise_summary.csv
+20,pairwise_evidence,ewma_vs_historical daily lower-loss counts match frozen evidence.,131|267,131|267,1e-12,PASS,results/final_pairwise_summary.csv
+21,pairwise_evidence,ewma_vs_historical mean pinball-loss delta matches frozen evidence.,7.1857020019016826e-05,7.1857020019016826e-05,1e-12,PASS,results/final_pairwise_summary.csv
+22,release_boundary,The evaluation is not described as a pristine untouched test set.,true,true,1e-12,PASS,configs/model_freeze.yaml;docs/day24-final-evidence-a.md
+23,release_boundary,Known final-run metadata provenance incompleteness is documented.,true,true,1e-12,PASS,docs/day24-final-evidence-a.md
+24,release_boundary,Day 24 final evidence package remains internally valid.,validation=26/26 PASS;figures=3/3,validation=26/26 PASS;figures=3/3,1e-12,PASS,results/final_evidence_validation_a.csv;results/figures/*_a.png
