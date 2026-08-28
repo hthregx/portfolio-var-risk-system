@@ -1,0 +1,165 @@
+{
+  "artifacts": [
+    {
+      "path": "configs/model_freeze.yaml",
+      "sha256": "839317c17dfd3ac3657519105da67c5ffb1c36681822b9c345e26243d3f9be15",
+      "role": "frozen model contract",
+      "type": "canonical"
+    },
+    {
+      "path": "configs/final_evaluation.yaml",
+      "sha256": "dec1d2cd75c4b7f50526c0d8564da4dad38a46d5448c49161911fc6d256d4d14",
+      "role": "evaluation contract",
+      "type": "canonical"
+    },
+    {
+      "path": "results/final_predictions.csv",
+      "sha256": "03748f68553a472a5345567183ee4a9881427e2648eaa55ad5ccebe464424047",
+      "role": "predictions",
+      "type": "canonical",
+      "row_count": 1194,
+      "schema": [
+        "forecast_date",
+        "target_date",
+        "method",
+        "actual_return",
+        "quantile_return",
+        "var",
+        "violation",
+        "runtime_seconds",
+        "config_id"
+      ]
+    },
+    {
+      "path": "results/final_metrics.csv",
+      "sha256": "a8be88510199c7b4cd2ddefbfacbaf786712ccb75ee0c4c2910703e2012cd7c7",
+      "role": "metrics",
+      "type": "canonical",
+      "row_count": 3,
+      "schema": [
+        "method",
+        "forecast_count",
+        "violation_count",
+        "violation_rate",
+        "pinball_loss",
+        "average_var",
+        "minimum_var",
+        "maximum_var",
+        "total_runtime_seconds",
+        "test_start",
+        "test_end",
+        "config_id"
+      ]
+    },
+    {
+      "path": "results/final_metric_comparison.csv",
+      "sha256": "621d786e25acf1e30bf512a5bafeac3d88e863efd71b07085d6fa495fc52d7f4",
+      "role": "comparison",
+      "type": "derived",
+      "row_count": 3,
+      "schema": [
+        "method",
+        "forecast_count",
+        "violation_count",
+        "violation_rate",
+        "nominal_violation_rate",
+        "calibration_distance",
+        "pinball_loss",
+        "average_var",
+        "minimum_var",
+        "maximum_var",
+        "total_runtime_seconds",
+        "test_start",
+        "test_end",
+        "config_id",
+        "calibration_leader",
+        "pinball_leader",
+        "lowest_average_var"
+      ]
+    },
+    {
+      "path": "results/final_pairwise_diagnostics.csv",
+      "sha256": "123bd3990406d7259f3cbf34dbf5a1c2f25f93a7a0d671bfd78046ce39411d31",
+      "role": "diagnostics",
+      "type": "derived",
+      "row_count": 398,
+      "schema": [
+        "target_date",
+        "actual_return",
+        "historical_quantile_return",
+        "historical_var",
+        "historical_violation",
+        "historical_pinball_loss",
+        "ewma_quantile_return",
+        "ewma_var",
+        "ewma_violation",
+        "ewma_pinball_loss",
+        "gb_quantile_return",
+        "gb_var",
+        "gb_violation",
+        "gb_pinball_loss",
+        "gb_minus_historical_pinball",
+        "gb_minus_ewma_pinball",
+        "ewma_minus_historical_pinball",
+        "gb_minus_historical_var",
+        "gb_minus_ewma_var",
+        "ewma_minus_historical_var",
+        "abs_gb_historical_quantile_diff",
+        "abs_gb_ewma_quantile_diff",
+        "abs_ewma_historical_quantile_diff",
+        "lowest_pinball_loss",
+        "lowest_pinball_method"
+      ]
+    },
+    {
+      "path": "results/final_pairwise_summary.csv",
+      "sha256": "9e6aad3f8d04e18ef89da48d651258d68ea6ae7af7e6a0f05fb356dafb7a3c9a",
+      "role": "pairwise summary",
+      "type": "derived",
+      "row_count": 3,
+      "schema": [
+        "comparison",
+        "left_method",
+        "right_method",
+        "observation_count",
+        "left_better_count",
+        "right_better_count",
+        "tie_count",
+        "left_better_share",
+        "mean_delta",
+        "median_delta",
+        "mean_absolute_delta",
+        "gross_left_improvement",
+        "gross_left_deterioration",
+        "net_total_delta",
+        "top_1_improvement_share",
+        "top_5_improvement_share",
+        "top_10_improvement_share",
+        "top_20_improvement_share",
+        "improvement_dates_to_50pct",
+        "improvement_dates_to_80pct",
+        "largest_left_improvement",
+        "largest_left_improvement_date",
+        "largest_left_deterioration",
+        "largest_left_deterioration_date"
+      ]
+    },
+    {
+      "path": "results/model_freeze_validation_a.csv",
+      "sha256": "e55fc4c4d885ef21d0605ce0a979dafb2e59e92ed99a0bc7f3d466c28f6cc82e",
+      "role": "freeze validation",
+      "type": "derived",
+      "row_count": 84,
+      "schema": [
+        "component",
+        "contract",
+        "expected_value",
+        "observed_value",
+        "status",
+        "source"
+      ]
+    }
+  ],
+  "provenance_limitation": "final metadata runtime HEAD predates the later Day21 source commit, while canonical prediction artifact content remained unchanged.",
+  "handling": "Do not rewrite historical commit metadata or rerun the full model only to manufacture a newer HEAD."
+}
