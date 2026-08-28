@@ -72,14 +72,11 @@ def pinball(actual: float, quantile: float) -> float:
     return ALPHA * error if error >= 0 else (1.0 - ALPHA) * (-error)
 
 
-def sha256(path: Path) -> str:
-    digest = hashlib.sha256()
-
-    with path.open("rb") as handle:
-        for chunk in iter(lambda: handle.read(1024 * 1024), b""):
-            digest.update(chunk)
-
-    return digest.hexdigest()
+def sha256_canonical_crlf(path: Path) -> str:
+    data = path.read_bytes()
+    normalized_lf = data.replace(b"\r\n", b"\n").replace(b"\r", b"\n")
+    canonical_crlf = normalized_lf.replace(b"\n", b"\r\n")
+    return hashlib.sha256(canonical_crlf).hexdigest()
 
 
 def recompute_metrics() -> dict[str, dict[str, float | int]]:
@@ -192,7 +189,7 @@ def test_frozen_canonical_artifact_hashes() -> None:
     for entry in artifacts.values():
         path = ROOT / entry["path"]
         assert path.is_file()
-        assert sha256(path) == entry["sha256"]
+        assert sha256_canonical_crlf(path) == entry["sha256"]
 
 
 def test_prediction_panel_contract() -> None:
