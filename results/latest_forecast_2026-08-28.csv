@@ -1,0 +1,4 @@
+cutoff_date,forecast_date,target_date,model,quantile_return,var_return,confidence_level,horizon_trading_days
+2026-08-28,2026-08-28,2026-09-03,historical_simulation,-0.0250739158,0.0250739158,0.95,1
+2026-08-28,2026-08-28,2026-09-03,ewma,-0.0257575698,0.0257575698,0.95,1
+2026-08-28,2026-08-28,2026-09-03,gradient_boosting,-0.0214935215,0.0214935215,0.95,1
