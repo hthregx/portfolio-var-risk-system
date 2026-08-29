@@ -1,8 +1,9 @@
-from __future__ import annotations
+﻿from __future__ import annotations
 
 import hashlib
 import json
 import subprocess
+import sys
 from pathlib import Path
 
 import pandas as pd
@@ -153,7 +154,7 @@ def test_release_validator_all_pass():
 
 def test_manifest_is_deterministic():
     subprocess.run(
-        ["python", "scripts/build_release_candidate_b.py"],
+        [sys.executable, "scripts/build_release_candidate_b.py"],
         cwd=ROOT,
         check=True,
         capture_output=True,
@@ -164,7 +165,7 @@ def test_manifest_is_deterministic():
     first_manifest = MANIFEST.read_bytes()
 
     subprocess.run(
-        ["python", "scripts/build_release_candidate_b.py"],
+        [sys.executable, "scripts/build_release_candidate_b.py"],
         cwd=ROOT,
         check=True,
         capture_output=True,

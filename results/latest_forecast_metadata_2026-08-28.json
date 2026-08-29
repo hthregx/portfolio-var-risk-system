@@ -1,0 +1,83 @@
+{
+  "schema_version": 1,
+  "artifact_type": "latest_operational_portfolio_var_forecast",
+  "generated_at_utc": "2026-08-29T13:37:31.785131+00:00",
+  "research_contract": {
+    "canonical_data_cutoff": "2026-07-28",
+    "canonical_evaluation_extended": false,
+    "canonical_predictions_rewritten": false,
+    "model_freeze_path": "configs/model_freeze.yaml"
+  },
+  "operational_contract": {
+    "data_cutoff": "2026-08-28",
+    "forecast_date": "2026-08-28",
+    "target_date": "2026-09-03",
+    "target_semantics": "next_trading_session",
+    "confidence_level": 0.95,
+    "alpha": 0.05,
+    "horizon_trading_days": 1
+  },
+  "portfolio": {
+    "constituents": [
+      "HPG",
+      "FPT",
+      "MWG"
+    ],
+    "weighting": "equal_weight",
+    "weights": {
+      "HPG": 0.3333333333333333,
+      "FPT": 0.3333333333333333,
+      "MWG": 0.3333333333333333
+    },
+    "return_type": "simple_return"
+  },
+  "models": {
+    "historical_simulation": {
+      "config_id": "historical_w250",
+      "window": 250,
+      "mode": "rolling",
+      "alpha": 0.05
+    },
+    "ewma": {
+      "config_id": "ewma_d094",
+      "decay": 0.94,
+      "mode": "expanding",
+      "distribution": "normal",
+      "mean_assumption": "zero"
+    },
+    "gradient_boosting": {
+      "config_id": "gb_G04",
+      "n_estimators": 100,
+      "learning_rate": 0.03,
+      "max_depth": 2,
+      "min_samples_leaf": 5,
+      "subsample": 1.0,
+      "random_state": 42,
+      "features": [
+        "return_lag_1",
+        "return_lag_2",
+        "return_lag_5",
+        "rolling_vol_5",
+        "rolling_vol_20",
+        "rolling_vol_60",
+        "drawdown"
+      ],
+      "market_features_used": false
+    }
+  },
+  "inputs": {
+    "market_snapshot": {
+      "path": "data/snapshots/market_data_2026-08-28.csv",
+      "sha256": "f49ec1d58c5274030f5a512cc00f8bef5e3360607a7a193924e682842ed1bbb8"
+    },
+    "portfolio_return_snapshot": {
+      "path": "data/snapshots/portfolio_returns_2026-08-28.csv",
+      "sha256": "34a290059509138e3a4459f47fb19546c6542d63d302dcfa58ea54b5913af02a"
+    }
+  },
+  "forecast_artifact": {
+    "path": "results/latest_forecast_2026-08-28.csv",
+    "row_count": 3,
+    "sha256": "8f622a75209ea6d57c627379f6ce9b3df3cd6ce4a2dddacbda75b151d75d703b"
+  }
+}
