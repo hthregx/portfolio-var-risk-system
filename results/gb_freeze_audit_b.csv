@@ -1,0 +1,12 @@
+check,status
+g04_frozen_config,PASS
+feature_schema,PASS
+lag_1_t_minus_1,PASS
+lag_2_t_minus_2,PASS
+lag_5_t_minus_5,PASS
+rolling_vol_backward,PASS
+drawdown_historical,PASS
+target_return_absent,PASS
+future_perturbation,PASS
+chronological_evaluation,PASS
+shuffle_disabled_or_absent,PASS

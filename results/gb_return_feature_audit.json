@@ -1,0 +1,53 @@
+{
+  "artifact": "gb_return_feature_audit",
+  "feature_family": "portfolio_return_history",
+  "target": "portfolio_simple_return",
+  "source_base_commit": "a19bb079b3c113368c6a22da11cdfeab067b4cea",
+  "sample_source": "data/sample/portfolio_returns_sample.csv",
+  "sample_rows": 15,
+  "sample_start": "2020-01-03",
+  "sample_end": "2026-07-28",
+  "feature_columns": [
+    "return_lag_1",
+    "return_lag_2",
+    "return_lag_5",
+    "rolling_vol_5",
+    "rolling_vol_20",
+    "rolling_vol_60",
+    "drawdown"
+  ],
+  "feature_count": 7,
+  "alignment": {
+    "row_semantics": "target_date",
+    "information_cutoff": "strictly_before_target_date",
+    "lag_1_exact": true,
+    "lag_2_exact": true,
+    "lag_5_exact": true
+  },
+  "rolling_volatility": {
+    "windows": [
+      5,
+      20,
+      60
+    ],
+    "ddof": 1,
+    "min_periods": "full_window",
+    "prior_returns_only": true
+  },
+  "warmup_missing_counts_sample": {
+    "return_lag_1": 1,
+    "return_lag_2": 2,
+    "return_lag_5": 5,
+    "rolling_vol_5": 5,
+    "rolling_vol_20": 15,
+    "rolling_vol_60": 15,
+    "drawdown": 1
+  },
+  "checks": {
+    "index_preserved": true,
+    "target_return_excluded": true,
+    "future_perturbation_safe": true,
+    "deterministic": true,
+    "finite_after_full_warmup": true
+  }
+}
