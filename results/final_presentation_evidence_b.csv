@@ -1,0 +1,29 @@
+evidence_id,section,claim,expected,actual,tolerance,status,source
+01,panel,total canonical predictions,1194,1194,1e-12,PASS,results/final_predictions.csv
+02,panel,method count,3,3,1e-12,PASS,results/final_predictions.csv
+03,panel,forecasts per method,398,"{'ewma': 398, 'gradient_boosting': 398, 'historical_simulation': 398}",1e-12,PASS,results/final_predictions.csv
+04,panel,evaluation start,2024-12-18,2024-12-18,1e-12,PASS,results/final_predictions.csv
+05,panel,evaluation end,2026-07-28,2026-07-28,1e-12,PASS,results/final_predictions.csv
+06,semantics,strict violation rule,actual_return < quantile_return,True,1e-12,PASS,results/final_predictions.csv
+07,semantics,VaR identity,"max(0, -quantile_return)",True,1e-12,PASS,results/final_predictions.csv
+08,config,Historical config,historical_w250,historical_w250,1e-12,PASS,results/final_predictions.csv
+09,config,EWMA config,ewma_d094,ewma_d094,1e-12,PASS,results/final_predictions.csv
+10,config,GB config,gb_G04,gb_G04,1e-12,PASS,results/final_predictions.csv
+11,metrics,historical_simulation violations,27,27,1e-12,PASS,results/final_metric_comparison.csv
+12,metrics,ewma violations,22,22,1e-12,PASS,results/final_metric_comparison.csv
+13,metrics,gradient_boosting violations,24,24,1e-12,PASS,results/final_metric_comparison.csv
+14,metrics,historical_simulation violation rate,0.0678391959798995,0.0678391959798995,1e-12,PASS,results/final_metric_comparison.csv
+15,metrics,ewma violation rate,0.05527638190954774,0.0552763819095477,1e-12,PASS,results/final_metric_comparison.csv
+16,metrics,gradient_boosting violation rate,0.06030150753768844,0.0603015075376884,1e-12,PASS,results/final_metric_comparison.csv
+17,metrics,historical_simulation pinball loss,0.0018964642326659775,0.0018964642326659,1e-12,PASS,results/final_metric_comparison.csv
+18,metrics,ewma pinball loss,0.0019683212526850112,0.001968321252685,1e-12,PASS,results/final_metric_comparison.csv
+19,metrics,gradient_boosting pinball loss,0.001758130950957487,0.0017581309509574,1e-12,PASS,results/final_metric_comparison.csv
+20,metrics,historical_simulation average VaR,0.02133018927920153,0.0213301892792015,1e-12,PASS,results/final_metric_comparison.csv
+21,metrics,ewma average VaR,0.02508404248953606,0.025084042489536,1e-12,PASS,results/final_metric_comparison.csv
+22,metrics,gradient_boosting average VaR,0.023349057036283743,0.0233490570362837,1e-12,PASS,results/final_metric_comparison.csv
+23,leaders,calibration leader,ewma,ewma,1e-12,PASS,results/final_metric_comparison.csv
+24,leaders,pinball leader,gradient_boosting,gradient_boosting,1e-12,PASS,results/final_metric_comparison.csv
+25,leaders,lowest average VaR,historical_simulation,historical_simulation,1e-12,PASS,results/final_metric_comparison.csv
+26,pairwise,gb_vs_historical,151|247|-0.0001383332817084946,151|247|-0.0001383332817084,1e-12,PASS,results/final_pairwise_summary.csv
+27,pairwise,gb_vs_ewma,231|167|-0.00021019030172751563,231|167|-0.0002101903017275,1e-12,PASS,results/final_pairwise_summary.csv
+28,pairwise,ewma_vs_historical,131|267|7.185702001901683e-05,131|267|7.185702001901683e-05,1e-12,PASS,results/final_pairwise_summary.csv

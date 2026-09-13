@@ -1,0 +1,28 @@
+check,expected,actual,status,source
+release_base_resolvable,True,True,PASS,git
+manifest_schema,True,True,PASS,results/release_candidate_manifest_b.json
+manifest_artifact_count,18,18,PASS,manifest
+manifest_unique_paths,True,True,PASS,manifest
+all_manifest_files_tracked,True,True,PASS,git
+all_git_blobs_resolvable,True,True,PASS,git
+all_sha256_present,True,True,PASS,manifest
+all_sha256_match_git_blobs,True,True,PASS,git+manifest
+private_data_excluded,True,True,PASS,config+manifest
+model_freeze_present,True,True,PASS,manifest
+historical_window_250,250,250,PASS,release config
+ewma_decay_094,0.94,0.94,PASS,release config
+gb_config_G04,gb_G04,gb_G04,PASS,release config
+gb_feature_count_7,7,7,PASS,release config
+gb_features_exact,return_lag_1|return_lag_2|return_lag_5|rolling_vol_5|rolling_vol_20|rolling_vol_60|drawdown,return_lag_1|return_lag_2|return_lag_5|rolling_vol_5|rolling_vol_20|rolling_vol_60|drawdown,PASS,release config
+prediction_rows_1194,1194,1194,PASS,final_predictions
+method_count_3,3,3,PASS,final_predictions
+forecasts_per_method_398,398,"{'ewma': 398, 'gradient_boosting': 398, 'historical_simulation': 398}",PASS,final_predictions
+evaluation_start,2024-12-18,2024-12-18,PASS,final_predictions
+evaluation_end,2026-07-28,2026-07-28,PASS,final_predictions
+strict_violation_contract,actual_return < quantile_return,True,PASS,final_predictions
+var_identity_contract,"max(0, -quantile_return)",True,PASS,final_predictions
+final_metrics_present,True,True,PASS,manifest
+pairwise_summary_present,True,True,PASS,manifest
+day24_validation_present,True,True,PASS,manifest
+day24_validation_all_pass,True,True,PASS,day24 validation
+day24_figures_present,True,True,PASS,manifest
