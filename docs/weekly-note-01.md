@@ -96,4 +96,3 @@ Dữ liệu được căn chỉnh theo ngày giao dịch.
 - Hoàn thiện README và logs.
 - Chuẩn bị package M1.
 - Chỉ tag `v0.2-data` sau khi full QA đạt yêu cầu.
-

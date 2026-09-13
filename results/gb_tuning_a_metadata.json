@@ -1,0 +1,36 @@
+{
+  "method": "gradient_boosting_quantile",
+  "task": "A-19",
+  "selection_scope": "validation_only",
+  "selection_metric": "pinball_loss",
+  "alpha": 0.05,
+  "validation_start": "2021-12-31",
+  "validation_end": "2024-12-17",
+  "validation_rows": 739,
+  "pre_validation_feature_ready_rows": 440,
+  "first_validation_train_rows": 440,
+  "last_validation_train_rows": 1178,
+  "training_protocol": "expanding_refit_each_target",
+  "target": "portfolio_simple_return",
+  "feature_names": [
+    "return_lag_1",
+    "return_lag_2",
+    "return_lag_5",
+    "rolling_vol_5",
+    "rolling_vol_20",
+    "rolling_vol_60",
+    "drawdown"
+  ],
+  "strict_violation_rule": "actual_return < quantile_return",
+  "var_rule": "max(0, -quantile_return)",
+  "random_state": 42,
+  "experiment_ids": [
+    "G01",
+    "G02",
+    "G03",
+    "G04"
+  ],
+  "source_base_commit": "949af223bc99b2765178c851584ee61aa6514e1d",
+  "reserved_later_used_for_selection": false,
+  "reserved_later_metrics_computed": false
+}

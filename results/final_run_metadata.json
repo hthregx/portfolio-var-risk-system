@@ -1,0 +1,92 @@
+{
+  "artifacts": {
+    "metric_rows": 3,
+    "prediction_rows": 1194
+  },
+  "contract": {
+    "alpha": 0.05,
+    "confidence_level": 0.95,
+    "forecast_horizon": 1,
+    "portfolio": "equal_weight_HPG_FPT_MWG",
+    "target": "portfolio_simple_return",
+    "var_rule": "max(0, -quantile_return)",
+    "violation_rule": "actual_return < quantile_return"
+  },
+  "environment": {
+    "packages": {
+      "PyYAML": "6.0.3",
+      "numpy": "2.2.6",
+      "pandas": "2.3.3",
+      "scikit-learn": "1.9.0"
+    },
+    "python": "3.12.10"
+  },
+  "evaluation": {
+    "end": "2026-07-28",
+    "label": "reserved_later_robustness",
+    "pristine_untouched_test_claim": false,
+    "start": "2024-12-18",
+    "target_count": 398,
+    "used_for_parameter_selection": false
+  },
+  "generated_at_utc": "2026-08-20T16:45:36.524520+00:00",
+  "git": {
+    "branch": "feature/final-walk-forward-a",
+    "commit": "3d7f58c8eab7242d65d399bfea2dd565901d55e9"
+  },
+  "methods": {
+    "ewma": {
+      "alpha": 0.05,
+      "config_id": "ewma_d094",
+      "decay": 0.94,
+      "distribution": "normal",
+      "initialization": "first_squared_return",
+      "mean_assumption": "zero",
+      "mode": "expanding"
+    },
+    "gradient_boosting": {
+      "alpha": 0.05,
+      "config_id": "gb_G04",
+      "experiment_id": "G04",
+      "features": [
+        "return_lag_1",
+        "return_lag_2",
+        "return_lag_5",
+        "rolling_vol_5",
+        "rolling_vol_20",
+        "rolling_vol_60",
+        "drawdown"
+      ],
+      "learning_rate": 0.03,
+      "loss": "quantile",
+      "max_depth": 2,
+      "min_samples_leaf": 5,
+      "model_frozen": false,
+      "n_estimators": 100,
+      "random_state": 42,
+      "selection_status": "validation_candidate_a_slice",
+      "subsample": 1.0,
+      "training_protocol": "expanding_refit_each_target"
+    },
+    "historical_simulation": {
+      "alpha": 0.05,
+      "config_id": "historical_w250",
+      "mode": "rolling",
+      "window": 250
+    }
+  },
+  "runtime": {
+    "seconds_by_method": {
+      "ewma": 0.44581960001960397,
+      "gradient_boosting": 106.31328299990855,
+      "historical_simulation": 0.28184160008095205
+    },
+    "semantics": "Total runtime_seconds returned by each method adapter for this run; repeated per method in final_predictions.csv. Runtime is reported for reproducibility/operations and is not a predictive-quality ranking metric."
+  },
+  "source": {
+    "config_path": "configs\\final_evaluation.yaml",
+    "config_sha256": "e053995b7e89679bb05ecca394a484d046c98badd2c1576b92b4ae26ef13e27a",
+    "data_path": "data\\processed\\portfolio_returns.csv",
+    "data_sha256": "88a6dbac04349e40d84001b06c6a7e876ec660ea9eb87267a22aeb00c165f2fe"
+  }
+}

@@ -1,0 +1,102 @@
+release_candidate:
+  name: day25-release-candidate-b
+  base_ref: feature/eda-analysis
+  integration_base_sha: de7843f3c68cb0371cd1ab49d7a53e26fd7809d3
+
+  required_artifacts:
+    - path: configs/model_freeze.yaml
+      role: model_freeze
+    - path: configs/final_evaluation.yaml
+      role: evaluation_contract
+
+    - path: results/final_predictions.csv
+      role: frozen_predictions
+    - path: results/final_metrics.csv
+      role: final_metrics
+    - path: results/final_metric_comparison.csv
+      role: final_metrics
+    - path: results/final_pairwise_diagnostics.csv
+      role: pairwise_evidence
+    - path: results/final_pairwise_summary.csv
+      role: pairwise_evidence
+
+    - path: results/final_evidence_validation_a.csv
+      role: validation_evidence
+    - path: results/release_reproducibility_validation_b.csv
+      role: validation_evidence
+
+    - path: results/figures/final_average_var_a.png
+      role: figures
+    - path: results/figures/final_pinball_loss_a.png
+      role: figures
+    - path: results/figures/final_violation_rate_a.png
+      role: figures
+
+    - path: docs/day24-final-evidence-a.md
+      role: documentation
+    - path: docs/day24-reproducibility-b.md
+      role: documentation
+
+    - path: scripts/build_final_evidence_a.py
+      role: reproducibility_scripts
+    - path: scripts/audit_release_reproducibility_b.py
+      role: reproducibility_scripts
+
+    - path: tests/test_final_evidence_a.py
+      role: tests
+    - path: tests/test_release_reproducibility_b.py
+      role: tests
+
+  excluded_patterns:
+    - "data/**"
+    - ".venv/**"
+    - ".env"
+    - ".env.*"
+    - "**/__pycache__/**"
+    - ".pytest_cache/**"
+    - "**/.ipynb_checkpoints/**"
+    - "*.log"
+    - "logs/**"
+    - "credentials/**"
+    - "private/**"
+
+frozen_contract:
+  portfolio:
+    weighting: equal_weight
+    assets:
+      - HPG
+      - FPT
+      - MWG
+
+  forecast_horizon_trading_days: 1
+  confidence_level: 0.95
+  alpha: 0.05
+
+  historical:
+    window: 250
+
+  ewma:
+    decay: 0.94
+
+  gradient_boosting:
+    config_id: gb_G04
+    feature_count: 7
+    features:
+      - return_lag_1
+      - return_lag_2
+      - return_lag_5
+      - rolling_vol_5
+      - rolling_vol_20
+      - rolling_vol_60
+      - drawdown
+
+  evaluation:
+    prediction_rows: 1194
+    targets_per_method: 398
+    method_count: 3
+    start_date: "2024-12-18"
+    end_date: "2026-07-28"
+
+  semantics:
+    violation_rule: "actual_return < quantile_return"
+    var_identity: "max(0, -quantile_return)"

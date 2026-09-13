@@ -1,0 +1,31 @@
+acceptance_id,category,check,expected,actual,tolerance,status,source
+01,evaluation_contract,canonical_prediction_rows,1194,1194,1e-12,PASS,results/final_predictions.csv
+02,evaluation_contract,canonical_panel_shape,historical_simulation=398|ewma=398|gradient_boosting=398,historical_simulation=398|ewma=398|gradient_boosting=398,1e-12,PASS,results/final_predictions.csv
+03,evaluation_contract,common_target_date_count,398,398,1e-12,PASS,results/final_predictions.csv
+04,evaluation_contract,evaluation_start,2024-12-18,2024-12-18,1e-12,PASS,results/final_predictions.csv
+05,evaluation_contract,evaluation_end,2026-07-28,2026-07-28,1e-12,PASS,results/final_predictions.csv
+06,evaluation_contract,common_target_dates_across_methods,true,true,1e-12,PASS,results/final_predictions.csv
+07,evaluation_contract,common_actual_return_per_target,true,true,1e-12,PASS,results/final_predictions.csv
+08,evaluation_contract,unique_method_target_keys,true,true,1e-12,PASS,results/final_predictions.csv
+09,risk_semantics,strict_violation_identity,true,true,1e-12,PASS,results/final_predictions.csv
+10,risk_semantics,var_identity_and_nonnegative,true,true,1e-12,PASS,results/final_predictions.csv
+11,release_integrity,canonical_artifact_declarations,7/7,7/7,1e-12,PASS,configs/model_freeze.yaml;canonical frozen artifacts
+12,frozen_configuration,historical_configuration,freeze=historical_w250|prediction=historical_w250|window=250|mode=rolling,freeze=historical_w250|prediction=historical_w250|window=250|mode=rolling,1e-12,PASS,configs/model_freeze.yaml;results/final_predictions.csv
+13,frozen_configuration,ewma_configuration,freeze=ewma_d094|prediction=ewma_d094|decay=0.94|mode=expanding,freeze=ewma_d094|prediction=ewma_d094|decay=0.94|mode=expanding,1e-12,PASS,configs/model_freeze.yaml;results/final_predictions.csv
+14,frozen_configuration,ewma_validation_alternative_not_adopted,decay=0.9|adopted=false,decay=0.9|adopted=false,1e-12,PASS,configs/model_freeze.yaml
+15,frozen_configuration,gradient_boosting_configuration,freeze=gb_G04|prediction=gb_G04|n_estimators=100|learning_rate=0.03|max_depth=2|min_samples_leaf=5|subsample=1.0|random_state=42,freeze=gb_G04|prediction=gb_G04|n_estimators=100|learning_rate=0.03|max_depth=2|min_samples_leaf=5|subsample=1.0|random_state=42,1e-12,PASS,configs/model_freeze.yaml;results/final_predictions.csv
+16,frozen_configuration,gradient_boosting_feature_contract,"return_lag_1,return_lag_2,return_lag_5,rolling_vol_5,rolling_vol_20,rolling_vol_60,drawdown|market_features=false","return_lag_1,return_lag_2,return_lag_5,rolling_vol_5,rolling_vol_20,rolling_vol_60,drawdown|market_features=false",1e-12,PASS,configs/model_freeze.yaml
+17,quantitative_evidence,violation_counts,historical_simulation=27|ewma=22|gradient_boosting=24,historical_simulation=27|ewma=22|gradient_boosting=24,1e-12,PASS,results/final_metric_comparison.csv
+18,quantitative_evidence,violation_rates,historical_simulation=0.0678391959798995|ewma=0.055276381909547742|gradient_boosting=0.06030150753768844,historical_simulation=0.0678391959798995|ewma=0.055276381909547742|gradient_boosting=0.06030150753768844,1e-12,PASS,results/final_metric_comparison.csv
+19,quantitative_evidence,mean_pinball_losses,historical_simulation=0.0018964642326659775|ewma=0.0019683212526850112|gradient_boosting=0.0017581309509574869,historical_simulation=0.001896464232665977|ewma=0.0019683212526850112|gradient_boosting=0.0017581309509574869,1e-12,PASS,results/final_metric_comparison.csv
+20,quantitative_evidence,average_var,historical_simulation=0.021330189279201529|ewma=0.025084042489536058|gradient_boosting=0.023349057036283743,historical_simulation=0.021330189279201533|ewma=0.025084042489536062|gradient_boosting=0.023349057036283743,1e-12,PASS,results/final_metric_comparison.csv
+21,quantitative_evidence,calibration_leader,ewma,ewma,1e-12,PASS,results/final_metric_comparison.csv
+22,quantitative_evidence,pinball_leader,gradient_boosting,gradient_boosting,1e-12,PASS,results/final_metric_comparison.csv
+23,quantitative_evidence,lowest_average_var_method,historical_simulation,historical_simulation,1e-12,PASS,results/final_metric_comparison.csv
+24,pairwise_evidence,gb_vs_historical,left=151|right=247|mean_delta=-0.00013833328170849459,left=151|right=247|mean_delta=-0.00013833328170849459,1e-12,PASS,results/final_pairwise_summary.csv
+25,pairwise_evidence,gb_vs_ewma,left=231|right=167|mean_delta=-0.00021019030172751563,left=231|right=167|mean_delta=-0.00021019030172751563,1e-12,PASS,results/final_pairwise_summary.csv
+26,pairwise_evidence,ewma_vs_historical,left=131|right=267|mean_delta=7.1857020019016826e-05,left=131|right=267|mean_delta=7.1857020019016826e-05,1e-12,PASS,results/final_pairwise_summary.csv
+27,release_boundary,model_freeze_policy,new_algorithms_allowed=false|new_features_allowed=false|parameter_retuning_allowed=false|evaluation_period_change_allowed=false|canonical_prediction_rewrite_allowed=false,new_algorithms_allowed=false|new_features_allowed=false|parameter_retuning_allowed=false|evaluation_period_change_allowed=false|canonical_prediction_rewrite_allowed=false,1e-12,PASS,configs/model_freeze.yaml
+28,release_integrity,prior_evidence_gates,traceability=24/24 PASS|validation=26/26 PASS|figures=3/3 valid,traceability=24/24 PASS|validation=26/26 PASS|figures=3/3 valid,1e-12,PASS,results/final_claim_traceability_a.csv;results/final_evidence_validation_a.csv;results/figures/final_*_a.png
+29,release_boundary,interpretation_boundaries,no_overall_winner=true|lower_var_not_superiority=true|non_pristine=true,no_overall_winner=true|lower_var_not_superiority=true|non_pristine=true,1e-12,PASS,docs/day25-final-quantitative-story-a.md;configs/model_freeze.yaml
+30,release_boundary,provenance_limitation_documented,true,true,1e-12,PASS,docs/day25-final-quantitative-story-a.md;results/final_run_metadata.json

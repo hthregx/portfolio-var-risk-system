@@ -1,0 +1,84 @@
+group,check,expected,observed,status
+B1,Historical alpha,0.05,0.05,PASS
+B1,Historical window,250,250,PASS
+B1,Historical mode,rolling,rolling,PASS
+B1,Historical horizon,1,1,PASS
+B1,Target,portfolio_simple_return,portfolio_simple_return,PASS
+B1,EWMA alpha,0.05,0.05,PASS
+B1,EWMA decay,0.94,0.94,PASS
+B1,EWMA mode,expanding,expanding,PASS
+B1,EWMA initialization,first_squared_return,first_squared_return,PASS
+B1,EWMA distribution,normal,normal,PASS
+B1,EWMA mean,zero,zero,PASS
+B1,GB features,"['return_lag_1', 'return_lag_2', 'return_lag_5', 'rolling_vol_5', 'rolling_vol_20', 'rolling_vol_60', 'drawdown']","['return_lag_1', 'return_lag_2', 'return_lag_5', 'rolling_vol_5', 'rolling_vol_20', 'rolling_vol_60', 'drawdown']",PASS
+B1,GB alpha,0.05,0.05,PASS
+B1,GB n_estimators,100,100,PASS
+B1,GB learning_rate,0.03,0.03,PASS
+B1,GB max_depth,2,2,PASS
+B1,GB min_samples_leaf,5,5,PASS
+B1,GB subsample,1.0,1.0,PASS
+B1,GB random_state,42,42,PASS
+B1,GB market features,False,False,PASS
+B1,Runner excludes market features,False,False,PASS
+B1,Runner uses return features,True,True,PASS
+B2,Portfolio assets,"['HPG', 'FPT', 'MWG']","['HPG', 'FPT', 'MWG']",PASS
+B2,Equal weights,equal_weight,equal_weight,PASS
+B2,Target freeze-final,portfolio_simple_return,portfolio_simple_return,PASS
+B2,Target final-metadata,portfolio_simple_return,portfolio_simple_return,PASS
+B2,Alpha freeze-final,0.05,0.05,PASS
+B2,Alpha final-metadata,0.05,0.05,PASS
+B2,Horizon freeze-final,1,1,PASS
+B2,Horizon final-metadata,1,1,PASS
+B2,Metadata portfolio,equal_weight_HPG_FPT_MWG,equal_weight_HPG_FPT_MWG,PASS
+B2,Historical alpha freeze-final,0.05,0.05,PASS
+B2,Historical window freeze-final,250,250,PASS
+B2,Historical mode freeze-final,rolling,rolling,PASS
+B2,Historical window final-metadata,250,250,PASS
+B2,EWMA alpha freeze-final,0.05,0.05,PASS
+B2,EWMA decay freeze-final,0.94,0.94,PASS
+B2,EWMA mode freeze-final,expanding,expanding,PASS
+B2,EWMA decay final-metadata,0.94,0.94,PASS
+B2,EWMA initialization final-metadata,first_squared_return,first_squared_return,PASS
+B2,GB features freeze-final,"['return_lag_1', 'return_lag_2', 'return_lag_5', 'rolling_vol_5', 'rolling_vol_20', 'rolling_vol_60', 'drawdown']","['return_lag_1', 'return_lag_2', 'return_lag_5', 'rolling_vol_5', 'rolling_vol_20', 'rolling_vol_60', 'drawdown']",PASS
+B2,GB features final-metadata,"['return_lag_1', 'return_lag_2', 'return_lag_5', 'rolling_vol_5', 'rolling_vol_20', 'rolling_vol_60', 'drawdown']","['return_lag_1', 'return_lag_2', 'return_lag_5', 'rolling_vol_5', 'rolling_vol_20', 'rolling_vol_60', 'drawdown']",PASS
+B2,GB alpha freeze-final,0.05,0.05,PASS
+B2,GB alpha final-metadata,0.05,0.05,PASS
+B2,GB n_estimators freeze-final,100,100,PASS
+B2,GB n_estimators final-metadata,100,100,PASS
+B2,GB learning_rate freeze-final,0.03,0.03,PASS
+B2,GB learning_rate final-metadata,0.03,0.03,PASS
+B2,GB max_depth freeze-final,2,2,PASS
+B2,GB max_depth final-metadata,2,2,PASS
+B2,GB min_samples_leaf freeze-final,5,5,PASS
+B2,GB min_samples_leaf final-metadata,5,5,PASS
+B2,GB subsample freeze-final,1.0,1.0,PASS
+B2,GB subsample final-metadata,1.0,1.0,PASS
+B2,GB random_state freeze-final,42,42,PASS
+B2,GB random_state final-metadata,42,42,PASS
+B2,Runner uses configured GB features,True,True,PASS
+B2,Runner trains GB before target only,True,True,PASS
+B2,Runner uses return feature builder,True,True,PASS
+B2,Runner excludes market feature builder,False,False,PASS
+B2,Evaluation start metadata-freeze,2024-12-18,2024-12-18,PASS
+B2,Evaluation end metadata-freeze,2026-07-28,2026-07-28,PASS
+B2,Prediction evaluation start,2024-12-18,2024-12-18,PASS
+B2,Prediction evaluation end,2026-07-28,2026-07-28,PASS
+B2,Prediction row count,1194,1194,PASS
+B2,Prediction target count,398,398,PASS
+B2,Prediction method count,3,3,PASS
+B2,Three methods per target,True,True,PASS
+B2,No duplicate method-date keys,True,True,PASS
+B2,Common actual returns,True,True,PASS
+B2,Prediction config IDs,"{'historical_simulation': 'historical_w250', 'ewma': 'ewma_d094', 'gradient_boosting': 'gb_G04'}","{'ewma': 'ewma_d094', 'gradient_boosting': 'gb_G04', 'historical_simulation': 'historical_w250'}",PASS
+B2,Metric config IDs,"{'historical_simulation': 'historical_w250', 'ewma': 'ewma_d094', 'gradient_boosting': 'gb_G04'}","{'historical_simulation': 'historical_w250', 'ewma': 'ewma_d094', 'gradient_boosting': 'gb_G04'}",PASS
+B2,Strict violation definition,actual_return < quantile_return,actual_return < quantile_return,PASS
+B2,Metadata violation definition,actual_return < quantile_return,actual_return < quantile_return,PASS
+B2,Prediction violation semantics,True,True,PASS
+B2,VaR sign convention,"max(0, -quantile_return)","max(0, -quantile_return)",PASS
+B2,Metadata VaR convention,"max(0, -quantile_return)","max(0, -quantile_return)",PASS
+B2,Prediction VaR semantics,True,True,PASS
+B2,Prediction schema,"['forecast_date', 'target_date', 'method', 'actual_return', 'quantile_return', 'var', 'violation', 'runtime_seconds', 'config_id']","['forecast_date', 'target_date', 'method', 'actual_return', 'quantile_return', 'var', 'violation', 'runtime_seconds', 'config_id']",PASS
+B2,Metric schema,"['method', 'forecast_count', 'violation_count', 'violation_rate', 'pinball_loss', 'average_var', 'minimum_var', 'maximum_var', 'total_runtime_seconds', 'test_start', 'test_end', 'config_id']","['method', 'forecast_count', 'violation_count', 'violation_rate', 'pinball_loss', 'average_var', 'minimum_var', 'maximum_var', 'total_runtime_seconds', 'test_start', 'test_end', 'config_id']",PASS
+B2,Metric forecast counts,"{'ewma': 398, 'gradient_boosting': 398, 'historical_simulation': 398}","{'historical_simulation': 398, 'ewma': 398, 'gradient_boosting': 398}",PASS
+B2,Metric violation counts,"{'ewma': 22, 'gradient_boosting': 24, 'historical_simulation': 27}","{'historical_simulation': 27, 'ewma': 22, 'gradient_boosting': 24}",PASS
+B2,Metric violation rates,True,True,PASS

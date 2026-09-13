@@ -1,0 +1,29 @@
+check,status,observed
+prediction_rows,PASS,1194
+unique_target_dates,PASS,398
+evaluation_start,PASS,2024-12-18
+evaluation_end,PASS,2026-07-28
+common_target_dates,PASS,398
+common_actual_returns,PASS,398
+no_duplicate_method_date,PASS,0
+no_missing_values,PASS,0
+finite_quantiles,PASS,1194
+finite_var,PASS,1194
+var_non_negative,PASS,1194
+violation_rule,PASS,actual_return < quantile_return
+var_rule,PASS,"max(0, -quantile_return)"
+historical_simulation_forecast_count,PASS,398
+historical_simulation_violation_count,PASS,27
+historical_simulation_violation_rate,PASS,0.0678391959798995
+historical_simulation_pinball_loss,PASS,0.001896464232665977
+historical_simulation_average_var,PASS,0.021330189279201533
+ewma_forecast_count,PASS,398
+ewma_violation_count,PASS,22
+ewma_violation_rate,PASS,0.05527638190954774
+ewma_pinball_loss,PASS,0.0019683212526850112
+ewma_average_var,PASS,0.025084042489536062
+gradient_boosting_forecast_count,PASS,398
+gradient_boosting_violation_count,PASS,24
+gradient_boosting_violation_rate,PASS,0.06030150753768844
+gradient_boosting_pinball_loss,PASS,0.001758130950957487
+gradient_boosting_average_var,PASS,0.023349057036283743
