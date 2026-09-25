@@ -39,3 +39,6 @@ outputs/tables/*
 # Operating system
 .DS_Store
 Thumbs.db
+
+# Pytest
+.pytest_cache/
