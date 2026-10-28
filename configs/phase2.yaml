@@ -1,0 +1,75 @@
+schema_version: 1
+
+project:
+  name: portfolio-var-risk-system
+  phase: 2
+  status: development
+
+phase1:
+  frozen_contract_path: configs/model_freeze.yaml
+  preserve_canonical_artifacts: true
+  allow_rewriting_phase1_results: false
+  use_phase1_evaluation_for_tuning: false
+
+portfolio:
+  constituents:
+    - HPG
+    - FPT
+    - MWG
+  weighting: equal_weight
+  asset_return_type: simple_return
+
+risk:
+  target: portfolio_simple_return
+  horizon_trading_days: 1
+  confidence_level: 0.95
+  quantile_alpha: 0.05
+  violation_rule: actual_return < quantile_return
+
+data:
+  provider: KBS
+  interval: d
+  timezone: Asia/Ho_Chi_Minh
+  market_index: VNINDEX
+  require_complete_trading_sessions: true
+  unresolved_missing_data_policy: fail
+  real_outlier_policy: preserve
+  corporate_actions_policy: verify_adjustment
+
+validation:
+  method: expanding_time_series_cv
+  n_splits: 5
+  shuffle: false
+  gap_trading_days: 0
+  selection_metric: mean_pinball_loss
+  separate_final_evaluation: true
+  prevent_lookahead: true
+
+features:
+  baseline_feature_count: 7
+  target_feature_count: 25
+  require_lagged_information: true
+  ablation_study: true
+
+models:
+  baselines:
+    - historical_w250
+    - ewma_d094
+    - gb_G04
+  candidates:
+    - gb_quantile_v2
+    - garch_t
+
+forecast_registry:
+  path: data/phase2/forecast_registry.csv
+  preserve_original_forecasts: true
+  verification_states:
+    - PENDING
+    - VERIFIED
+
+governance:
+  phase1_immutable: true
+  store_model_version: true
+  store_data_hash: true
+  store_config_hash: true
+  require_tests_before_merge: true
