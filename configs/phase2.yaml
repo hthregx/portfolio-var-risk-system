@@ -1,3 +1,4 @@
+
 schema_version: 1
 
 project:
@@ -61,7 +62,7 @@ models:
     - garch_t
 
 forecast_registry:
-  path: data/phase2/forecast_registry.csv
+  path: data/phase2/forecast_registry.sqlite3
   preserve_original_forecasts: true
   verification_states:
     - PENDING

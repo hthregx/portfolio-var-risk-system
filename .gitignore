@@ -39,3 +39,5 @@ outputs/tables/*
 # Operating system
 .DS_Store
 Thumbs.db
+# Phase 2 operational state
+data/phase2/
