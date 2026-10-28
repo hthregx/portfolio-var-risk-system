@@ -43,6 +43,91 @@ jobs:
         run: |
           python -m pytest tests/test_phase2*.py -q -W error
 
+      - name: Verify real KBS EOD from GitHub cloud
+        if: github.event_name == 'push'
+        run: |
+          python - <<'PY'
+          import hashlib
+          import json
+          from datetime import datetime, timedelta, timezone
+          from pathlib import Path
+
+          import pandas as pd
+
+          from src.phase2.eod_automation import run_scheduled_eod
+
+          root = Path.cwd()
+          expected = "2026-10-27"
+          vn = timezone(timedelta(hours=7))
+
+          result = run_scheduled_eod(
+              root,
+              now=datetime(2026, 10, 27, 18, 0, tzinfo=vn),
+          )
+
+          if result["status"] != "SUCCESS":
+              raise RuntimeError(f"Cloud EOD failed: {result}")
+
+          if result["portfolio_last_date"] != expected:
+              raise RuntimeError("Unexpected portfolio date")
+
+          base = root / "data" / "phase2"
+
+          manifest = json.loads(
+              (base / "latest_manifest.json").read_text(
+                  encoding="utf-8"
+              )
+          )
+
+          if manifest["cutoff"] != expected:
+              raise RuntimeError("Unexpected manifest cutoff")
+
+          for symbol in ("HPG", "FPT", "MWG", "VNINDEX"):
+              path = base / "market" / f"{symbol}.csv"
+              frame = pd.read_csv(path)
+
+              if frame.empty or frame["date"].iloc[-1] != expected:
+                  raise RuntimeError(f"{symbol}: bad latest date")
+
+              print(
+                  "CLOUD_KBS_SYMBOL_PASS",
+                  symbol,
+                  len(frame),
+                  frame["date"].iloc[-1],
+              )
+
+          portfolio_path = base / "portfolio_returns.csv"
+          portfolio = pd.read_csv(portfolio_path)
+
+          digest = hashlib.sha256(
+              portfolio_path.read_bytes()
+          ).hexdigest()
+
+          if digest != manifest["portfolio_sha256"]:
+              raise RuntimeError("Portfolio checksum mismatch")
+
+          if portfolio["date"].iloc[-1] != expected:
+              raise RuntimeError("Portfolio final date mismatch")
+
+          audit_path = (
+              base / "quality" / "vnindex_invalid_ohlc.csv"
+          )
+
+          if not audit_path.exists():
+              raise RuntimeError("Missing VNINDEX quality audit")
+
+          audit = pd.read_csv(audit_path)
+
+          if len(audit) != 3:
+              raise RuntimeError("Unexpected VNINDEX audit count")
+
+          print("CLOUD_KBS_LIVE_PASS")
+          print("CUTOFF:", expected)
+          print("PORTFOLIO_ROWS:", len(portfolio))
+          print("VNINDEX_AUDIT_ROWS:", len(audit))
+          print("PORTFOLIO_SHA256:", digest)
+          PY
+
       - name: Run KBS daily EOD pipeline
         run: |
           python -m scripts.run_phase2_scheduled_eod
