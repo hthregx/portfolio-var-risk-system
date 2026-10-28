@@ -412,6 +412,24 @@ def run_daily(
             "Required tickers have different latest sessions"
         )
 
+    # Fail closed if KBS has not published the expected session.
+    # Never publish yesterday's data as today's successful EOD.
+    expected_date = cutoff.isoformat()
+    latest_stock_date = next(iter(latest_stock_dates))
+
+    if latest_stock_date != expected_date:
+        raise ValueError(
+            f"Required tickers stale: latest={latest_stock_date}, "
+            f"expected={expected_date}"
+        )
+
+    if report["VNINDEX"]["last_date"] != expected_date:
+        raise ValueError(
+            "VNINDEX data stale: "
+            f"latest={report['VNINDEX']['last_date']}, "
+            f"expected={expected_date}"
+        )
+
     portfolio = build_portfolio({
         symbol: histories[symbol]
         for symbol in STOCKS

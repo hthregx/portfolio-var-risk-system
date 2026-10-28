@@ -1,0 +1,6 @@
+{
+  "market": "Vietnam stock exchanges",
+  "timezone": "Asia/Ho_Chi_Minh",
+  "closed_dates": [],
+  "note": "Add only officially verified full-market closure dates. Unlisted weekday closures cause a stale-data failure rather than a false success."
+}
