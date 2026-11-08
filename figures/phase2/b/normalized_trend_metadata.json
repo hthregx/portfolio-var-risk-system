@@ -1,0 +1,28 @@
+{
+  "task": "B-02.3",
+  "source": "KBS",
+  "cutoff": "2026-11-04",
+  "base_date": "2020-01-02",
+  "normalization": "100 * close / first_close",
+  "vnindex_unit": "index_points",
+  "vnindex_quality": "REVIEW",
+  "excluded_known_ohlc_dates": [
+    "2021-02-17",
+    "2021-12-10",
+    "2023-05-15"
+  ],
+  "missing_price_policy": "no_fill",
+  "adjusted_price_status": "unverified",
+  "portfolio_sha256": "f85bc33ce54d449e393cd81878e9de8627de88d0c309e7f821568b7177692f53",
+  "market_sha256": {
+    "HPG": "b938bb85a4204816d9edd9382e4551b93d2a0ce23ce5052db92ddbea38b5cd7a",
+    "FPT": "52da23961197f7edc78ab4069da6af2582cfc6af974d91a23e402c6beed0e5de",
+    "MWG": "87a9f7e5791d5d259edf6775c26989c6a87ef9745f16812c5d8beadc89331034",
+    "VNINDEX": "1f8ec528a9ba40bed08554aa7672cffb249a2ef15bd549f4c94d721361c24429"
+  },
+  "manifest_sha256": "3e7facc1de441d0043442d1720c7a5c5ebcb32236338c677478cf404c23afa3e",
+  "script_sha256": "917e13dd9d92bf93cefed1c108b2fd93a59849d5f92112049c061413fb5c69b5",
+  "matplotlib": "3.11.1",
+  "pandas": "2.3.3",
+  "numpy": "2.2.6"
+}
