@@ -1,0 +1,93 @@
+{
+  "stage": "development_only",
+  "model": "gb_G04",
+  "input_path": "data/phase2/portfolio_returns.csv",
+  "input_sha256": "f85bc33ce54d449e393cd81878e9de8627de88d0c309e7f821568b7177692f53",
+  "cutoff": "2026-11-04",
+  "features": [
+    "return_lag_1",
+    "return_lag_2",
+    "return_lag_5",
+    "rolling_vol_5",
+    "rolling_vol_20",
+    "rolling_vol_60",
+    "drawdown"
+  ],
+  "parameters": {
+    "loss": "quantile",
+    "alpha": 0.05,
+    "n_estimators": 100,
+    "learning_rate": 0.03,
+    "max_depth": 2,
+    "min_samples_leaf": 5,
+    "subsample": 1.0,
+    "random_state": 42
+  },
+  "split_status": "provisional_not_agreed_with_A",
+  "gap": 0,
+  "refit": "once_at_start_of_each_fold",
+  "forecast_protocol": "sequential_one_step_with_observed_prior_returns",
+  "input_rows": 1705,
+  "warmup_rows": 60,
+  "valid_feature_rows": 1645,
+  "prediction_rows": 1370,
+  "first_target": "2021-05-12",
+  "last_target": "2026-11-04",
+  "folds": [
+    {
+      "fold": 1,
+      "n_train": 275,
+      "train_start": "2020-04-06",
+      "train_end": "2021-05-11",
+      "n_val": 274,
+      "val_start": "2021-05-12",
+      "val_end": "2022-06-14"
+    },
+    {
+      "fold": 2,
+      "n_train": 549,
+      "train_start": "2020-04-06",
+      "train_end": "2022-06-14",
+      "n_val": 274,
+      "val_start": "2022-06-15",
+      "val_end": "2023-07-18"
+    },
+    {
+      "fold": 3,
+      "n_train": 823,
+      "train_start": "2020-04-06",
+      "train_end": "2023-07-18",
+      "n_val": 274,
+      "val_start": "2023-07-19",
+      "val_end": "2024-08-21"
+    },
+    {
+      "fold": 4,
+      "n_train": 1097,
+      "train_start": "2020-04-06",
+      "train_end": "2024-08-21",
+      "n_val": 274,
+      "val_start": "2024-08-22",
+      "val_end": "2025-09-29"
+    },
+    {
+      "fold": 5,
+      "n_train": 1371,
+      "train_start": "2020-04-06",
+      "train_end": "2025-09-29",
+      "n_val": 274,
+      "val_start": "2025-09-30",
+      "val_end": "2026-11-04"
+    }
+  ],
+  "git_commit": "59a588134992480cbce7cd2ff3e818abbeb275f6",
+  "code_sha256": {
+    "src/phase2/gb_baseline_b.py": "4818d1a671c2d320c0dc3f6f4f55b6ce14c97b545950047786ee6a36e74e3039",
+    "src/phase2/cv_b.py": "e42496501f709e34000a6239767fc2d066639d35297e7bc1d9160d0fbd3d0f7c",
+    "src/gb_return_features.py": "4e29cd741ca0033c01415c1445be7495ec719f4b796d54779561bd629a510c5c"
+  },
+  "python": "3.14.2",
+  "numpy": "2.2.6",
+  "pandas": "2.3.3",
+  "scikit_learn": "1.9.0"
+}
