@@ -39,6 +39,8 @@ jobs:
             numpy==2.2.6 \
             pandas==2.3.3 \
             PyYAML==6.0.3 \
+            scikit-learn==1.9.0 \
+            matplotlib==3.11.1 \
             pytest==9.1.1
 
       - name: Verify Phase 2 tests
