@@ -9,7 +9,7 @@ permissions:
 
 jobs:
   phase2-foundation:
-    if: startsWith(github.head_ref || github.ref_name, 'phase2/')
+    if: startsWith(github.head_ref || github.ref_name, 'phase2/') || startsWith(github.head_ref || github.ref_name, 'phase3/')
     runs-on: ubuntu-latest
 
     steps:
@@ -27,10 +27,10 @@ jobs:
 
       - name: Run Phase 2 foundation tests
         run: |
-          python -m pytest tests/test_phase2*.py -q -W error
+          python -m pytest tests/test_phase2*.py tests/test_phase3*.py -q -W error
 
   legacy-tests:
-    if: ${{ !startsWith(github.head_ref || github.ref_name, 'phase2/') }}
+    if: ${{ !(startsWith(github.head_ref || github.ref_name, 'phase2/') || startsWith(github.head_ref || github.ref_name, 'phase3/')) }}
     runs-on: ubuntu-latest
 
     steps:

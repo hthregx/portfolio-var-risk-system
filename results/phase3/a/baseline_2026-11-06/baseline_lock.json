@@ -1,0 +1,93 @@
+{
+  "stage": "phase3_baseline_frozen_cv_only",
+  "owner": "A",
+  "source": "KBS",
+  "snapshot_cutoff": "2026-11-06",
+  "training_cutoff": "2024-12-17",
+  "source_sha256": "6389586ae8f1edbabb31760e0b555619186114b3f77d09212362fc2e1c40aadf",
+  "features_sha256": "14ac5dd4ce7dd6090420b9cee06c8ac40935c54691b4daf95d063b71a075eccc",
+  "phase2_cv_predictions_sha256": "dd88c901bafa01657fc6e4666a2a0a01a4d743c72c12247c2790aac82c3fb1f5",
+  "phase2_cv_metrics_sha256": "232889654086134d29448fd7e5cab19a901f3bd604a1d993ad7af08be77ec352",
+  "phase2_cv_ranking_sha256": "3ab03a682a1a8aad96297ac25433d7d01156822d6a441244838f6514ee3aba7d",
+  "feature_count": 12,
+  "feature_names": [
+    "return_lag_1",
+    "return_lag_2",
+    "return_lag_5",
+    "rolling_vol_5",
+    "rolling_vol_20",
+    "rolling_vol_60",
+    "drawdown",
+    "momentum_5",
+    "momentum_20",
+    "downside_vol_20",
+    "rolling_q05_60",
+    "rolling_range_20"
+  ],
+  "selected_on_development_cv": "gbv2_12f_c1_a",
+  "cv_mean_pinball": {
+    "gbv2_12f_c1_a": 0.0020802674466814082,
+    "gb_G04_7f_a": 0.0021179064580310854,
+    "gbv2_12f_c2_a": 0.0021785502431798777
+  },
+  "gbv2_c1_wins_vs_7f_folds": 5,
+  "gbv2_c1_cv_violation_rate_by_fold": [
+    0.08673469387755102,
+    0.08163265306122448,
+    0.11224489795918367,
+    0.04081632653061224,
+    0.03571428571428571
+  ],
+  "all_folds": [
+    {
+      "fold": 1,
+      "train_n": 199,
+      "val_n": 196,
+      "train_last": "2021-01-13",
+      "validation_first": "2021-01-14",
+      "validation_last": "2021-10-28"
+    },
+    {
+      "fold": 2,
+      "train_n": 395,
+      "val_n": 196,
+      "train_last": "2021-10-28",
+      "validation_first": "2021-10-29",
+      "validation_last": "2022-08-11"
+    },
+    {
+      "fold": 3,
+      "train_n": 591,
+      "val_n": 196,
+      "train_last": "2022-08-11",
+      "validation_first": "2022-08-12",
+      "validation_last": "2023-05-29"
+    },
+    {
+      "fold": 4,
+      "train_n": 787,
+      "val_n": 196,
+      "train_last": "2023-05-29",
+      "validation_first": "2023-05-30",
+      "validation_last": "2024-03-08"
+    },
+    {
+      "fold": 5,
+      "train_n": 983,
+      "val_n": 196,
+      "train_last": "2024-03-08",
+      "validation_first": "2024-03-11",
+      "validation_last": "2024-12-17"
+    }
+  ],
+  "validation_rule": "5 expanding CV folds, train target date strictly earlier than validation target",
+  "selection_rule": "Phase3 features and hyperparameters must be selected on development only; no holdout tuning",
+  "limitations": [
+    "Old holdout already examined and overlaps Phase1 evaluation; not a fresh blind test",
+    "Phase3 initial baseline lock does not measure train-vs-validation overfit gap yet",
+    "No fresh independent B replication of 12-feature GBv2 at identical protocol yet"
+  ],
+  "python": "3.12.10",
+  "git_sha": "827ab37884372b40b055e9402e9d97138c2210c9",
+  "diagnostics_sha256": "305a2650450930413c5efa3b05d1ce143b43253ec7816ee43a13fad780a73ea9"
+}

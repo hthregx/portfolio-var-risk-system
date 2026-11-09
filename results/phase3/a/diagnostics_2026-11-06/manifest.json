@@ -1,0 +1,118 @@
+{
+  "owner": "A",
+  "experiment": "phase3_feature_count_screen_fixed_C1",
+  "snapshot_cutoff": "2026-11-06",
+  "development_cutoff": "2024-12-17",
+  "scope": "EXPLORATORY development CV ONLY; old holdout NOT used for fitting or selection",
+  "old_phase2_holdout_untouched": true,
+  "source_sha256": "6389586ae8f1edbabb31760e0b555619186114b3f77d09212362fc2e1c40aadf",
+  "baseline_lock_sha256": "4123757fa63777c09d3d894a130637ccdab2002307bb4f646ad57d23a70dadb3",
+  "feature_csv_hashes": {
+    "12": "14ac5dd4ce7dd6090420b9cee06c8ac40935c54691b4daf95d063b71a075eccc",
+    "18": "609926f3af7b2cea81fdd63d5a9e47050bee2128d81b11e83c03d7eb5b818288",
+    "25": "b45094fea0f8814d19b0505b26f8d6556c184190fa73dc6b953b14c1245874fa"
+  },
+  "phase2_12f_cv_predictions_sha256": "dd88c901bafa01657fc6e4666a2a0a01a4d743c72c12247c2790aac82c3fb1f5",
+  "phase2_12f_reproduction_max_abs_diff": 0.0,
+  "candidate_config_fixed_for_all_feature_counts": {
+    "loss": "quantile",
+    "alpha": 0.05,
+    "n_estimators": 150,
+    "learning_rate": 0.03,
+    "max_depth": 2,
+    "min_samples_leaf": 10,
+    "subsample": 1.0,
+    "random_state": 42
+  },
+  "five_folds": [
+    {
+      "fold": 1,
+      "train_n": 199,
+      "val_n": 196,
+      "train_last": "2021-01-13",
+      "validation_first": "2021-01-14",
+      "validation_last": "2021-10-28"
+    },
+    {
+      "fold": 2,
+      "train_n": 395,
+      "val_n": 196,
+      "train_last": "2021-10-28",
+      "validation_first": "2021-10-29",
+      "validation_last": "2022-08-11"
+    },
+    {
+      "fold": 3,
+      "train_n": 591,
+      "val_n": 196,
+      "train_last": "2022-08-11",
+      "validation_first": "2022-08-12",
+      "validation_last": "2023-05-29"
+    },
+    {
+      "fold": 4,
+      "train_n": 787,
+      "val_n": 196,
+      "train_last": "2023-05-29",
+      "validation_first": "2023-05-30",
+      "validation_last": "2024-03-08"
+    },
+    {
+      "fold": 5,
+      "train_n": 983,
+      "val_n": 196,
+      "train_last": "2024-03-08",
+      "validation_first": "2024-03-11",
+      "validation_last": "2024-12-17"
+    }
+  ],
+  "feature_counts": [
+    12,
+    18,
+    25
+  ],
+  "best_feature_count_exploratory_cv_only": 12,
+  "model_selection_warning": "Prior Phase 2 development CV already inspected. This is an exploratory repeated-selection result, not unbiased evidence of future performance. P3-04 should use nested/walk-forward or truly future data.",
+  "mean_impurity_importance_warning": "Tree impurity importances are not causal and can be misleading with correlated features.",
+  "correlation_flag_threshold": 0.95,
+  "high_correlation_pairs": 3,
+  "artifacts": {
+    "cv_fold_metrics": {
+      "sha256": "97814375656c7abcf63145c169c819b626f9baeb8de413b71722d289eaad50ec",
+      "rows": 15
+    },
+    "cv_predictions": {
+      "sha256": "7b672fc5e72485eaea54a83893fe73ff8ade26ef659aab932cab355f6ed8e083",
+      "rows": 2940
+    },
+    "cv_ranking": {
+      "sha256": "23cdff659d25c9fd30dcfbeb0b6bf3f6f906e28cc1fea2737acb38da977a0336",
+      "rows": 3
+    },
+    "high_feature_correlations": {
+      "sha256": "a73763be968c05c423150aa6e8aef9347c0d49aacae6035b56be700b05fe2635",
+      "rows": 3
+    },
+    "feature_importances": {
+      "sha256": "6ce75866b4431fb747c598d7533123bf75b6b926d1ddf1ca5e3f1a4e72d8d699",
+      "rows": 275
+    },
+    "feature_importances_mean": {
+      "sha256": "1cf27c03597a751f875a1f59d4f5d982b2957dcf5e751658ccaa26da060144ae",
+      "rows": 55
+    },
+    "figures/cv_pinball_by_fold.png": {
+      "sha256": "20d66ecbb052fc69a758444dd7c9eeb532399a4aed90e3855e96c660d062dcd7"
+    },
+    "figures/train_validation_gap.png": {
+      "sha256": "e6fc1dc1692dde08701791b2690fe4e02d918906d88e0e079b94e583f51dc67f"
+    }
+  },
+  "versions": {
+    "python": "3.12.10",
+    "numpy": "2.2.6",
+    "pandas": "2.3.3",
+    "sklearn": "1.9.0"
+  },
+  "git_sha": "827ab37884372b40b055e9402e9d97138c2210c9"
+}
