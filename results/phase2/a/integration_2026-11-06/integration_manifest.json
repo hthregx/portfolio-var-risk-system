@@ -1,0 +1,42 @@
+{
+  "owner": "A",
+  "step": "A6_integrated_review_offline_dashboard",
+  "as_of_snapshot": "2026-11-06",
+  "training_cutoff": "2024-12-17",
+  "holdout_first": "2024-12-18",
+  "holdout_last": "2026-11-06",
+  "selected_v2_on_development_cv": "gbv2_12f_c1_a",
+  "holdout_relative_pinball_improvement_pct": 6.59014261330991,
+  "holdout_same_dates": true,
+  "holdout_selection_uses_only_cv": true,
+  "holdout_not_pristine": true,
+  "b_baselines_independently_reconstructed": true,
+  "b_original_snapshot_hash_verified": false,
+  "a_and_b_gb_predictions_directly_comparable": false,
+  "b_has_independently_retrained_gbv2_c1": false,
+  "live_issued_forecast": false,
+  "limitations": [
+    "A holdout overlaps previously reported Phase1 historical evaluation",
+    "B snapshot byte hash not independently verified",
+    "B G04 CV refits once per fold; A/B CV boundaries differ",
+    "G04 A holdout uses fixed fit, not Phase1 daily-refit protocol",
+    "Do not merge B metrics into A matched holdout ranking"
+  ],
+  "sources": {
+    "a3_metadata_sha256": "13888e4916e7f191e6d3259f8e804e6ca5290210f75ea6e6cbdff73ff114a1b7",
+    "a4_manifest_sha256": "dfc28175928f0216b349d8140bf13e496fc1f7f142a735b58876c2fd7d3a3580",
+    "a5_audit_metadata_sha256": "0da46e6b42c5490b3faa6875e9ad8e720006d6b3b8798ad5c37959223c853e53",
+    "a5_b_baseline_audit_sha256": "a0272ccb72659b05c8c6b119e9ed6a49214ef8a4fdefafa7e2c689a92a0aad09",
+    "a_kbs_portfolio_sha256": "6389586ae8f1edbabb31760e0b555619186114b3f77d09212362fc2e1c40aadf"
+  },
+  "output_files": {
+    "comparison.html": "3918970b15d81f4f222b87a145b35d35ec3edd9169e9142fe2e1c58f1ba3a716",
+    "figures/actual_vs_quantile.png": "81adcae3bb77e4f636e341767f141ab21766b1c203e65f2c41c31cde42448e38",
+    "figures/cumulative_exceptions.png": "4b96aa4edfa48f464f268599e38d6311616ba9cac4f751f263a42fee6b83a789",
+    "figures/cv_fold_pinball.png": "d176620e558de7de167807161ce651c094101f5f3b22f463c867107dc53b84a8",
+    "figures/holdout_pinball_comparison.png": "34f5afb449415a039c1c4263ec6835affddda09953eeed66ec717a6d574ec32c",
+    "figures/rolling_60d_violation_rate.png": "0ea9aaf404a0f7d5cafb3ed8c42cc9cd93ea5b93b491d93cc33bd3ca639b632c",
+    "model_comparison.csv": "6820c0e9c43430ca5266f4dc4221141256b599c7896d39394bc4537f2e771ce2",
+    "normalized_holdout_predictions.csv": "d866541b04e0bc1e2e0977e513ab61c44654c0c26f4fd89e632c9b338680ae31"
+  }
+}
