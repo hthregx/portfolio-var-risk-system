@@ -1,0 +1,72 @@
+{
+  "owner": "A",
+  "stage": "EXPLORATORY development_only_not_live_forecast",
+  "experiment": "Phase3 P3-05 expanding versus rolling refit cadence",
+  "snapshot_cutoff": "2026-11-06",
+  "development_last": "2024-12-17",
+  "source_sha256": "6389586ae8f1edbabb31760e0b555619186114b3f77d09212362fc2e1c40aadf",
+  "features12_sha256": "14ac5dd4ce7dd6090420b9cee06c8ac40935c54691b4daf95d063b71a075eccc",
+  "p304_manifest_sha256": "483ec2c373eec00718137595379fcaa4bba408746b0021f56a7039878bc6066b",
+  "protocol": "Only first 1179 development targets; last 600 validated; C1 refit once per 20 targets with prior observed features; either expanding or last 504 rows; compare to P3-04 200-day frozen fits.",
+  "refit_every_n_sessions": 20,
+  "rolling_window": 504,
+  "frozen_reference": "GBv2 C1 12 features, no hyperparameter retuning",
+  "frozen_baseline": "P3-04 C1_frozen (3x200); not a live forecast",
+  "original_holdout_used": false,
+  "selection_from_p305": false,
+  "cautions": [
+    "This retrospective development history was examined in Phase 2/3 and is not a clean future performance estimate.",
+    "C1, expanding and rolling models differ in refit schedules, so this is a refit-policy comparison, not purely feature selection.",
+    "Moving block bootstrap intervals are descriptive, not confirmatory p-values; 60-day coverage windows are correlated and noisy.",
+    "Kupiec and Christoffersen non-rejection is not proof of perfect coverage.",
+    "No production model is chosen by the already-inspected holdout."
+  ],
+  "artifacts": {
+    "walkforward_predictions.csv": {
+      "sha256": "504d6c38fce0e4c792bddc2c7e202632c55d5f8859e670949b735e74e75eb7df",
+      "rows": 2400
+    },
+    "refit_schedule.csv": {
+      "sha256": "6773456d8687c893402bd6f591911059988b75677b0fde4b53d79eb2038bccd7",
+      "rows": 60
+    },
+    "policy_metrics.csv": {
+      "sha256": "e46fe12cfca7bd7f32e842b216d82042b0406b7855b13338183209925f5d25c2",
+      "rows": 4
+    },
+    "regime_metrics.csv": {
+      "sha256": "f599dda15aac8ad77355b879e7b7f0a98f51dd2ba0a89dc4cf215df24bdf5d97",
+      "rows": 12
+    },
+    "rolling_60d_metrics.csv": {
+      "sha256": "38b69b04a2966fc8a9ef24adf945875b5d9ffe5038dc9cd5e1be738911b6b847",
+      "rows": 2164
+    },
+    "paired_block_bootstrap.csv": {
+      "sha256": "1c4402497d8df49f52220b8f08f536b97f5307336fddfed1fee6bcfcae7dc033",
+      "rows": 3
+    },
+    "exception_events.csv": {
+      "sha256": "f55ac10d69d225b2f5c4cd9ef34011c43be9fa2198eb72e69d9e5b33f46adc81",
+      "rows": 130
+    },
+    "figures/rolling_60d_pinball.png": {
+      "sha256": "ab8001988827187e1cd18dbb4fdc480d11d87520ba4db08c549baf8af745af66"
+    },
+    "figures/rolling_60d_coverage.png": {
+      "sha256": "c55845b2d847a89ae87e0eded1fdd42e34b70ce3934ae4f140d81e78c0fd705d"
+    },
+    "figures/three_regime_pinball.png": {
+      "sha256": "daf82f44fead6cc85f87ade9424e8f6bcd182bcf803472af758275454e689dae"
+    },
+    "figures/exception_timeline.png": {
+      "sha256": "ef6702b5bbd818926bebc86ed5b574e5afe64236ebe05d81315c64cca6b4e344"
+    }
+  },
+  "python": "3.12.10",
+  "numpy": "2.2.6",
+  "pandas": "2.3.3",
+  "sklearn": "1.9.0",
+  "script_sha256": "f04e1e062490b050d34c02392219cc7af85e203d8ba4008bc7d95f12adcaab44",
+  "git_sha": "827ab37884372b40b055e9402e9d97138c2210c9"
+}

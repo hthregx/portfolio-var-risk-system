@@ -1,0 +1,4 @@
+baseline,alternative,paired_mean_loss_advantage,block_ci_95_low,block_ci_95_high,ci_includes_zero,block_length,bootstrap_repetitions,bootstrap_seed,scope
+C1_frozen,nested_selected,-2.12407666659603e-06,-5.6293314728259037e-05,5.0473213839016314e-05,True,20,1500,20261109,"EXPLORATORY (reused development data, not untouched future test)"
+C1_frozen,expanding_refit20,1.2651528127639927e-05,-5.4955887632096268e-05,7.9148855625877938e-05,True,20,1500,20261109,"EXPLORATORY (reused development data, not untouched future test)"
+C1_frozen,rolling504_refit20,1.6990246010006483e-05,-9.3564429591415528e-05,0.00013421425160786967,True,20,1500,20261109,"EXPLORATORY (reused development data, not untouched future test)"

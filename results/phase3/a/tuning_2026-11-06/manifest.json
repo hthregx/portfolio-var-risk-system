@@ -1,0 +1,161 @@
+{
+  "owner": "A",
+  "experiment": "phase3_nested_temporal_tuning_12f",
+  "stage": "EXPLORATORY development_only_not_live_forecast",
+  "data_source": "KBS",
+  "snapshot_cutoff": "2026-11-06",
+  "training_cutoff": "2024-12-17",
+  "source_sha256": "6389586ae8f1edbabb31760e0b555619186114b3f77d09212362fc2e1c40aadf",
+  "features_12_sha256": "14ac5dd4ce7dd6090420b9cee06c8ac40935c54691b4daf95d063b71a075eccc",
+  "baseline_lock_sha256": "4123757fa63777c09d3d894a130637ccdab2002307bb4f646ad57d23a70dadb3",
+  "p3_03_manifest_sha256": "b8a9ca536542ada5a9a4fc395073b42fda4507863d3fc8e9a6011d897f0d5d6a",
+  "feature_count": 12,
+  "candidate_configs": {
+    "C1_frozen": {
+      "loss": "quantile",
+      "alpha": 0.05,
+      "n_estimators": 150,
+      "learning_rate": 0.03,
+      "max_depth": 2,
+      "min_samples_leaf": 10,
+      "subsample": 1.0,
+      "random_state": 42
+    },
+    "shallow_leaf15": {
+      "loss": "quantile",
+      "alpha": 0.05,
+      "n_estimators": 120,
+      "learning_rate": 0.03,
+      "max_depth": 1,
+      "min_samples_leaf": 15,
+      "subsample": 1.0,
+      "random_state": 42
+    },
+    "leaf20": {
+      "loss": "quantile",
+      "alpha": 0.05,
+      "n_estimators": 150,
+      "learning_rate": 0.03,
+      "max_depth": 2,
+      "min_samples_leaf": 20,
+      "subsample": 1.0,
+      "random_state": 42
+    },
+    "subsample080": {
+      "loss": "quantile",
+      "alpha": 0.05,
+      "n_estimators": 150,
+      "learning_rate": 0.03,
+      "max_depth": 2,
+      "min_samples_leaf": 10,
+      "subsample": 0.8,
+      "random_state": 42
+    },
+    "slow_regularized": {
+      "loss": "quantile",
+      "alpha": 0.05,
+      "n_estimators": 200,
+      "learning_rate": 0.02,
+      "max_depth": 2,
+      "min_samples_leaf": 15,
+      "subsample": 0.9,
+      "random_state": 42
+    }
+  },
+  "candidate_selection_rule": "inner CV mean pinball >= 1.0% relative improvement AND >= 2/3 inner wins versus C1, else C1",
+  "nested_protocol": "3 expanding outer folds with disjoint 200-session validation; each outer training period uses 3 inner expanding folds for config choice",
+  "outer_train_sizes": [
+    579,
+    779,
+    979
+  ],
+  "outer_validation_sessions_per_fold": 200,
+  "inner_fit_count": 45,
+  "outer_model_fit_count": 6,
+  "selection_by_outer_fold": [
+    {
+      "outer_fold": 1,
+      "selected_from_inner": "shallow_leaf15",
+      "inner_c1_pinball": 0.002348974392333157,
+      "inner_selected_pinball": 0.002271692271707985,
+      "inner_gain_vs_c1_pct": 3.2900367444367986,
+      "inner_fold_wins_vs_c1": 2,
+      "outer_train_n": 579,
+      "outer_valid_n": 200,
+      "outer_train_end": "2022-07-26",
+      "outer_valid_start": "2022-07-27",
+      "outer_valid_end": "2023-05-17"
+    },
+    {
+      "outer_fold": 2,
+      "selected_from_inner": "slow_regularized",
+      "inner_c1_pinball": 0.0024333518769637506,
+      "inner_selected_pinball": 0.0023362515045590986,
+      "inner_gain_vs_c1_pct": 3.990395853714767,
+      "inner_fold_wins_vs_c1": 3,
+      "outer_train_n": 779,
+      "outer_valid_n": 200,
+      "outer_train_end": "2023-05-17",
+      "outer_valid_start": "2023-05-18",
+      "outer_valid_end": "2024-03-04"
+    },
+    {
+      "outer_fold": 3,
+      "selected_from_inner": "C1_frozen",
+      "inner_c1_pinball": 0.002217824719735031,
+      "inner_selected_pinball": 0.002217824719735031,
+      "inner_gain_vs_c1_pct": 0.0,
+      "inner_fold_wins_vs_c1": 0,
+      "outer_train_n": 979,
+      "outer_valid_n": 200,
+      "outer_train_end": "2024-03-04",
+      "outer_valid_start": "2024-03-05",
+      "outer_valid_end": "2024-12-17"
+    }
+  ],
+  "outer_oof_mean_pinball_c1": 0.0018547455981367921,
+  "outer_oof_mean_pinball_inner_selected": 0.0018568696748033882,
+  "outer_oof_relative_gain_pct_exploratory": -0.11452118655678972,
+  "holdout_policy": "NEVER READ historical Phase 1/Phase 2 holdout; do not select final production model on outer performance",
+  "limitations": [
+    "Prior development history was already inspected during Phase 2/3; outer nested folds reduce within-run tuning bias but are not pristine future evidence.",
+    "No claims of live performance; use new future timestamps for independent confirmation.",
+    "This step tests tuning with preselected 12 features only; feature-count selection was exploratory on reused development data."
+  ],
+  "artifacts": {
+    "inner_cv_scores.csv": {
+      "sha256": "dadb20a54a9e52d730e6b0e0b3d81a09e6fd25b1018d364ace26dcda64961363",
+      "rows": 45
+    },
+    "outer_cv_metrics.csv": {
+      "sha256": "bcdda47d5e5ac32191f21f5d6c24f742f50d16d0ff786e47c409ea821fad00da",
+      "rows": 6
+    },
+    "outer_cv_predictions.csv": {
+      "sha256": "d26ebca502aff39254c691c3f78da0e12971c0cd4be70dc012192840c180f1bc",
+      "rows": 1200
+    },
+    "inner_selected_configs.csv": {
+      "sha256": "9e6402404fb383a468d0f62c2ecf69935ee3f55933b7fabc93604126a803257c",
+      "rows": 3
+    },
+    "nested_comparison.csv": {
+      "sha256": "2243467e1e1d504bb0ea527a1524628ef014e475751facf3bcc01b82cdb1a8fe",
+      "rows": 2
+    },
+    "figures/nested_generalization_gap.png": {
+      "sha256": "1b5a98f01649fc9f046bafeeeb0c6a2e20d27f003557b295f2ee8db2857ad35c"
+    },
+    "figures/nested_outer_pinball.png": {
+      "sha256": "e3c114a657f6c11ffdb37264a1b5b6532f85fed08de0eda89868663d87aa3397"
+    }
+  },
+  "versions": {
+    "python": "3.12.10",
+    "numpy": "2.2.6",
+    "pandas": "2.3.3",
+    "sklearn": "1.9.0"
+  },
+  "code_sha256": "22a04dc3f9e1b2f1f4bde87d9e92c1e5b95d82af358a37f9f986a2a13326af0a",
+  "git_sha": "827ab37884372b40b055e9402e9d97138c2210c9"
+}
