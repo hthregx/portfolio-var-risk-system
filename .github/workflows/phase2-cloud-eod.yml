@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - phase2/cloud-eod-setup
+      - phase2/cloud-eod-repair
       - main
     paths:
       - .github/workflows/phase2-cloud-eod.yml
@@ -44,94 +45,106 @@ jobs:
         run: |
           python -m pytest tests/test_phase2*.py -q -W error
 
-      - name: Verify real KBS EOD from GitHub cloud
-        if: github.event_name == 'push'
+      - name: Run verified KBS EOD pipeline
         run: |
           python - <<'PY'
           import hashlib
           import json
-          from datetime import datetime, timedelta, timezone
+          from datetime import datetime
           from pathlib import Path
 
-          import pandas as pd
-
-          from src.phase2.eod_automation import run_scheduled_eod
+          from src.phase2.daily_data import (
+              TZ,
+              SYMBOLS,
+              eligible_session,
+              run_daily,
+          )
+          from src.phase2.eod_automation import write_event
 
           root = Path.cwd()
-          expected = "2026-10-27"
-          vn = timezone(timedelta(hours=7))
+          now = datetime.now(TZ)
+          expected = eligible_session(now).isoformat()
 
-          result = run_scheduled_eod(
-              root,
-              now=datetime(2026, 10, 27, 18, 0, tzinfo=vn),
-          )
+          event = {
+              "started_at": now.isoformat(),
+              "expected_cutoff": expected,
+              "source": "KBS",
+              "environment": "github_actions",
+              "status": "STARTED",
+          }
 
-          if result["status"] != "SUCCESS":
-              raise RuntimeError(f"Cloud EOD failed: {result}")
+          try:
+              result = run_daily(root, now=now)
 
-          if result["portfolio_last_date"] != expected:
-              raise RuntimeError("Unexpected portfolio date")
+              if result["cutoff"] != expected:
+                  raise RuntimeError("Unexpected EOD cutoff")
 
-          base = root / "data" / "phase2"
+              if result["portfolio_last_date"] != expected:
+                  raise RuntimeError("Portfolio data is stale")
 
-          manifest = json.loads(
-              (base / "latest_manifest.json").read_text(
-                  encoding="utf-8"
+              for symbol in SYMBOLS:
+                  actual = result["symbols"][symbol]["last_date"]
+
+                  if actual != expected:
+                      raise RuntimeError(
+                          f"{symbol}: stale data {actual}, expected {expected}"
+                      )
+
+              base = root / "data" / "phase2"
+
+              portfolio = base / "portfolio_returns.csv"
+              manifest_path = base / "latest_manifest.json"
+
+              if not portfolio.is_file() or not manifest_path.is_file():
+                  raise RuntimeError("Missing required output files")
+
+              manifest = json.loads(
+                  manifest_path.read_text(encoding="utf-8")
               )
-          )
 
-          if manifest["cutoff"] != expected:
-              raise RuntimeError("Unexpected manifest cutoff")
+              digest = hashlib.sha256(
+                  portfolio.read_bytes()
+              ).hexdigest()
 
-          for symbol in ("HPG", "FPT", "MWG", "VNINDEX"):
-              path = base / "market" / f"{symbol}.csv"
-              frame = pd.read_csv(path)
+              if digest != manifest["portfolio_sha256"]:
+                  raise RuntimeError("Portfolio checksum mismatch")
 
-              if frame.empty or frame["date"].iloc[-1] != expected:
-                  raise RuntimeError(f"{symbol}: bad latest date")
+              if manifest["cutoff"] != expected:
+                  raise RuntimeError("Published manifest is stale")
+
+              event.update(
+                  status="SUCCESS",
+                  cutoff=expected,
+                  portfolio_last_date=result["portfolio_last_date"],
+                  rows=result["rows"],
+                  portfolio_sha256=digest,
+              )
+
+          except Exception as error:
+              event.update(
+                  status="FAILED",
+                  error_type=type(error).__name__,
+                  error=str(error),
+              )
+
+              write_event(root, event)
 
               print(
-                  "CLOUD_KBS_SYMBOL_PASS",
-                  symbol,
-                  len(frame),
-                  frame["date"].iloc[-1],
+                  "CLOUD_EOD_FAILED",
+                  json.dumps(event, ensure_ascii=False),
+                  flush=True,
               )
 
-          portfolio_path = base / "portfolio_returns.csv"
-          portfolio = pd.read_csv(portfolio_path)
+              raise
 
-          digest = hashlib.sha256(
-              portfolio_path.read_bytes()
-          ).hexdigest()
+          write_event(root, event)
 
-          if digest != manifest["portfolio_sha256"]:
-              raise RuntimeError("Portfolio checksum mismatch")
-
-          if portfolio["date"].iloc[-1] != expected:
-              raise RuntimeError("Portfolio final date mismatch")
-
-          audit_path = (
-              base / "quality" / "vnindex_invalid_ohlc.csv"
+          print(
+              "CLOUD_EOD_SUCCESS",
+              json.dumps(event, ensure_ascii=False),
+              flush=True,
           )
-
-          if not audit_path.exists():
-              raise RuntimeError("Missing VNINDEX quality audit")
-
-          audit = pd.read_csv(audit_path)
-
-          if len(audit) != 3:
-              raise RuntimeError("Unexpected VNINDEX audit count")
-
-          print("CLOUD_KBS_LIVE_PASS")
-          print("CUTOFF:", expected)
-          print("PORTFOLIO_ROWS:", len(portfolio))
-          print("VNINDEX_AUDIT_ROWS:", len(audit))
-          print("PORTFOLIO_SHA256:", digest)
           PY
-
-      - name: Run KBS daily EOD pipeline
-        run: |
-          python -m scripts.run_phase2_scheduled_eod
 
       - name: Upload market data and logs
         if: always()
