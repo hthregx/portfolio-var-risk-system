@@ -1,0 +1,76 @@
+{
+  "stage": "development_cv",
+  "created_at_utc": "2026-11-12T05:43:06.379770+00:00",
+  "input_file": "results/phase2/b/aligned_2026-11-06_20261112_121348/baseline_cv.csv",
+  "input_sha256": "9aa1bed0e61d4f0d053bed63e787c91a57a071d34e724d0b09871dda03672165",
+  "runner_metadata_file": "results/phase2/b/aligned_2026-11-06_20261112_121348/metadata.json",
+  "runner_metadata_sha256": "f5ee1d8d3823c342cbb81e0e541ad6dcebcdd99ea57a25007a6ecfe11a978b1e",
+  "source_data_sha256": "6389586ae8f1edbabb31760e0b555619186114b3f77d09212362fc2e1c40aadf",
+  "cutoff": "2026-11-06",
+  "selection_rule": "last_120_validation_target_dates",
+  "first_target": "2024-07-01",
+  "last_target": "2024-12-17",
+  "n_targets_per_model": 120,
+  "plot_unit": "percent_labels_from_decimal_returns",
+  "threshold_column": "quantile_return",
+  "violation_rule": "actual_return < quantile_return",
+  "shared_y_axis": true,
+  "y_limits_decimal": [
+    -0.049780956841067966,
+    0.05603709139938887
+  ],
+  "smoothing": false,
+  "models": {
+    "historical_w250": {
+      "n_targets": 120,
+      "n_violations": 5,
+      "violation_rate": 0.041666666666666664,
+      "violation_dates": [
+        "2024-08-01",
+        "2024-08-05",
+        "2024-11-12",
+        "2024-11-15",
+        "2024-11-19"
+      ],
+      "folds": [
+        "dev_5"
+      ]
+    },
+    "ewma_d094": {
+      "n_targets": 120,
+      "n_violations": 8,
+      "violation_rate": 0.06666666666666667,
+      "violation_dates": [
+        "2024-08-01",
+        "2024-08-05",
+        "2024-11-04",
+        "2024-11-12",
+        "2024-11-14",
+        "2024-11-15",
+        "2024-11-19",
+        "2024-12-04"
+      ],
+      "folds": [
+        "dev_5"
+      ]
+    },
+    "gb_G04_7f": {
+      "n_targets": 120,
+      "n_violations": 2,
+      "violation_rate": 0.016666666666666666,
+      "violation_dates": [
+        "2024-08-01",
+        "2024-08-05"
+      ],
+      "folds": [
+        "dev_5"
+      ]
+    }
+  },
+  "script_sha256": "41acb58932df48eebe8e2853c18f287a590f4f12f648142ddf29f59b7feab8d1",
+  "numpy": "2.2.6",
+  "pandas": "2.3.3",
+  "matplotlib": "3.11.1",
+  "image_sha256": "00d163a1f2d1d215dfb46a9c5a83b469f77ae131f67aae4dd50a9edf7fdaf44d",
+  "pdf_sha256": "767da68afd9b2d5129740263832a2b51ac098d2e4ef3c3c6f999cb5bd8d3aab3"
+}
