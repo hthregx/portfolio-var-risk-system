@@ -1,0 +1,237 @@
+{
+  "owner": "B",
+  "source_sha256": "6389586ae8f1edbabb31760e0b555619186114b3f77d09212362fc2e1c40aadf",
+  "snapshot_cutoff": "2026-11-06",
+  "training_cutoff": "2024-12-17",
+  "input_rows": 1707,
+  "feature_rows": 1647,
+  "development_rows": 1179,
+  "holdout_rows": 468,
+  "features": [
+    "return_lag_1",
+    "return_lag_2",
+    "return_lag_5",
+    "rolling_vol_5",
+    "rolling_vol_20",
+    "rolling_vol_60",
+    "drawdown",
+    "momentum_5",
+    "momentum_20",
+    "downside_vol_20",
+    "rolling_q05_60",
+    "rolling_range_20"
+  ],
+  "run_mode": "cv_and_holdout",
+  "holdout_evaluated": true,
+  "five_folds": [
+    {
+      "fold": 1,
+      "train_n": 199,
+      "val_n": 196,
+      "train_last": "2021-01-13",
+      "validation_first": "2021-01-14",
+      "validation_last": "2021-10-28"
+    },
+    {
+      "fold": 2,
+      "train_n": 395,
+      "val_n": 196,
+      "train_last": "2021-10-28",
+      "validation_first": "2021-10-29",
+      "validation_last": "2022-08-11"
+    },
+    {
+      "fold": 3,
+      "train_n": 591,
+      "val_n": 196,
+      "train_last": "2022-08-11",
+      "validation_first": "2022-08-12",
+      "validation_last": "2023-05-29"
+    },
+    {
+      "fold": 4,
+      "train_n": 787,
+      "val_n": 196,
+      "train_last": "2023-05-29",
+      "validation_first": "2023-05-30",
+      "validation_last": "2024-03-08"
+    },
+    {
+      "fold": 5,
+      "train_n": 983,
+      "val_n": 196,
+      "train_last": "2024-03-08",
+      "validation_first": "2024-03-11",
+      "validation_last": "2024-12-17"
+    }
+  ],
+  "models": {
+    "gb_G04_7f": {
+      "features": [
+        "return_lag_1",
+        "return_lag_2",
+        "return_lag_5",
+        "rolling_vol_5",
+        "rolling_vol_20",
+        "rolling_vol_60",
+        "drawdown"
+      ],
+      "parameters": {
+        "loss": "quantile",
+        "alpha": 0.05,
+        "n_estimators": 100,
+        "learning_rate": 0.03,
+        "max_depth": 2,
+        "min_samples_leaf": 5,
+        "subsample": 1.0,
+        "random_state": 42
+      }
+    },
+    "gbv2_12f_c1": {
+      "features": [
+        "return_lag_1",
+        "return_lag_2",
+        "return_lag_5",
+        "rolling_vol_5",
+        "rolling_vol_20",
+        "rolling_vol_60",
+        "drawdown",
+        "momentum_5",
+        "momentum_20",
+        "downside_vol_20",
+        "rolling_q05_60",
+        "rolling_range_20"
+      ],
+      "parameters": {
+        "loss": "quantile",
+        "alpha": 0.05,
+        "n_estimators": 150,
+        "learning_rate": 0.03,
+        "max_depth": 2,
+        "min_samples_leaf": 10,
+        "subsample": 1.0,
+        "random_state": 42
+      }
+    },
+    "gbv2_12f_c2": {
+      "features": [
+        "return_lag_1",
+        "return_lag_2",
+        "return_lag_5",
+        "rolling_vol_5",
+        "rolling_vol_20",
+        "rolling_vol_60",
+        "drawdown",
+        "momentum_5",
+        "momentum_20",
+        "downside_vol_20",
+        "rolling_q05_60",
+        "rolling_range_20"
+      ],
+      "parameters": {
+        "loss": "quantile",
+        "alpha": 0.05,
+        "n_estimators": 120,
+        "learning_rate": 0.05,
+        "max_depth": 2,
+        "min_samples_leaf": 5,
+        "subsample": 1.0,
+        "random_state": 42
+      }
+    }
+  },
+  "selected_v2": "gbv2_12f_c1",
+  "selection": "reproduce_A_locked_C1_no_new_selection",
+  "gb_refit": "once_per_fold; once_on_development_before_holdout",
+  "hs_ewma_protocol": "sequential_one_step_using_all_available_prior_returns",
+  "baseline_feature_builder": "shared src.gb_return_features; additional five implemented by B",
+  "reference_check": "PASS",
+  "crosscheck": [
+    {
+      "stage": "cv",
+      "model": "gb_G04_7f",
+      "n": 980,
+      "max_abs_difference": 9.367506770274758e-17,
+      "tolerance": 1e-09,
+      "status": "PASS"
+    },
+    {
+      "stage": "cv",
+      "model": "gbv2_12f_c1",
+      "n": 980,
+      "max_abs_difference": 1.1102230246251565e-16,
+      "tolerance": 1e-09,
+      "status": "PASS"
+    },
+    {
+      "stage": "cv",
+      "model": "gbv2_12f_c2",
+      "n": 980,
+      "max_abs_difference": 1.5265566588595902e-16,
+      "tolerance": 1e-09,
+      "status": "PASS"
+    },
+    {
+      "stage": "holdout",
+      "model": "gb_G04_7f",
+      "n": 468,
+      "max_abs_difference": 9.71445146547012e-17,
+      "tolerance": 1e-09,
+      "status": "PASS"
+    },
+    {
+      "stage": "holdout",
+      "model": "gbv2_12f_c1",
+      "n": 468,
+      "max_abs_difference": 1.1796119636642288e-16,
+      "tolerance": 1e-09,
+      "status": "PASS"
+    }
+  ],
+  "reference_hash_checks": {
+    "cv_predictions.csv": "git_line_endings_restored_CRLF",
+    "holdout_predictions.csv": "git_line_endings_restored_CRLF"
+  },
+  "caveat": "Retrospective holdout overlaps Phase1 published evaluation; not pristine or live forecasts",
+  "python": "3.14.2",
+  "numpy": "2.2.6",
+  "pandas": "2.3.3",
+  "scikit_learn": "1.9.0",
+  "runner_sha256": "98601fa85fe9dbf07b0282635295b716802b20da0613ee3fbf8f6524063dcd31",
+  "dependency_code_sha256": {
+    "src/gb_return_features.py": "4e29cd741ca0033c01415c1445be7495ec719f4b796d54779561bd629a510c5c",
+    "src/phase2/cv_b.py": "e42496501f709e34000a6239767fc2d066639d35297e7bc1d9160d0fbd3d0f7c",
+    "src/phase2/ewma_b.py": "a950740c595b3bd99aebf9fe2b39b2f6e1e22e5e7c021b8d737b9bc4b83c7942"
+  },
+  "git_commit": "d1ba2796b6a357547f79964a52623d1850079e25",
+  "artifacts": {
+    "baseline_cv.csv": {
+      "sha256": "9aa1bed0e61d4f0d053bed63e787c91a57a071d34e724d0b09871dda03672165",
+      "rows": 2940
+    },
+    "cv_metrics.csv": {
+      "sha256": "6020f9a3bf9a30de36a8670f644830428953f554fe78b548c319d9e800fb29ed",
+      "rows": 25
+    },
+    "cv_predictions.csv": {
+      "sha256": "b9d7129342a599e02f12719c7de93a7e9d1e9eea4b8bdb90d9c6f0a01ec80793",
+      "rows": 4900
+    },
+    "features.csv": {
+      "sha256": "0ae872f4470a3fdc461b047e0267276a0b79af85f59828cfde57b6513e94cc2d",
+      "rows": 1647
+    },
+    "gbv2_retrain.csv": {
+      "sha256": "97ae5c9facdff8d4077c4d167acfb30b34a8d8f150b731b2156bda2c63302b74",
+      "rows": 468
+    },
+    "holdout_metrics.csv": {
+      "sha256": "197f703751917901422d81776ca3502f1744599342a2c877b17c21bcf1bc9627",
+      "rows": 4
+    },
+    "holdout_predictions.csv": {
+      "sha256": "13007bf41a37d52a0bd1d032b9eb87bc13a6b9566bc2177b9cb5b1d74ce0818a",
+      "rows": 1872
+    }
+  }
+}
