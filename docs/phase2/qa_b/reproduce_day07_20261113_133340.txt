@@ -1,0 +1,11 @@
+Fold 1: train=199, validation=196
+Fold 2: train=395, validation=196
+Fold 3: train=591, validation=196
+Fold 4: train=787, validation=196
+Fold 5: train=983, validation=196
+          model              fold   n  violations  violation_rate  pinball_loss  average_var
+historical_w250 holdout_fixed_fit 468          28        0.059829      0.001820     0.021805
+      ewma_d094 holdout_fixed_fit 468          24        0.051282      0.001889     0.024806
+      gb_G04_7f holdout_fixed_fit 468          25        0.053419      0.001752     0.023253
+    gbv2_12f_c1 holdout_fixed_fit 468          25        0.053419      0.001637     0.022302
+Reference check: PASS; outputs: /Users/admin/Documents/project/portfolio-var-risk-system/results/phase2/b/reproduce_day07_20261113_133340

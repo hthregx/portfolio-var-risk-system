@@ -1,0 +1,151 @@
+{
+  "owner": "A",
+  "stage": "development_only_not_live_forecast",
+  "training_cutoff": "2024-12-17",
+  "snapshot_cutoff": "2026-11-06",
+  "source_sha256": "6389586ae8f1edbabb31760e0b555619186114b3f77d09212362fc2e1c40aadf",
+  "features_sha256": "14ac5dd4ce7dd6090420b9cee06c8ac40935c54691b4daf95d063b71a075eccc",
+  "selected_v2_on_cv": "gbv2_12f_c1_a",
+  "best_overall_on_cv": "gbv2_12f_c1_a",
+  "five_folds": [
+    {
+      "fold": 1,
+      "train_n": 199,
+      "val_n": 196,
+      "train_last": "2021-01-13",
+      "validation_first": "2021-01-14",
+      "validation_last": "2021-10-28"
+    },
+    {
+      "fold": 2,
+      "train_n": 395,
+      "val_n": 196,
+      "train_last": "2021-10-28",
+      "validation_first": "2021-10-29",
+      "validation_last": "2022-08-11"
+    },
+    {
+      "fold": 3,
+      "train_n": 591,
+      "val_n": 196,
+      "train_last": "2022-08-11",
+      "validation_first": "2022-08-12",
+      "validation_last": "2023-05-29"
+    },
+    {
+      "fold": 4,
+      "train_n": 787,
+      "val_n": 196,
+      "train_last": "2023-05-29",
+      "validation_first": "2023-05-30",
+      "validation_last": "2024-03-08"
+    },
+    {
+      "fold": 5,
+      "train_n": 983,
+      "val_n": 196,
+      "train_last": "2024-03-08",
+      "validation_first": "2024-03-11",
+      "validation_last": "2024-12-17"
+    }
+  ],
+  "params": {
+    "gb_G04_7f_a": {
+      "loss": "quantile",
+      "alpha": 0.05,
+      "n_estimators": 100,
+      "learning_rate": 0.03,
+      "max_depth": 2,
+      "min_samples_leaf": 5,
+      "subsample": 1.0,
+      "random_state": 42
+    },
+    "gbv2_12f_c1_a": {
+      "loss": "quantile",
+      "alpha": 0.05,
+      "n_estimators": 150,
+      "learning_rate": 0.03,
+      "max_depth": 2,
+      "min_samples_leaf": 10,
+      "subsample": 1.0,
+      "random_state": 42
+    },
+    "gbv2_12f_c2_a": {
+      "loss": "quantile",
+      "alpha": 0.05,
+      "n_estimators": 120,
+      "learning_rate": 0.05,
+      "max_depth": 2,
+      "min_samples_leaf": 5,
+      "subsample": 1.0,
+      "random_state": 42
+    }
+  },
+  "features": {
+    "gb_G04_7f_a": [
+      "return_lag_1",
+      "return_lag_2",
+      "return_lag_5",
+      "rolling_vol_5",
+      "rolling_vol_20",
+      "rolling_vol_60",
+      "drawdown"
+    ],
+    "gbv2_12f_c1_a": [
+      "return_lag_1",
+      "return_lag_2",
+      "return_lag_5",
+      "rolling_vol_5",
+      "rolling_vol_20",
+      "rolling_vol_60",
+      "drawdown",
+      "momentum_5",
+      "momentum_20",
+      "downside_vol_20",
+      "rolling_q05_60",
+      "rolling_range_20"
+    ],
+    "gbv2_12f_c2_a": [
+      "return_lag_1",
+      "return_lag_2",
+      "return_lag_5",
+      "rolling_vol_5",
+      "rolling_vol_20",
+      "rolling_vol_60",
+      "drawdown",
+      "momentum_5",
+      "momentum_20",
+      "downside_vol_20",
+      "rolling_q05_60",
+      "rolling_range_20"
+    ]
+  },
+  "artifacts": {
+    "cv_predictions": {
+      "sha256": "dd88c901bafa01657fc6e4666a2a0a01a4d743c72c12247c2790aac82c3fb1f5",
+      "rows": 2940
+    },
+    "cv_metrics": {
+      "sha256": "232889654086134d29448fd7e5cab19a901f3bd604a1d993ad7af08be77ec352",
+      "rows": 15
+    },
+    "cv_ranking": {
+      "sha256": "3ab03a682a1a8aad96297ac25433d7d01156822d6a441244838f6514ee3aba7d",
+      "rows": 3
+    },
+    "holdout_predictions": {
+      "sha256": "ec3533d7f8eeeeaac93408e590aae7954e70406b49e15fea43f8c810d0360447",
+      "rows": 936
+    },
+    "holdout_metrics": {
+      "sha256": "5872613a2e19fb691dfaa35ef1885f7beda2ab6dbad746c1971938135198384c",
+      "rows": 2
+    }
+  },
+  "selection_rule": "five-fold mean pinball; holdout never used to choose",
+  "protocol": "refit once per fold, lagged prior returns; holdout frozen fit on dev only",
+  "caveat": "retrospective holdout overlaps Phase1 published final evaluation; not pristine",
+  "code_sha256": "2ea8eb74f81e9717ac828937414bc2a842ed7b4a8a6aeddcf5dd765c2a12903a",
+  "git_sha": "01aa58db9a72c9b50662229e7b3fa3cb59df8b5b",
+  "python": "3.12.10"
+}
