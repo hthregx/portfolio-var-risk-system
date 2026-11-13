@@ -1,0 +1,22 @@
+{
+  "alpha": 0.05,
+  "tolerance": 1e-12,
+  "errors_definition": "number of metric comparisons exceeding tolerance",
+  "source_commit_a": "1a593ed24f3b388faf4e9533c362e747bb21507a",
+  "input_sha256": {
+    "results/phase2/b/reference_a_1a593ed/results/phase2/a/training_2026-11-06/cv_predictions.csv": "a3ed75aeea870aff39d774dae14a116a76f897224ed1e792041fce54990fd6fb",
+    "results/phase2/b/reference_a_1a593ed/results/phase2/a/training_2026-11-06/cv_metrics.csv": "7e9f6c6c68a5d0d461e7614409b576fdc602e6c60b34945c72e681ae0ae9397b",
+    "results/phase2/b/aligned_2026-11-06_20261112_121348/cv_predictions.csv": "b9d7129342a599e02f12719c7de93a7e9d1e9eea4b8bdb90d9c6f0a01ec80793",
+    "results/phase2/b/aligned_2026-11-06_20261112_121348/cv_metrics.csv": "6020f9a3bf9a30de36a8670f644830428953f554fe78b548c319d9e800fb29ed",
+    "results/phase2/b/reference_a_1a593ed/results/phase2/a/training_2026-11-06/holdout_predictions.csv": "41e6ba7a707c34a8fb8a97dab4c519f60b9270a4f6c7d3a2f3435367dc405061",
+    "results/phase2/b/reference_a_1a593ed/results/phase2/a/training_2026-11-06/holdout_metrics.csv": "bf908e97b7a3ffcaede4fb9faafbd118e7a79f1d7437ddf970fa06e950ed2ab7",
+    "results/phase2/b/aligned_2026-11-06_20261112_121348/holdout_predictions.csv": "13007bf41a37d52a0bd1d032b9eb87bc13a6b9566bc2177b9cb5b1d74ce0818a",
+    "results/phase2/b/aligned_2026-11-06_20261112_121348/holdout_metrics.csv": "197f703751917901422d81776ca3502f1744599342a2c877b17c21bcf1bc9627"
+  },
+  "script_sha256": "e4052a12f78c4949f221c511964efcfce7a86d1e383f36e1e352f9c3091e6fe7",
+  "numpy": "2.2.6",
+  "pandas": "2.3.3",
+  "comparison_rows": 63,
+  "total_errors": 0,
+  "status": "PASS"
+}

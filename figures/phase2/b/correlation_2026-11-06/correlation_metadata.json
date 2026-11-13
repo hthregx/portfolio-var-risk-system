@@ -1,0 +1,48 @@
+{
+  "task": "B-05.3",
+  "purpose": "full_sample_descriptive_analysis",
+  "method": "Pearson",
+  "input_type": "daily_simple_returns_from_close",
+  "symbols": [
+    "HPG",
+    "FPT",
+    "MWG"
+  ],
+  "portfolio_weights": {
+    "HPG": 0.3333333333333333,
+    "FPT": 0.3333333333333333,
+    "MWG": 0.3333333333333333
+  },
+  "first_return_date": "2020-01-03",
+  "last_return_date": "2026-11-06",
+  "n_observations": 1707,
+  "market_cutoff": "2026-11-06",
+  "artifact_run": 42566441307,
+  "market_sha256": {
+    "HPG": "7dcac0f6bbf58253b2a4b439e5820c01272dfd5b5f4febe81ffc453c4b971a97",
+    "FPT": "72f46c9864b0a0a4be1064930a73a9f6c8c2116dabe779b99bbe3b2f415be271",
+    "MWG": "037dbec5f09f09adbdd35b8b1266f0f5fb89146dac61fc12ba54bef362756b48"
+  },
+  "portfolio_sha256": "6389586ae8f1edbabb31760e0b555619186114b3f77d09212362fc2e1c40aadf",
+  "manifest_sha256": "e4cac093a6153702fb29a90bf78af7f2dbcddd7bc779e2540f87026764f4d749",
+  "source_check_sha256": "36091b4338b5203abc04f3d0883299136501ab799cdbe7bcf2b08e5db088ecd1",
+  "max_abs_portfolio_return_difference": 0.0,
+  "absolute_tolerance": 1e-12,
+  "return_warmup_price_rows": 1,
+  "missing_value_imputation": false,
+  "correlation_color_limits": [
+    -1,
+    1
+  ],
+  "price_adjustment_status": "unverified",
+  "scope_note": "Aggregate returns match A; original A market-file byte identity is not established.",
+  "script_sha256": "5da5cc3768cd014c96b2094bdcf3eba55a37714a14a372441c352d22c56a13f6",
+  "numpy": "2.2.6",
+  "pandas": "2.3.3",
+  "matplotlib": "3.11.1",
+  "outputs_sha256": {
+    "correlation.csv": "8e01b82092073b794da0fa1789dda11832068f3e81067d718efca74a08b46b21",
+    "correlation.png": "05f9eb415df87c1f40732d377ea71c2bf96dde0c9f254199501202dccc22f924",
+    "correlation.pdf": "b814670e6104338c00b171cee58f9e08b7d698ae0dc43285754548cadcc583d5"
+  }
+}
