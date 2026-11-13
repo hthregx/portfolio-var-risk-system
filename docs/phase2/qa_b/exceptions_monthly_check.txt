@@ -1,0 +1,14 @@
+B-06.4 — Monthly exception chart verification
+Image/script/monthly CSV hashes: PASS
+Backtesting source hashes: PASS
+Common target dates and actual returns: PASS
+Monthly counts recomputed from actual < quantile: PASS
+historical_w250: 28/468 = 5.98% — PASS
+ewma_d094: 24/468 = 5.13% — PASS
+gbv2_12f_c1: 25/468 = 5.34% — PASS
+gb_G04_7f: 25/468 = 5.34% — PASS
+Scope: 2024-12-18 through 2026-11-06
+Interpretation: descriptive monthly counts, not an independence test.
+Image SHA256: b12c5bc27b6d02e8af1ab2183efb65fe7277d486af789f5a044cb832e979e577
+Monthly CSV SHA256: 5991551df2be16ff7ae774e9e9f6c5054f7f8530ac2d10840f81ea29c48960ab
+B-06.4 technical verification: PASS
