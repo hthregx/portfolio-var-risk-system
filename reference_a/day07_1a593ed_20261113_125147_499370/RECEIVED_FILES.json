@@ -1,0 +1,365 @@
+{
+  "purpose": "B day 11/11 reference review",
+  "a_branch": "origin/phase2/features-a",
+  "a_commit": "1a593ed24f3b388faf4e9533c362e747bb21507a",
+  "develop_commit": "a226443f0008ec02940f19b806111d1d419f9849",
+  "files": [
+    {
+      "branch": "origin/phase2/features-a",
+      "commit": "1a593ed24f3b388faf4e9533c362e747bb21507a",
+      "source_path": "configs/gradient_boosting.yaml",
+      "local_path": "features_a/configs/gradient_boosting.yaml",
+      "sha256": "e376bebb5450bc2ba318be5a871f0c660288eb9da6477231c795d90e488f5bf8"
+    },
+    {
+      "branch": "origin/phase2/features-a",
+      "commit": "1a593ed24f3b388faf4e9533c362e747bb21507a",
+      "source_path": "configs/phase2.yaml",
+      "local_path": "features_a/configs/phase2.yaml",
+      "sha256": "fddf06f23cd34643b60b8814c57d133a592f8cc0ab6f807ab96876816b6dfaa8"
+    },
+    {
+      "branch": "origin/phase2/features-a",
+      "commit": "1a593ed24f3b388faf4e9533c362e747bb21507a",
+      "source_path": "docs/feature-specification.md",
+      "local_path": "features_a/docs/feature-specification.md",
+      "sha256": "8792d45b27b44082e1d388f9bfcb2db70f8f35955f0d70db2f118448c3006a83"
+    },
+    {
+      "branch": "origin/phase2/features-a",
+      "commit": "1a593ed24f3b388faf4e9533c362e747bb21507a",
+      "source_path": "docs/gb-return-feature-contract.md",
+      "local_path": "features_a/docs/gb-return-feature-contract.md",
+      "sha256": "9369be6b947fa32d586b066651c8f77e2438cfcba53cb786f0704c687a0ef44b"
+    },
+    {
+      "branch": "origin/phase2/features-a",
+      "commit": "1a593ed24f3b388faf4e9533c362e747bb21507a",
+      "source_path": "results/phase2/a/training_2026-11-06/cv_metrics.csv",
+      "local_path": "features_a/results/phase2/a/training_2026-11-06/cv_metrics.csv",
+      "sha256": "7e9f6c6c68a5d0d461e7614409b576fdc602e6c60b34945c72e681ae0ae9397b"
+    },
+    {
+      "branch": "origin/phase2/features-a",
+      "commit": "1a593ed24f3b388faf4e9533c362e747bb21507a",
+      "source_path": "results/phase2/a/training_2026-11-06/cv_predictions.csv",
+      "local_path": "features_a/results/phase2/a/training_2026-11-06/cv_predictions.csv",
+      "sha256": "a3ed75aeea870aff39d774dae14a116a76f897224ed1e792041fce54990fd6fb"
+    },
+    {
+      "branch": "origin/phase2/features-a",
+      "commit": "1a593ed24f3b388faf4e9533c362e747bb21507a",
+      "source_path": "results/phase2/a/training_2026-11-06/cv_ranking.csv",
+      "local_path": "features_a/results/phase2/a/training_2026-11-06/cv_ranking.csv",
+      "sha256": "d1d8031406bc2eb12dda731f8d70e051e3aa43fe759de474bdc69cfee3e18d49"
+    },
+    {
+      "branch": "origin/phase2/features-a",
+      "commit": "1a593ed24f3b388faf4e9533c362e747bb21507a",
+      "source_path": "results/phase2/a/training_2026-11-06/holdout_metrics.csv",
+      "local_path": "features_a/results/phase2/a/training_2026-11-06/holdout_metrics.csv",
+      "sha256": "bf908e97b7a3ffcaede4fb9faafbd118e7a79f1d7437ddf970fa06e950ed2ab7"
+    },
+    {
+      "branch": "origin/phase2/features-a",
+      "commit": "1a593ed24f3b388faf4e9533c362e747bb21507a",
+      "source_path": "results/phase2/a/training_2026-11-06/holdout_predictions.csv",
+      "local_path": "features_a/results/phase2/a/training_2026-11-06/holdout_predictions.csv",
+      "sha256": "41e6ba7a707c34a8fb8a97dab4c519f60b9270a4f6c7d3a2f3435367dc405061"
+    },
+    {
+      "branch": "origin/phase2/features-a",
+      "commit": "1a593ed24f3b388faf4e9533c362e747bb21507a",
+      "source_path": "results/phase2/a/training_2026-11-06/metadata.json",
+      "local_path": "features_a/results/phase2/a/training_2026-11-06/metadata.json",
+      "sha256": "c7ab407c978d1efee8b25cd3acc3873fdc0557f15c3cf7e2bdcdbfeccb581d81"
+    },
+    {
+      "branch": "origin/phase2/features-a",
+      "commit": "1a593ed24f3b388faf4e9533c362e747bb21507a",
+      "source_path": "scripts/run_phase2_backtesting_a.py",
+      "local_path": "features_a/scripts/run_phase2_backtesting_a.py",
+      "sha256": "e82bdfeef7dcbca640438896c39c6b2e7b0071a0b7a8748937ae69db5ff728a6"
+    },
+    {
+      "branch": "origin/phase2/features-a",
+      "commit": "1a593ed24f3b388faf4e9533c362e747bb21507a",
+      "source_path": "scripts/run_phase2_crosscheck_b_a.py",
+      "local_path": "features_a/scripts/run_phase2_crosscheck_b_a.py",
+      "sha256": "c0fad509ecc08a0e8d41a3248f46d2532d24c605f34e68f507fe8d6f64aac3ce"
+    },
+    {
+      "branch": "origin/phase2/features-a",
+      "commit": "1a593ed24f3b388faf4e9533c362e747bb21507a",
+      "source_path": "scripts/run_phase2_daily_eod.py",
+      "local_path": "features_a/scripts/run_phase2_daily_eod.py",
+      "sha256": "ae0a4fc3f969beffe0b5f9a5e4556b39ceddfa2928dba797756183dfaf9295fa"
+    },
+    {
+      "branch": "origin/phase2/features-a",
+      "commit": "1a593ed24f3b388faf4e9533c362e747bb21507a",
+      "source_path": "scripts/run_phase2_features_a.py",
+      "local_path": "features_a/scripts/run_phase2_features_a.py",
+      "sha256": "5aadfd5ebade6b819a1bb9fd751c2e1bfa9f26c6b00d9c164b12d1ccb9e41fe9"
+    },
+    {
+      "branch": "origin/phase2/features-a",
+      "commit": "1a593ed24f3b388faf4e9533c362e747bb21507a",
+      "source_path": "scripts/run_phase2_integration_a.py",
+      "local_path": "features_a/scripts/run_phase2_integration_a.py",
+      "sha256": "f7e0091d77f39f368bc1e6a4379daa8ab25f121c2353dc7d18fc7ad757ce8a66"
+    },
+    {
+      "branch": "origin/phase2/features-a",
+      "commit": "1a593ed24f3b388faf4e9533c362e747bb21507a",
+      "source_path": "scripts/run_phase2_scheduled_eod.py",
+      "local_path": "features_a/scripts/run_phase2_scheduled_eod.py",
+      "sha256": "b73741330c81e0aea2147b9ef7e3fcba7a24aa3a0d0bae74f6072dca388e36b2"
+    },
+    {
+      "branch": "origin/phase2/features-a",
+      "commit": "1a593ed24f3b388faf4e9533c362e747bb21507a",
+      "source_path": "scripts/run_phase2_training_a.py",
+      "local_path": "features_a/scripts/run_phase2_training_a.py",
+      "sha256": "ea086617130105a06fe1c6216b53bf5d09ff1cd2a62a3afc84e2b6bbd3f85cbc"
+    },
+    {
+      "branch": "origin/phase2/features-a",
+      "commit": "1a593ed24f3b388faf4e9533c362e747bb21507a",
+      "source_path": "src/gb_return_features.py",
+      "local_path": "features_a/src/gb_return_features.py",
+      "sha256": "4e29cd741ca0033c01415c1445be7495ec719f4b796d54779561bd629a510c5c"
+    },
+    {
+      "branch": "origin/phase2/features-a",
+      "commit": "1a593ed24f3b388faf4e9533c362e747bb21507a",
+      "source_path": "src/phase2/__init__.py",
+      "local_path": "features_a/src/phase2/__init__.py",
+      "sha256": "86a0323d50cebeb803d6f441b03fa31405eacbe5a3364e50e2b883e6d0f52d74"
+    },
+    {
+      "branch": "origin/phase2/features-a",
+      "commit": "1a593ed24f3b388faf4e9533c362e747bb21507a",
+      "source_path": "src/phase2/crosscheck_b_a.py",
+      "local_path": "features_a/src/phase2/crosscheck_b_a.py",
+      "sha256": "ba9bd162bb942f04e9e269fcd60b9598f393f31b06d609c73564e5ae7b25160d"
+    },
+    {
+      "branch": "origin/phase2/features-a",
+      "commit": "1a593ed24f3b388faf4e9533c362e747bb21507a",
+      "source_path": "src/phase2/cv_b.py",
+      "local_path": "features_a/src/phase2/cv_b.py",
+      "sha256": "e42496501f709e34000a6239767fc2d066639d35297e7bc1d9160d0fbd3d0f7c"
+    },
+    {
+      "branch": "origin/phase2/features-a",
+      "commit": "1a593ed24f3b388faf4e9533c362e747bb21507a",
+      "source_path": "src/phase2/daily_data.py",
+      "local_path": "features_a/src/phase2/daily_data.py",
+      "sha256": "24f4a1d52dabf7d719e50ac7327f97b93fab02b6d3675767e258fc1ea49743e9"
+    },
+    {
+      "branch": "origin/phase2/features-a",
+      "commit": "1a593ed24f3b388faf4e9533c362e747bb21507a",
+      "source_path": "src/phase2/eod_automation.py",
+      "local_path": "features_a/src/phase2/eod_automation.py",
+      "sha256": "84b29aab65166d108ba113ba716835817fb8f07e4be50a7f5c98bd507d49b902"
+    },
+    {
+      "branch": "origin/phase2/features-a",
+      "commit": "1a593ed24f3b388faf4e9533c362e747bb21507a",
+      "source_path": "src/phase2/ewma_b.py",
+      "local_path": "features_a/src/phase2/ewma_b.py",
+      "sha256": "a950740c595b3bd99aebf9fe2b39b2f6e1e22e5e7c021b8d737b9bc4b83c7942"
+    },
+    {
+      "branch": "origin/phase2/features-a",
+      "commit": "1a593ed24f3b388faf4e9533c362e747bb21507a",
+      "source_path": "src/phase2/features_a.py",
+      "local_path": "features_a/src/phase2/features_a.py",
+      "sha256": "e92d10e3965954dd91b115c4e6f248d96ade1ed219c2bc51ae213b08f994776d"
+    },
+    {
+      "branch": "origin/phase2/features-a",
+      "commit": "1a593ed24f3b388faf4e9533c362e747bb21507a",
+      "source_path": "src/phase2/forecast_registry.py",
+      "local_path": "features_a/src/phase2/forecast_registry.py",
+      "sha256": "662d1bed9736695a1dc17623ecf4211c90fa6d51134350378e08e6f73275912a"
+    },
+    {
+      "branch": "origin/phase2/features-a",
+      "commit": "1a593ed24f3b388faf4e9533c362e747bb21507a",
+      "source_path": "src/phase2/gb_baseline_b.py",
+      "local_path": "features_a/src/phase2/gb_baseline_b.py",
+      "sha256": "4818d1a671c2d320c0dc3f6f4f55b6ce14c97b545950047786ee6a36e74e3039"
+    },
+    {
+      "branch": "origin/phase2/features-a",
+      "commit": "1a593ed24f3b388faf4e9533c362e747bb21507a",
+      "source_path": "src/phase2/index_quality.py",
+      "local_path": "features_a/src/phase2/index_quality.py",
+      "sha256": "761a94b92593d51ca57f7598c157b8296b85ea0280167b592ae1d2bd1dd2f23d"
+    },
+    {
+      "branch": "origin/phase2/features-a",
+      "commit": "1a593ed24f3b388faf4e9533c362e747bb21507a",
+      "source_path": "src/phase2/kbs_http.py",
+      "local_path": "features_a/src/phase2/kbs_http.py",
+      "sha256": "b25f6afb9216fc8d2aeaf6b1a6500a08473c037aa5436b02c7d73cc194896184"
+    },
+    {
+      "branch": "origin/phase2/features-a",
+      "commit": "1a593ed24f3b388faf4e9533c362e747bb21507a",
+      "source_path": "src/phase2/metrics_a.py",
+      "local_path": "features_a/src/phase2/metrics_a.py",
+      "sha256": "0509b41510035667436dfc5c8384853e20ef95f8d08745ea3390923438a66db3"
+    },
+    {
+      "branch": "origin/phase2/features-a",
+      "commit": "1a593ed24f3b388faf4e9533c362e747bb21507a",
+      "source_path": "src/phase2/plot_distribution_b.py",
+      "local_path": "features_a/src/phase2/plot_distribution_b.py",
+      "sha256": "16cf42f13f010edf248ac55dd450c540f07665c4a78b02c2e064724b107399a6"
+    },
+    {
+      "branch": "origin/phase2/features-a",
+      "commit": "1a593ed24f3b388faf4e9533c362e747bb21507a",
+      "source_path": "src/phase2/plot_trend_b.py",
+      "local_path": "features_a/src/phase2/plot_trend_b.py",
+      "sha256": "917e13dd9d92bf93cefed1c108b2fd93a59849d5f92112049c061413fb5c69b5"
+    },
+    {
+      "branch": "origin/phase2/features-a",
+      "commit": "1a593ed24f3b388faf4e9533c362e747bb21507a",
+      "source_path": "src/phase2/plot_vol_drawdown_b.py",
+      "local_path": "features_a/src/phase2/plot_vol_drawdown_b.py",
+      "sha256": "781b10e7aa9887e56143c712da6d82fb894b33ede50cfd68a9af4612e52c30e2"
+    },
+    {
+      "branch": "origin/phase2/features-a",
+      "commit": "1a593ed24f3b388faf4e9533c362e747bb21507a",
+      "source_path": "src/phase2/release_a.py",
+      "local_path": "features_a/src/phase2/release_a.py",
+      "sha256": "0dd81252b9a85d873153c5352e1d55ad33a58fc75ff9ed195893ebbdd97d4eb9"
+    },
+    {
+      "branch": "origin/phase2/features-a",
+      "commit": "1a593ed24f3b388faf4e9533c362e747bb21507a",
+      "source_path": "src/phase2/result_adapter_a.py",
+      "local_path": "features_a/src/phase2/result_adapter_a.py",
+      "sha256": "4691b57943425135627fb8fb32e1c31c97ff5dcc2c90531342a2f55c93b8ae0f"
+    },
+    {
+      "branch": "origin/phase2/features-a",
+      "commit": "1a593ed24f3b388faf4e9533c362e747bb21507a",
+      "source_path": "src/phase2/training_b.py",
+      "local_path": "features_a/src/phase2/training_b.py",
+      "sha256": "2394ffe868a17c1abc551983aabccfd87333cb2e9be1495c0cfe54bc26cb0452"
+    },
+    {
+      "branch": "origin/phase2/features-a",
+      "commit": "1a593ed24f3b388faf4e9533c362e747bb21507a",
+      "source_path": "tests/test_phase2_contract.py",
+      "local_path": "features_a/tests/test_phase2_contract.py",
+      "sha256": "aca37097748944cea6ba77e823619f8d59e76a3344df7f89ea088c696cf4f40b"
+    },
+    {
+      "branch": "origin/phase2/features-a",
+      "commit": "1a593ed24f3b388faf4e9533c362e747bb21507a",
+      "source_path": "tests/test_phase2_crosscheck_b_a.py",
+      "local_path": "features_a/tests/test_phase2_crosscheck_b_a.py",
+      "sha256": "ef8fce3bdeb62aecc55053b7bb2aa3df5cd6225771d42de85851318a78184fd3"
+    },
+    {
+      "branch": "origin/phase2/features-a",
+      "commit": "1a593ed24f3b388faf4e9533c362e747bb21507a",
+      "source_path": "tests/test_phase2_cv_b.py",
+      "local_path": "features_a/tests/test_phase2_cv_b.py",
+      "sha256": "9817a25740fc528612cb820dd14b88cfe6230372950188f6b5bb99081bb5ee56"
+    },
+    {
+      "branch": "origin/phase2/features-a",
+      "commit": "1a593ed24f3b388faf4e9533c362e747bb21507a",
+      "source_path": "tests/test_phase2_daily_data.py",
+      "local_path": "features_a/tests/test_phase2_daily_data.py",
+      "sha256": "7203fb39073f1855876a0f0076c137f01e6db45aeaf6db8eb9b41828ab955f64"
+    },
+    {
+      "branch": "origin/phase2/features-a",
+      "commit": "1a593ed24f3b388faf4e9533c362e747bb21507a",
+      "source_path": "tests/test_phase2_eod_automation.py",
+      "local_path": "features_a/tests/test_phase2_eod_automation.py",
+      "sha256": "4c552501a23b45179eb0609d415817e116c470a5d56b891661ee96078af019ee"
+    },
+    {
+      "branch": "origin/phase2/features-a",
+      "commit": "1a593ed24f3b388faf4e9533c362e747bb21507a",
+      "source_path": "tests/test_phase2_ewma_b.py",
+      "local_path": "features_a/tests/test_phase2_ewma_b.py",
+      "sha256": "b7935fc3818bb36713880d2850bb0c336114ae7f1a91af3cb22294e8798a968d"
+    },
+    {
+      "branch": "origin/phase2/features-a",
+      "commit": "1a593ed24f3b388faf4e9533c362e747bb21507a",
+      "source_path": "tests/test_phase2_features_a.py",
+      "local_path": "features_a/tests/test_phase2_features_a.py",
+      "sha256": "3e822cee48f4a7fcc1444807e4dd88be2edb395a249263bb78f5818730e970c5"
+    },
+    {
+      "branch": "origin/phase2/features-a",
+      "commit": "1a593ed24f3b388faf4e9533c362e747bb21507a",
+      "source_path": "tests/test_phase2_incremental.py",
+      "local_path": "features_a/tests/test_phase2_incremental.py",
+      "sha256": "51e865ee818c8e7f9d4db90f80c2385baa12e1dd9ef9a88655200ef1a25fe9ce"
+    },
+    {
+      "branch": "origin/phase2/features-a",
+      "commit": "1a593ed24f3b388faf4e9533c362e747bb21507a",
+      "source_path": "tests/test_phase2_index_quality.py",
+      "local_path": "features_a/tests/test_phase2_index_quality.py",
+      "sha256": "f03b332c785d95d8d4b87b4aad32dc851d86b3b79b7ce7e72be8fee0f994b75b"
+    },
+    {
+      "branch": "origin/phase2/features-a",
+      "commit": "1a593ed24f3b388faf4e9533c362e747bb21507a",
+      "source_path": "tests/test_phase2_kbs_http.py",
+      "local_path": "features_a/tests/test_phase2_kbs_http.py",
+      "sha256": "6600bebebca2a56151c5cfa8d38f3e87850d9e0943ae42fea2eb1f8970c4dd61"
+    },
+    {
+      "branch": "origin/phase2/features-a",
+      "commit": "1a593ed24f3b388faf4e9533c362e747bb21507a",
+      "source_path": "tests/test_phase2_metrics_a.py",
+      "local_path": "features_a/tests/test_phase2_metrics_a.py",
+      "sha256": "67ae150c416b967d841b4654f1329c6c030527515afe350d3eb79c576a18b0c5"
+    },
+    {
+      "branch": "origin/phase2/features-a",
+      "commit": "1a593ed24f3b388faf4e9533c362e747bb21507a",
+      "source_path": "tests/test_phase2_registry.py",
+      "local_path": "features_a/tests/test_phase2_registry.py",
+      "sha256": "ac0071ff71aed1410913735c1609ccdcbf7b291c22dc60daa4905d11fe9f78ac"
+    },
+    {
+      "branch": "origin/phase2/features-a",
+      "commit": "1a593ed24f3b388faf4e9533c362e747bb21507a",
+      "source_path": "tests/test_phase2_release_a.py",
+      "local_path": "features_a/tests/test_phase2_release_a.py",
+      "sha256": "233246d6b3172037b00ee05e48134db294ae7c8b26caa2165b1948419e2a364d"
+    },
+    {
+      "branch": "origin/phase2/features-a",
+      "commit": "1a593ed24f3b388faf4e9533c362e747bb21507a",
+      "source_path": "tests/test_phase2_result_adapter_a.py",
+      "local_path": "features_a/tests/test_phase2_result_adapter_a.py",
+      "sha256": "75b3f31f9899a9ece47ffd21058ff85152fdb19314e881bc66f988ad868840b5"
+    },
+    {
+      "branch": "origin/phase2/features-a",
+      "commit": "1a593ed24f3b388faf4e9533c362e747bb21507a",
+      "source_path": "tests/test_phase2_training_a.py",
+      "local_path": "features_a/tests/test_phase2_training_a.py",
+      "sha256": "97fd02fc5d7a1c59fa31dd425124228ef5954c75907ad74deb0857b5b6ddc0ea"
+    }
+  ]
+}

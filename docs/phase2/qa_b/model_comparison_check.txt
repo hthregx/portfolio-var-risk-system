@@ -1,0 +1,13 @@
+PASS: figures/phase2/b/model_comparison.png
+PASS: scripts/plot_model_comparison_b.py
+PASS: results/phase2/b/reproduce_day07_20261113_133340/metadata.json
+PASS: hash và số dòng holdout_predictions.csv
+PASS: hash và số dòng holdout_metrics.csv
+PASS: historical_w250; pinball=0.001819752; violations=28/468 (5.98%)
+PASS: ewma_d094; pinball=0.001888504; violations=24/468 (5.13%)
+PASS: gbv2_12f_c1; pinball=0.001636961; violations=25/468 (5.34%)
+Common dates, as_of and actual returns: PASS
+Metrics recomputed from predictions: PASS
+Image SHA256: d156db1209eae4a2a89252acc74aa2874cc3e78d7d4fa3823349d76c683cbf6f
+Metadata SHA256: 94158d9a92f81619f1a5780de815ed317c64db7ae210b7737a60065ee5af6f76
+B-07.3 technical verification: PASS

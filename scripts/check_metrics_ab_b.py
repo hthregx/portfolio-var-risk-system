@@ -8,13 +8,13 @@ import pandas as pd
 
 ROOT = Path(__file__).resolve().parents[1]
 A = ROOT / (
-    "results/phase2/b/reference_a_1a593ed/"
-    "results/phase2/a/training_2026-11-06"
+    "reference_a/day07_1a593ed_20261113_125147_499370/"
+    "features_a/results/phase2/a/training_2026-11-06"
 )
-B = ROOT / "results/phase2/b/aligned_2026-11-06_20261112_121348"
-OUT = ROOT / "results/phase2/b/metrics_check_2026-11-06"
+B = ROOT / "results/phase2/b/reproduce_day07_20261113_133340"
+OUT = ROOT / "results/phase2/b/metrics_check_day07_20261113_133340"
 TOL = 1e-12
-FIELDS = ["n", "violations", "violation_rate", "pinball_loss", "average_var"]
+FIELDS = ["n", "violations", "violation_rate", "coverage", "pinball_loss", "average_var"]
 GB = {"gb_G04_7f", "gbv2_12f_c1", "gbv2_12f_c2"}
 BASELINES = {"historical_w250", "ewma_d094"}
 hashes = {}
@@ -111,7 +111,7 @@ def calculate(df, stage, owner):
             "n": len(part),
             "violations": int(np.sum(y < q)),
             "violation_rate": rate,
-            "coverage": 1 - rate,
+            "coverage": float(np.mean(y >= q)),
             "pinball_loss": float(loss.mean()),
             "average_var": float(np.maximum(0, -q).mean()),
         })
@@ -162,6 +162,15 @@ def main():
             published = normalize(
                 read(folder / f"{stage}_metrics.csv"), stage
             )
+            # Coverage của bảng công bố được suy ra từ violation_rate.
+            # Không coi đây là cột coverage được A/B công bố riêng.
+            if "coverage" in published.columns:
+                np.testing.assert_allclose(
+                    published["coverage"],
+                    1.0 - published["violation_rate"],
+                    rtol=0, atol=TOL,
+                )
+            published["coverage"] = 1.0 - published["violation_rate"]
             checks.extend(compare(
                 result, published, f"{owner}_recomputed_vs_published", stage
             ))
@@ -195,8 +204,16 @@ def main():
         OUT / "recomputed_metrics.csv", index=False, float_format="%.17g"
     )
     metadata = {
+        "task": "B-07.2",
         "alpha": 0.05,
         "tolerance": TOL,
+        "a_reference_dir": str(A.relative_to(ROOT)),
+        "b_run_dir": str(B.relative_to(ROOT)),
+        "compared_fields": FIELDS,
+        "coverage_recomputed_rule": "mean(actual_return >= quantile_return)",
+        "coverage_reference_rule": "1 - published violation_rate",
+        "coverage_reference_is_derived": True,
+        "scope": "CV and retrospective holdout; no new model selection",
         "errors_definition": "number of metric comparisons exceeding tolerance",
         "source_commit_a": "1a593ed24f3b388faf4e9533c362e747bb21507a",
         "input_sha256": hashes,
