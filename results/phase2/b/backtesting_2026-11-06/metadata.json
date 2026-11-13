@@ -1,0 +1,79 @@
+{
+  "owner": "B",
+  "task": "B-06.2",
+  "created_at_utc": "2026-11-13T02:17:57.438244+00:00",
+  "evaluation": "retrospective_holdout",
+  "snapshot_cutoff": "2026-11-06",
+  "training_cutoff": "2024-12-17",
+  "first_target": "2024-12-18",
+  "last_target": "2026-11-06",
+  "n_targets_per_model": 468,
+  "models": [
+    "historical_w250",
+    "ewma_d094",
+    "gb_G04_7f",
+    "gbv2_12f_c1"
+  ],
+  "primary_plot_models": [
+    "historical_w250",
+    "ewma_d094",
+    "gbv2_12f_c1"
+  ],
+  "gbv2_features": [
+    "return_lag_1",
+    "return_lag_2",
+    "return_lag_5",
+    "rolling_vol_5",
+    "rolling_vol_20",
+    "rolling_vol_60",
+    "drawdown",
+    "momentum_5",
+    "momentum_20",
+    "downside_vol_20",
+    "rolling_q05_60",
+    "rolling_range_20"
+  ],
+  "quantile_alpha": 0.05,
+  "test_significance": 0.05,
+  "violation_rule": "actual_return < quantile_return",
+  "coverage_rule": "1 - violation_rate",
+  "var_rule": "max(0, -quantile_return)",
+  "kupiec_distribution": "chi_square_df1_asymptotic",
+  "metrics_crosscheck": "PASS",
+  "metrics_absolute_tolerance": 1e-12,
+  "actual_returns_and_dates_check": "PASS",
+  "as_of_check": "previous_observed_session_in_locked_snapshot",
+  "selection": "reproduce_A_locked_C1_no_new_selection",
+  "gb_refit": "once_per_fold; once_on_development_before_holdout",
+  "hs_ewma_protocol": "sequential_one_step_using_all_available_prior_returns",
+  "caveats": [
+    "Retrospective holdout overlaps Phase1 published evaluation; not pristine or live forecasts",
+    "No model selection or tuning performed on this holdout.",
+    "Kupiec does not test independence of violations.",
+    "Failure to reject H0 does not establish model correctness.",
+    "Date checks do not replace feature/training leakage tests."
+  ],
+  "input_files": {
+    "results/phase2/b/aligned_2026-11-06_20261112_121348/holdout_predictions.csv": "13007bf41a37d52a0bd1d032b9eb87bc13a6b9566bc2177b9cb5b1d74ce0818a",
+    "results/phase2/b/aligned_2026-11-06_20261112_121348/holdout_metrics.csv": "197f703751917901422d81776ca3502f1744599342a2c877b17c21bcf1bc9627",
+    "results/phase2/b/aligned_2026-11-06_20261112_121348/metadata.json": "f5ee1d8d3823c342cbb81e0e541ad6dcebcdd99ea57a25007a6ecfe11a978b1e",
+    "data/phase2/reference_a/portfolio_returns.csv": "6389586ae8f1edbabb31760e0b555619186114b3f77d09212362fc2e1c40aadf"
+  },
+  "code_sha256": {
+    "scripts/run_phase2_backtesting_b.py": "108e66b92a1806205858d909f4311dc1cfa60a25e280fcb18ef9345b201252d1",
+    "src/phase2/backtesting_b.py": "cea2640e33d57121e1d8b72f0a90cabf1cdd08e20197d52d1238d267231af3af"
+  },
+  "python": "3.14.2",
+  "numpy": "2.2.6",
+  "pandas": "2.3.3",
+  "artifacts": {
+    "backtesting.csv": {
+      "rows": 4,
+      "sha256": "c707f79b7bfa0cc4ecb7eaa8dcab5a2ba6570116f62e0ee7712ad2a1517502db"
+    },
+    "violation_flags.csv": {
+      "rows": 1872,
+      "sha256": "dfcdbee0e5626f0568f06350b65d688a66dec89280cd7fd680ef294fcde2bd7d"
+    }
+  }
+}

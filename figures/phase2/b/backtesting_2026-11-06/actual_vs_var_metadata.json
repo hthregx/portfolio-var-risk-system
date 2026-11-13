@@ -1,0 +1,77 @@
+{
+  "task": "B-06.3",
+  "created_at_utc": "2026-11-13T03:40:39.251481+00:00",
+  "evaluation": "retrospective_holdout",
+  "selection_rule": "all_holdout_target_dates",
+  "snapshot_cutoff": "2026-11-06",
+  "first_target": "2024-12-18",
+  "last_target": "2026-11-06",
+  "n_targets_per_model": 468,
+  "quantile_alpha": 0.05,
+  "forecast_column": "quantile_return",
+  "violation_rule": "actual_return < quantile_return",
+  "input_unit": "decimal_return",
+  "axis_display_unit": "percent",
+  "shared_y_axis": true,
+  "y_limits_decimal": [
+    -0.08,
+    0.08
+  ],
+  "smoothing": false,
+  "models": {
+    "historical_w250": {
+      "n_targets": 468,
+      "n_violations": 28,
+      "violation_rate": 0.05982905982905983
+    },
+    "ewma_d094": {
+      "n_targets": 468,
+      "n_violations": 24,
+      "violation_rate": 0.05128205128205128
+    },
+    "gbv2_12f_c1": {
+      "n_targets": 468,
+      "n_violations": 25,
+      "violation_rate": 0.053418803418803416
+    }
+  },
+  "gbv2_features": [
+    "return_lag_1",
+    "return_lag_2",
+    "return_lag_5",
+    "rolling_vol_5",
+    "rolling_vol_20",
+    "rolling_vol_60",
+    "drawdown",
+    "momentum_5",
+    "momentum_20",
+    "downside_vol_20",
+    "rolling_q05_60",
+    "rolling_range_20"
+  ],
+  "checks": {
+    "input_hashes": "PASS",
+    "common_dates_as_of_actual": "PASS",
+    "violation_flags": "PASS",
+    "counts_vs_backtesting_table": "PASS"
+  },
+  "input_sha256": {
+    "violation_flags.csv": "dfcdbee0e5626f0568f06350b65d688a66dec89280cd7fd680ef294fcde2bd7d",
+    "backtesting.csv": "c707f79b7bfa0cc4ecb7eaa8dcab5a2ba6570116f62e0ee7712ad2a1517502db",
+    "metadata.json": "89041f6de475046b74a4c895cf5a46f0d0298e7bcff9ace4f05544fccfce4c3a"
+  },
+  "source_directory": "results/phase2/b/backtesting_2026-11-06",
+  "script_sha256": "8e518a1544abdf38b7973fab9908cf9f6ee262cc66bbc2d49cea8e118072063b",
+  "image_sha256": "4e8d9ff44e2cb019110db360f00c4a17a9a54f77c442e33d619f8aa106af8b07",
+  "caveats": [
+    "Retrospective holdout overlaps Phase1 published evaluation; not pristine or live forecasts",
+    "No model selection or tuning performed on this holdout.",
+    "Kupiec does not test independence of violations.",
+    "Failure to reject H0 does not establish model correctness.",
+    "Date checks do not replace feature/training leakage tests."
+  ],
+  "python": "3.14.2",
+  "numpy": "2.2.6",
+  "pandas": "2.3.3",
+  "matplotlib": "3.11.1"
+}
