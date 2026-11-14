@@ -1,0 +1,32 @@
+{
+  "task": "B-02.3",
+  "source": "KBS",
+  "cutoff": "2026-11-06",
+  "base_date": "2020-01-02",
+  "normalization": "100 * close / first_close",
+  "symbols": [
+    "HPG",
+    "FPT",
+    "MWG"
+  ],
+  "vnindex_included": false,
+  "price_rows_per_symbol": 1708,
+  "n_returns_compared": 1707,
+  "last_date": "2026-11-06",
+  "max_abs_portfolio_return_difference": 9.974659986866641e-17,
+  "absolute_tolerance": 1e-12,
+  "image_sha256": "726f0a1b0096eedf67322c4f5adf327a6bfddd115b46049662dad91b20d4116a",
+  "missing_price_policy": "no_fill",
+  "adjusted_price_status": "unverified",
+  "portfolio_sha256": "6389586ae8f1edbabb31760e0b555619186114b3f77d09212362fc2e1c40aadf",
+  "market_sha256": {
+    "HPG": "7dcac0f6bbf58253b2a4b439e5820c01272dfd5b5f4febe81ffc453c4b971a97",
+    "FPT": "72f46c9864b0a0a4be1064930a73a9f6c8c2116dabe779b99bbe3b2f415be271",
+    "MWG": "037dbec5f09f09adbdd35b8b1266f0f5fb89146dac61fc12ba54bef362756b48"
+  },
+  "manifest_sha256": "e4cac093a6153702fb29a90bf78af7f2dbcddd7bc779e2540f87026764f4d749",
+  "script_sha256": "9d58a4cbc31611270d5012429619cd34de4658185966b02afc77dee6b1b4ec22",
+  "matplotlib": "3.11.1",
+  "pandas": "2.3.3",
+  "numpy": "2.2.6"
+}

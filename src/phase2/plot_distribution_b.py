@@ -13,8 +13,7 @@ import pandas as pd
 
 ROOT = Path(__file__).resolve().parents[2]
 EXPECTED_HASH = (
-    "f85bc33ce54d449e393cd81878e9de8627"
-    "de88d0c309e7f821568b7177692f53"
+    "6389586ae8f1edbabb31760e0b555619186114b3f77d09212362fc2e1c40aadf"
 )
 
 
@@ -23,9 +22,9 @@ def sha256(path):
 
 
 def main():
-    data_path = ROOT / "data/phase2/portfolio_returns.csv"
-    manifest_path = ROOT / "data/phase2/latest_manifest.json"
-    output_dir = ROOT / "figures/phase2/b"
+    data_path = ROOT / "data/phase2/reference_a/portfolio_returns.csv"
+    manifest_path = ROOT / "data/phase2/reference_a/latest_manifest.json"
+    output_dir = ROOT / "figures/phase2/b/eda_2026-11-06"
     image_path = output_dir / "return_distribution.png"
     metadata_path = output_dir / "return_distribution_metadata.json"
 
@@ -45,8 +44,8 @@ def main():
         raise ValueError("Hash dữ liệu không khớp manifest.")
     if manifest.get("source") != "KBS":
         raise ValueError("Nguồn dữ liệu khác KBS.")
-    if manifest.get("cutoff") != "2026-11-04":
-        raise ValueError("Cutoff khác 2026-11-04.")
+    if manifest.get("cutoff") != "2026-11-06":
+        raise ValueError("Cutoff khác 2026-11-06.")
 
     df = pd.read_csv(data_path)
     dates = pd.to_datetime(df["date"], errors="raise")
@@ -60,13 +59,13 @@ def main():
         raise ValueError("Ngày chưa tăng dần.")
     if not np.isfinite(returns).all() or (returns <= -1).any():
         raise ValueError("Lợi suất không hợp lệ.")
-    if len(returns) != 1705:
+    if len(returns) != 1707:
         raise ValueError("Số dòng khác snapshot đã chọn.")
 
     first_date = str(dates.iloc[0].date())
     last_date = str(dates.iloc[-1].date())
 
-    if first_date != "2020-01-03" or last_date != "2026-11-04":
+    if first_date != "2020-01-03" or last_date != "2026-11-06":
         raise ValueError("Khoảng ngày khác snapshot đã kiểm tra.")
 
     # Tính quantile ở đơn vị thập phân; nhân 100 khi vẽ.
@@ -125,7 +124,7 @@ def main():
     fig.text(
         0.5,
         0.035,
-        "Source: KBS | Cutoff: 2026-11-04 | HPG, FPT, MWG: equal weights\n"
+        "Source: KBS | Cutoff: 2026-11-06 | HPG, FPT, MWG: equal weights\n"
         "Full-sample descriptive quantile; not a conditional VaR forecast.",
         ha="center",
         fontsize=9,
@@ -153,6 +152,7 @@ def main():
         "bin_count": len(edges) - 1,
         "bin_edges_percent": edges.tolist(),
         "histogram_observations": int(counts.sum()),
+        "manifest_sha256": sha256(manifest_path),
         "script_sha256": sha256(__file__),
         "numpy": np.__version__,
         "pandas": pd.__version__,

@@ -14,8 +14,7 @@ import pandas as pd
 
 ROOT = Path(__file__).resolve().parents[2]
 EXPECTED_HASH = (
-    "f85bc33ce54d449e393cd81878e9de8627"
-    "de88d0c309e7f821568b7177692f53"
+    "6389586ae8f1edbabb31760e0b555619186114b3f77d09212362fc2e1c40aadf"
 )
 
 
@@ -24,9 +23,9 @@ def sha256(path):
 
 
 def main():
-    data_path = ROOT / "data/phase2/portfolio_returns.csv"
-    manifest_path = ROOT / "data/phase2/latest_manifest.json"
-    output_dir = ROOT / "figures/phase2/b"
+    data_path = ROOT / "data/phase2/reference_a/portfolio_returns.csv"
+    manifest_path = ROOT / "data/phase2/reference_a/latest_manifest.json"
+    output_dir = ROOT / "figures/phase2/b/eda_2026-11-06"
     image_path = output_dir / "vol_drawdown.png"
     metadata_path = output_dir / "vol_drawdown_metadata.json"
 
@@ -43,8 +42,8 @@ def main():
         raise ValueError("Snapshot khác bộ dữ liệu đã chọn.")
     if digest != manifest.get("portfolio_sha256"):
         raise ValueError("Hash không khớp manifest.")
-    if manifest.get("cutoff") != "2026-11-04":
-        raise ValueError("Cutoff khác 2026-11-04.")
+    if manifest.get("cutoff") != "2026-11-06":
+        raise ValueError("Cutoff khác 2026-11-06.")
     if manifest.get("source") != "KBS":
         raise ValueError("Nguồn dữ liệu khác KBS.")
 
@@ -66,9 +65,9 @@ def main():
     last_date = str(returns.index[-1].date())
 
     if (
-        len(returns) != 1705
+        len(returns) != 1707
         or first_date != "2020-01-03"
-        or last_date != "2026-11-04"
+        or last_date != "2026-11-06"
     ):
         raise ValueError("Số mẫu hoặc khoảng ngày khác snapshot.")
 
@@ -150,7 +149,7 @@ def main():
     )
     fig.text(
         0.5, 0.025,
-        "Source: KBS | Cutoff: 2026-11-04 | "
+        "Source: KBS | Cutoff: 2026-11-06 | "
         "Volatility: sample standard deviation, not annualized\n"
         "Wealth compounded from supplied returns; "
         "price-adjustment status unverified.",
@@ -179,6 +178,7 @@ def main():
         "last_drawdown_decimal": float(drawdown.iloc[-1]),
         "last_vol20_decimal": float(vol20.iloc[-1]),
         "last_vol60_decimal": float(vol60.iloc[-1]),
+        "manifest_sha256": sha256(manifest_path),
         "script_sha256": sha256(__file__),
         "numpy": np.__version__,
         "pandas": pd.__version__,
