@@ -1,0 +1,33 @@
+{
+  "stage": "development_only",
+  "owner": "A",
+  "cutoff": "2026-11-06",
+  "source": "KBS",
+  "input_sha256": "6389586ae8f1edbabb31760e0b555619186114b3f77d09212362fc2e1c40aadf",
+  "output_sha256": "14ac5dd4ce7dd6090420b9cee06c8ac40935c54691b4daf95d063b71a075eccc",
+  "input_rows": 1707,
+  "warmup_rows": 60,
+  "feature_rows": 1647,
+  "feature_count": 12,
+  "feature_names": [
+    "return_lag_1",
+    "return_lag_2",
+    "return_lag_5",
+    "rolling_vol_5",
+    "rolling_vol_20",
+    "rolling_vol_60",
+    "drawdown",
+    "momentum_5",
+    "momentum_20",
+    "downside_vol_20",
+    "rolling_q05_60",
+    "rolling_range_20"
+  ],
+  "lag_policy": "all inputs strictly before target_date",
+  "target": "portfolio_simple_return",
+  "alpha": 0.05,
+  "git_sha": "01aa58db9a72c9b50662229e7b3fa3cb59df8b5b",
+  "python": "3.12.10",
+  "numpy": "2.2.6",
+  "pandas": "2.3.3"
+}

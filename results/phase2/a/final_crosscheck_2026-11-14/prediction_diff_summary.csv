@@ -1,0 +1,7 @@
+stage,field,rows,max_abs_diff,status
+cv,actual_return,2940,1.0061396160665481e-16,PASS
+cv,quantile_return,2940,2.0122792321330962e-16,PASS
+cv,var_return,2940,2.0122792321330962e-16,PASS
+holdout,actual_return,936,1.0061396160665481e-16,PASS
+holdout,quantile_return,936,1.0408340855860843e-16,PASS
+holdout,var_return,936,1.0408340855860843e-16,PASS
