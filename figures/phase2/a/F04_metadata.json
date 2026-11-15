@@ -1,0 +1,53 @@
+{
+  "figure": "F04 controlled feature ablation",
+  "source": "KBS",
+  "snapshot_cutoff": "2026-11-06",
+  "evaluation": "development_cv_only",
+  "source_sha256": "6389586ae8f1edbabb31760e0b555619186114b3f77d09212362fc2e1c40aadf",
+  "features_sha256": "14ac5dd4ce7dd6090420b9cee06c8ac40935c54691b4daf95d063b71a075eccc",
+  "training_metadata_sha256": "13888e4916e7f191e6d3259f8e804e6ca5290210f75ea6e6cbdff73ff114a1b7",
+  "same_hyperparameters": true,
+  "params": {
+    "loss": "quantile",
+    "alpha": 0.05,
+    "n_estimators": 150,
+    "learning_rate": 0.03,
+    "max_depth": 2,
+    "min_samples_leaf": 10,
+    "subsample": 1.0,
+    "random_state": 42
+  },
+  "seven_features": [
+    "return_lag_1",
+    "return_lag_2",
+    "return_lag_5",
+    "rolling_vol_5",
+    "rolling_vol_20",
+    "rolling_vol_60",
+    "drawdown"
+  ],
+  "twelve_features": [
+    "return_lag_1",
+    "return_lag_2",
+    "return_lag_5",
+    "rolling_vol_5",
+    "rolling_vol_20",
+    "rolling_vol_60",
+    "drawdown",
+    "momentum_5",
+    "momentum_20",
+    "downside_vol_20",
+    "rolling_q05_60",
+    "rolling_range_20"
+  ],
+  "fold_count": 5,
+  "validation_rows_per_model": 980,
+  "mean_pinball_7f": 0.0021100706750753575,
+  "mean_pinball_12f": 0.0020802674466814082,
+  "improvement_7f_minus_12f": 2.9803228393949274e-05,
+  "reproduction_max_abs_diff_12f": 0.0,
+  "holdout_used": false,
+  "limitation": "C1 hyperparameters were previously chosen for the 12-feature specification. This is a controlled conditional comparison, not proof of causal feature benefit or future superiority.",
+  "image_sha256": "e15df4729c948e4c3de5af11aa255f244cb0617cd3f5b510785c0bebec4a1f13",
+  "metrics_sha256": "e6cd27d0f9e4fa341b6f8259d274f45d2c1f3ded89b8504cbf4cd48f799cde73"
+}

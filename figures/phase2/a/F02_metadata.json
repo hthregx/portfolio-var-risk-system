@@ -1,0 +1,11 @@
+{
+  "figure": "Feature missingness",
+  "source_sha256": "6389586ae8f1edbabb31760e0b555619186114b3f77d09212362fc2e1c40aadf",
+  "input_rows": 1707,
+  "feature_count": 12,
+  "warmup_rows": 60,
+  "complete_feature_rows": 1647,
+  "missing_after_warmup": 0,
+  "lag_policy": "all_features_use_prior_returns_only",
+  "image_sha256": "e970acedf4e492c1d44aed6441cdb9675dcb039d25ca2116400099cfe036b9d8"
+}

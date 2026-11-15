@@ -1,0 +1,42 @@
+{
+  "figure": "Market data coverage",
+  "cutoff": "2026-11-06",
+  "source": "KBS",
+  "portfolio_sha256": "6389586ae8f1edbabb31760e0b555619186114b3f77d09212362fc2e1c40aadf",
+  "n_equity_dates": 1708,
+  "symbols": {
+    "HPG": {
+      "source_sha256": "2530be9802fdabafb14f68cc80cd2b1472e8656342107b717bd1f55b7e39f6e2",
+      "source_rows": 1708,
+      "valid_days": 1708,
+      "missing_days": 0,
+      "invalid_ohlcv_days": 0
+    },
+    "FPT": {
+      "source_sha256": "0504185b1dff3754b7dd0450a011509d0691e9664617b1d2646fb333fb691176",
+      "source_rows": 1708,
+      "valid_days": 1708,
+      "missing_days": 0,
+      "invalid_ohlcv_days": 0
+    },
+    "MWG": {
+      "source_sha256": "b3a6275e07beccbcdbfec3d87056aa2af6f375af56480b0def28d43a0b911eee",
+      "source_rows": 1708,
+      "valid_days": 1708,
+      "missing_days": 0,
+      "invalid_ohlcv_days": 0
+    },
+    "VNINDEX": {
+      "source_sha256": "360f212ba5997ecc86937978440859ad5a640becb5b2e99830b0aeb2a925e810",
+      "source_rows": 1705,
+      "valid_days": 1705,
+      "missing_days": 3,
+      "invalid_ohlcv_days": 0
+    }
+  },
+  "calendar_rule": "union_of_three_stock_trading_dates",
+  "missing_policy": "no_imputation",
+  "vnindex_note": "VNINDEX REVIEW; price adjustment unverified",
+  "quality_scope": "OHLCV structure and numeric validity only",
+  "image_sha256": "b4b3a7ad5d8cbb1f9d5491d38b247c9b29b9b744261f06d6ad887c4ddd6da552"
+}

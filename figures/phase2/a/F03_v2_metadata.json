@@ -1,0 +1,51 @@
+{
+  "source_sha256": "6389586ae8f1edbabb31760e0b555619186114b3f77d09212362fc2e1c40aadf",
+  "training_metadata_sha256": "13888e4916e7f191e6d3259f8e804e6ca5290210f75ea6e6cbdff73ff114a1b7",
+  "development_end": "2024-12-17",
+  "holdout_start": "2024-12-18",
+  "holdout_end": "2026-11-06",
+  "folds": [
+    {
+      "fold": 1,
+      "train_n": 199,
+      "val_n": 196,
+      "train_last": "2021-01-13",
+      "validation_first": "2021-01-14",
+      "validation_last": "2021-10-28"
+    },
+    {
+      "fold": 2,
+      "train_n": 395,
+      "val_n": 196,
+      "train_last": "2021-10-28",
+      "validation_first": "2021-10-29",
+      "validation_last": "2022-08-11"
+    },
+    {
+      "fold": 3,
+      "train_n": 591,
+      "val_n": 196,
+      "train_last": "2022-08-11",
+      "validation_first": "2022-08-12",
+      "validation_last": "2023-05-29"
+    },
+    {
+      "fold": 4,
+      "train_n": 787,
+      "val_n": 196,
+      "train_last": "2023-05-29",
+      "validation_first": "2023-05-30",
+      "validation_last": "2024-03-08"
+    },
+    {
+      "fold": 5,
+      "train_n": 983,
+      "val_n": 196,
+      "train_last": "2024-03-08",
+      "validation_first": "2024-03-11",
+      "validation_last": "2024-12-17"
+    }
+  ],
+  "caveat": "Holdout is retrospective and overlaps Phase1 evaluation",
+  "image_sha256": "a3dcda164cecc3de317c0ec28fc1d80748bb04a8ecefab8689c5b5e4a6bd8ef6"
+}
