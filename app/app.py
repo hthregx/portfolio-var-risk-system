@@ -1713,6 +1713,9 @@ st.markdown(
     <a href="#methodology">
         Methodology
     </a>
+    <a href="#phase2-research">
+        Phase 2 Research
+    </a>
 </div>
 """,
     unsafe_allow_html=True,
@@ -3520,6 +3523,10 @@ with st.expander("Research contract, controls & limitations", expanded=False):
         "preserving the frozen research specification. The dashboard "
         "is a presentation and monitoring layer, not a model-training layer."
     )
+
+from phase2_research_panel import render_phase2_research
+
+render_phase2_research()
 
 st.html(
     """
