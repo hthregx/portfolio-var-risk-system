@@ -1,0 +1,40 @@
+{
+  "source": "KBS",
+  "cutoff": "2026-11-06",
+  "source_sha256": "6389586ae8f1edbabb31760e0b555619186114b3f77d09212362fc2e1c40aadf",
+  "quality_audit_sha256": "aec774b82bfcfc3fc3d5146abfcf7b6cc8ec3debf639abd839de6e28e47bfb34",
+  "quality_exclusion_dates": [
+    "2021-02-17",
+    "2021-12-10",
+    "2023-05-15"
+  ],
+  "interpretation": "Three VNINDEX records are excluded for OHLCV quality, not unobserved raw sessions",
+  "calendar_days": 1708,
+  "symbols": {
+    "HPG": {
+      "source_sha256": "2530be9802fdabafb14f68cc80cd2b1472e8656342107b717bd1f55b7e39f6e2",
+      "raw_rows": 1708,
+      "valid_sessions": 1708,
+      "excluded_by_quality": 0
+    },
+    "FPT": {
+      "source_sha256": "0504185b1dff3754b7dd0450a011509d0691e9664617b1d2646fb333fb691176",
+      "raw_rows": 1708,
+      "valid_sessions": 1708,
+      "excluded_by_quality": 0
+    },
+    "MWG": {
+      "source_sha256": "b3a6275e07beccbcdbfec3d87056aa2af6f375af56480b0def28d43a0b911eee",
+      "raw_rows": 1708,
+      "valid_sessions": 1708,
+      "excluded_by_quality": 0
+    },
+    "VNINDEX": {
+      "source_sha256": "360f212ba5997ecc86937978440859ad5a640becb5b2e99830b0aeb2a925e810",
+      "raw_rows": 1705,
+      "valid_sessions": 1705,
+      "excluded_by_quality": 3
+    }
+  },
+  "image_sha256": "511dcd10e319a2ec30f1268e505242b0ef62227602f99f78676fcc842b46cb1d"
+}

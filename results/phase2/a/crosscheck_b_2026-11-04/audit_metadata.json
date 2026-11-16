@@ -1,0 +1,56 @@
+{
+  "step": "A5_independent_B_baseline_reconstruction",
+  "data_ownership": "A KBS 2026-11-06 snapshot is read-only; B committed outputs are read-only",
+  "a_source_sha256": "6389586ae8f1edbabb31760e0b555619186114b3f77d09212362fc2e1c40aadf",
+  "b_published_source_sha256": "f85bc33ce54d449e393cd81878e9de8627de88d0c309e7f821568b7177692f53",
+  "b_original_snapshot_bytes_available": false,
+  "b_snapshot_hash_verified_against_original_bytes": false,
+  "b_actual_returns_match_a_on_all_forecast_dates": true,
+  "b_baselines_reproduced": [
+    "hs",
+    "ewma",
+    "gb_G04"
+  ],
+  "gb_detailed_results": [
+    {
+      "fold": "development_fold_1",
+      "n": 274,
+      "max_abs_difference": 9.020562075079397e-17,
+      "mean_abs_difference": 3.7188925904699875e-17
+    },
+    {
+      "fold": "development_fold_2",
+      "n": 274,
+      "max_abs_difference": 9.020562075079397e-17,
+      "mean_abs_difference": 4.2570367344773907e-17
+    },
+    {
+      "fold": "development_fold_3",
+      "n": 274,
+      "max_abs_difference": 1.0408340855860843e-16,
+      "mean_abs_difference": 3.911358260797341e-17
+    },
+    {
+      "fold": "development_fold_4",
+      "n": 274,
+      "max_abs_difference": 6.938893903907228e-17,
+      "mean_abs_difference": 4.987646548812148e-17
+    },
+    {
+      "fold": "development_fold_5",
+      "n": 274,
+      "max_abs_difference": 7.632783294297951e-17,
+      "mean_abs_difference": 4.980049219720279e-17
+    }
+  ],
+  "protocol_flags": {
+    "b_gb_cv_extends_into_historically_published_phase1_final_evaluation": true,
+    "a_and_b_gb_forecasts_directly_comparable": false,
+    "reason": "A and B use different cutoffs and folds; B GB CV includes historically published Phase 1 evaluation dates. Do not claim common holdout.",
+    "b_gbv2_retrain_available": false,
+    "b_gb_cv_development_only_label_requires_qualification": true
+  },
+  "research_conclusion": "TECHNICAL BASELINE AUDIT ONLY; not a joint independent evaluation or B reproduction of A GBv2",
+  "git_commit_before_commit": "01aa58db9a72c9b50662229e7b3fa3cb59df8b5b",
+  "audit_csv_sha256": "a0272ccb72659b05c8c6b119e9ed6a49214ef8a4fdefafa7e2c689a92a0aad09"
+}

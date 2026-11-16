@@ -1,0 +1,2 @@
+baseline,candidate,n_common,baseline_loss,candidate_loss,paired_loss_improvement,relative_loss_improvement_pct,baseline_violations,candidate_violations,equal_target_dates,equal_realized_returns,scope
+gb_G04_7f_a,gbv2_12f_c1_a,468,0.0017524502658806398,0.0016369612941317768,0.00011548897174886298,6.5901426133099177,25,25,True,True,retrospective_holdout_not_pristine

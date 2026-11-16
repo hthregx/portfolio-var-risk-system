@@ -1,0 +1,30 @@
+{
+  "owner": "A",
+  "step": "A4_backtesting_independent",
+  "source_training_metadata_sha256": "13888e4916e7f191e6d3259f8e804e6ca5290210f75ea6e6cbdff73ff114a1b7",
+  "source_data_sha256": "6389586ae8f1edbabb31760e0b555619186114b3f77d09212362fc2e1c40aadf",
+  "development_end": "2024-12-17",
+  "holdout_start": "2024-12-18",
+  "holdout_end": "2026-11-06",
+  "selected_v2_on_cv": "gbv2_12f_c1_a",
+  "alpha": 0.05,
+  "violation_rule": "actual_return < quantile_return",
+  "var_return_rule": "max(0, -quantile_return)",
+  "tests": "Kupiec UC chi-square(1) and Christoffersen IND chi-square(1); CC chi-square(2); asymptotic diagnostics",
+  "evaluation_limit": "Historical ex-post, holdout overlaps published Phase 1 evaluation; not pristine independent test and not live forecast",
+  "protocol_caveat": "A-side G04 retains frozen hyperparameters but uses fold-level and fixed-holdout fits, unlike Phase 1 canonical expanding-refit-each-target predictions",
+  "do_not_use_for_selection": true,
+  "git_commit": "01aa58db9a72c9b50662229e7b3fa3cb59df8b5b",
+  "created_at_utc": "2026-11-09T05:53:08.966174+00:00",
+  "files": {
+    "cv_fold_metrics_verified.csv": "7b0421f8c04c5411260926bf5518db76c565a2759220e7f30960896e01ffcbdc",
+    "figures\\actual_vs_quantile.png": "81adcae3bb77e4f636e341767f141ab21766b1c203e65f2c41c31cde42448e38",
+    "figures\\cumulative_exceptions.png": "4b96aa4edfa48f464f268599e38d6311616ba9cac4f751f263a42fee6b83a789",
+    "figures\\cv_fold_pinball.png": "d176620e558de7de167807161ce651c094101f5f3b22f463c867107dc53b84a8",
+    "figures\\holdout_pinball_comparison.png": "34f5afb449415a039c1c4263ec6835affddda09953eeed66ec717a6d574ec32c",
+    "figures\\rolling_60d_violation_rate.png": "0ea9aaf404a0f7d5cafb3ed8c42cc9cd93ea5b93b491d93cc33bd3ca639b632c",
+    "holdout_backtests.csv": "11d14cf0b251ae4e3ba79bc5832188cd9952ed4e015117fa209b26783ed33506",
+    "holdout_exceptions.csv": "2bfb9baafdf6fa9b93c55c767a8dddb1d28c09e145d21d2571c54426875291f6",
+    "holdout_paired_comparison.csv": "bd41418e969ace613be8a42ff39f3ff3c277888576064276ea4d9c1301d15e54"
+  }
+}

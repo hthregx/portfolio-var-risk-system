@@ -1,0 +1,199 @@
+{
+  "stage": "A7_pre_submission_technical_audit",
+  "status": "PASS_WITH_DECLARED_LIMITATIONS",
+  "cutoff": "2026-11-06",
+  "input_sha256": "6389586ae8f1edbabb31760e0b555619186114b3f77d09212362fc2e1c40aadf",
+  "feature_sha256": "14ac5dd4ce7dd6090420b9cee06c8ac40935c54691b4daf95d063b71a075eccc",
+  "feature_count": 12,
+  "feature_rows": 1647,
+  "selected_on_development_cv": "gbv2_12f_c1_a",
+  "holdout_results": {
+    "gb_G04_7f_a": {
+      "n": 468,
+      "exceptions": 25,
+      "violation_rate": 0.053418803418803416,
+      "pinball": 0.0017524502658806398
+    },
+    "gbv2_12f_c1_a": {
+      "n": 468,
+      "exceptions": 25,
+      "violation_rate": 0.053418803418803416,
+      "pinball": 0.0016369612941317768
+    }
+  },
+  "backtesting_figures": 5,
+  "dashboard_image_refs": 5,
+  "canonical_phase1_artifact_hashes": {
+    "final_evaluation_config": "ecbdead2caf371e1f226026d532eaaa422152c396a36293f4caf21c3d37a5373",
+    "final_predictions": "1484fba7245688b66c0ab5a4ab9b37a6de7d420d7c9aed26a44bd90e994651f8",
+    "final_metrics": "c5a1b2328468cfee8ce523a9dde43c5ed82345a515ea9ec76252403bf353c1f6",
+    "final_run_metadata": "ccb9bb25f56af40297a07f06172e11fa83e94531a54dbbea7f1cdc522d5d94c1",
+    "final_metric_comparison": "17c4657ec36e081842d4e4eec7d78e11bac96f13a4488c475869b0c834cc5f57",
+    "final_pairwise_diagnostics": "8f1101114fb4fa487a50ee6e5b41823099b6ee6494615969ebc4bb78c2b5970f",
+    "final_pairwise_summary": "084041c15850022805399821e77b839a3c2ac79a58e4372c7be2dee62804d063"
+  },
+  "inventory": [
+    {
+      "path": "C:\\Users\\Admin\\Downloads\\portfolio-var-risk-system-A-snapshot\\data\\phase2\\latest_manifest.json",
+      "sha256": "e4cac093a6153702fb29a90bf78af7f2dbcddd7bc779e2540f87026764f4d749",
+      "bytes": 992
+    },
+    {
+      "path": "C:\\Users\\Admin\\Downloads\\portfolio-var-risk-system-A-snapshot\\data\\phase2\\portfolio_returns.csv",
+      "sha256": "6389586ae8f1edbabb31760e0b555619186114b3f77d09212362fc2e1c40aadf",
+      "bytes": 93917
+    },
+    {
+      "path": "results\\phase2\\a\\backtesting_2026-11-06\\a4_manifest.json",
+      "sha256": "dfc28175928f0216b349d8140bf13e496fc1f7f142a735b58876c2fd7d3a3580",
+      "bytes": 2104
+    },
+    {
+      "path": "results\\phase2\\a\\backtesting_2026-11-06\\cv_fold_metrics_verified.csv",
+      "sha256": "7b0421f8c04c5411260926bf5518db76c565a2759220e7f30960896e01ffcbdc",
+      "bytes": 1094
+    },
+    {
+      "path": "results\\phase2\\a\\backtesting_2026-11-06\\figures\\actual_vs_quantile.png",
+      "sha256": "81adcae3bb77e4f636e341767f141ab21766b1c203e65f2c41c31cde42448e38",
+      "bytes": 249798
+    },
+    {
+      "path": "results\\phase2\\a\\backtesting_2026-11-06\\figures\\cumulative_exceptions.png",
+      "sha256": "4b96aa4edfa48f464f268599e38d6311616ba9cac4f751f263a42fee6b83a789",
+      "bytes": 73032
+    },
+    {
+      "path": "results\\phase2\\a\\backtesting_2026-11-06\\figures\\cv_fold_pinball.png",
+      "sha256": "d176620e558de7de167807161ce651c094101f5f3b22f463c867107dc53b84a8",
+      "bytes": 99027
+    },
+    {
+      "path": "results\\phase2\\a\\backtesting_2026-11-06\\figures\\holdout_pinball_comparison.png",
+      "sha256": "34f5afb449415a039c1c4263ec6835affddda09953eeed66ec717a6d574ec32c",
+      "bytes": 36008
+    },
+    {
+      "path": "results\\phase2\\a\\backtesting_2026-11-06\\figures\\rolling_60d_violation_rate.png",
+      "sha256": "0ea9aaf404a0f7d5cafb3ed8c42cc9cd93ea5b93b491d93cc33bd3ca639b632c",
+      "bytes": 97769
+    },
+    {
+      "path": "results\\phase2\\a\\backtesting_2026-11-06\\holdout_backtests.csv",
+      "sha256": "11d14cf0b251ae4e3ba79bc5832188cd9952ed4e015117fa209b26783ed33506",
+      "bytes": 670
+    },
+    {
+      "path": "results\\phase2\\a\\backtesting_2026-11-06\\holdout_exceptions.csv",
+      "sha256": "2bfb9baafdf6fa9b93c55c767a8dddb1d28c09e145d21d2571c54426875291f6",
+      "bytes": 6217
+    },
+    {
+      "path": "results\\phase2\\a\\backtesting_2026-11-06\\holdout_paired_comparison.csv",
+      "sha256": "bd41418e969ace613be8a42ff39f3ff3c277888576064276ea4d9c1301d15e54",
+      "bytes": 369
+    },
+    {
+      "path": "results\\phase2\\a\\crosscheck_b_2026-11-04\\audit_metadata.json",
+      "sha256": "0da46e6b42c5490b3faa6875e9ad8e720006d6b3b8798ad5c37959223c853e53",
+      "bytes": 2208
+    },
+    {
+      "path": "results\\phase2\\a\\crosscheck_b_2026-11-04\\b_baseline_audit.csv",
+      "sha256": "a0272ccb72659b05c8c6b119e9ed6a49214ef8a4fdefafa7e2c689a92a0aad09",
+      "bytes": 573
+    },
+    {
+      "path": "results\\phase2\\a\\features_2026-11-06.csv",
+      "sha256": "14ac5dd4ce7dd6090420b9cee06c8ac40935c54691b4daf95d063b71a075eccc",
+      "bytes": 492223
+    },
+    {
+      "path": "results\\phase2\\a\\features_2026-11-06_metadata.json",
+      "sha256": "f2950725983326aa6b698385883c41bc8eb9681c49ac5abb7a0af4c66209e822",
+      "bytes": 896
+    },
+    {
+      "path": "results\\phase2\\a\\integration_2026-11-06\\comparison.html",
+      "sha256": "3918970b15d81f4f222b87a145b35d35ec3edd9169e9142fe2e1c58f1ba3a716",
+      "bytes": 5931
+    },
+    {
+      "path": "results\\phase2\\a\\integration_2026-11-06\\figures\\actual_vs_quantile.png",
+      "sha256": "81adcae3bb77e4f636e341767f141ab21766b1c203e65f2c41c31cde42448e38",
+      "bytes": 249798
+    },
+    {
+      "path": "results\\phase2\\a\\integration_2026-11-06\\figures\\cumulative_exceptions.png",
+      "sha256": "4b96aa4edfa48f464f268599e38d6311616ba9cac4f751f263a42fee6b83a789",
+      "bytes": 73032
+    },
+    {
+      "path": "results\\phase2\\a\\integration_2026-11-06\\figures\\cv_fold_pinball.png",
+      "sha256": "d176620e558de7de167807161ce651c094101f5f3b22f463c867107dc53b84a8",
+      "bytes": 99027
+    },
+    {
+      "path": "results\\phase2\\a\\integration_2026-11-06\\figures\\holdout_pinball_comparison.png",
+      "sha256": "34f5afb449415a039c1c4263ec6835affddda09953eeed66ec717a6d574ec32c",
+      "bytes": 36008
+    },
+    {
+      "path": "results\\phase2\\a\\integration_2026-11-06\\figures\\rolling_60d_violation_rate.png",
+      "sha256": "0ea9aaf404a0f7d5cafb3ed8c42cc9cd93ea5b93b491d93cc33bd3ca639b632c",
+      "bytes": 97769
+    },
+    {
+      "path": "results\\phase2\\a\\integration_2026-11-06\\integration_manifest.json",
+      "sha256": "b98d8fd81ff0ee7dea3c15bce7219f547f90e1c0b491029f1aeeef360462f7b4",
+      "bytes": 2420
+    },
+    {
+      "path": "results\\phase2\\a\\integration_2026-11-06\\model_comparison.csv",
+      "sha256": "6820c0e9c43430ca5266f4dc4221141256b599c7896d39394bc4537f2e771ce2",
+      "bytes": 475
+    },
+    {
+      "path": "results\\phase2\\a\\integration_2026-11-06\\normalized_holdout_predictions.csv",
+      "sha256": "d866541b04e0bc1e2e0977e513ab61c44654c0c26f4fd89e632c9b338680ae31",
+      "bytes": 148277
+    },
+    {
+      "path": "results\\phase2\\a\\training_2026-11-06\\cv_metrics.csv",
+      "sha256": "232889654086134d29448fd7e5cab19a901f3bd604a1d993ad7af08be77ec352",
+      "bytes": 1362
+    },
+    {
+      "path": "results\\phase2\\a\\training_2026-11-06\\cv_predictions.csv",
+      "sha256": "dd88c901bafa01657fc6e4666a2a0a01a4d743c72c12247c2790aac82c3fb1f5",
+      "bytes": 330616
+    },
+    {
+      "path": "results\\phase2\\a\\training_2026-11-06\\cv_ranking.csv",
+      "sha256": "3ab03a682a1a8aad96297ac25433d7d01156822d6a441244838f6514ee3aba7d",
+      "bytes": 146
+    },
+    {
+      "path": "results\\phase2\\a\\training_2026-11-06\\holdout_metrics.csv",
+      "sha256": "5872613a2e19fb691dfaa35ef1885f7beda2ab6dbad746c1971938135198384c",
+      "bytes": 230
+    },
+    {
+      "path": "results\\phase2\\a\\training_2026-11-06\\holdout_predictions.csv",
+      "sha256": "ec3533d7f8eeeeaac93408e590aae7954e70406b49e15fea43f8c810d0360447",
+      "bytes": 116437
+    },
+    {
+      "path": "results\\phase2\\a\\training_2026-11-06\\metadata.json",
+      "sha256": "13888e4916e7f191e6d3259f8e804e6ca5290210f75ea6e6cbdff73ff114a1b7",
+      "bytes": 4110
+    }
+  ],
+  "limitations": [
+    "B's original 2026-11-04 source bytes/hash not independently verified",
+    "A and B GB evaluation windows/protocols differ; no direct score comparison",
+    "Phase 1 historical evaluation period overlaps A holdout; not a pristine untouched test",
+    "VNINDEX has three unresolved OHLC audit anomalies; market features disabled",
+    "Main Cloud EOD workflow needs updated model-test dependencies before merging A tests into phase2/develop"
+  ]
+}
