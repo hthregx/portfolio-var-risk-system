@@ -1,3 +1,8 @@
+<!-- FINAL_SUBMISSION_2026_11_19 -->
+> **Final submission (2026-11-19):** The selected final risk model is **C1 Gradient Boosting Quantile Regression, 12 features**, using the verified KBS data snapshot through **2026-11-06**. Its 468-session retrospective holdout has **25 VaR breaches (5.34%)** and **Pinball Loss 0.001636961294**. Reproduction code, data fingerprint, backtesting and figures: [`docs/submission/FINAL_SUBMISSION_2026_11_19.md`](docs/submission/FINAL_SUBMISSION_2026_11_19.md).
+>
+> The earlier G04/HS/EWMA frozen evaluation documented below remains the **historical Phase 1 contract**. It is not the C1 final result. Data are **not live**, and the retrospective holdout is **not pristine**.
+
 # Portfolio VaR Risk System
 
 A reproducible quantitative risk-management project for forecasting and

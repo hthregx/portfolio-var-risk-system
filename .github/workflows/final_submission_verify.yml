@@ -1,0 +1,29 @@
+name: Final submission verification
+on:
+  push:
+    branches:
+      - release/final-project-20261119
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  validate-full-repo:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install project dependencies
+        run: python -m pip install -r requirements.txt
+      - name: Verify full test suite
+        run: python -m pytest -q
+      - name: Verify frozen C1 on real data
+        run: python scripts/final_c1/run_final_c1.py --root . --verify-only
+      - name: Dashboard smoke test
+        run: python tools/smoke_dashboard.py
+      - name: Validate release manifest
+        run: python tools/prepare_final_release.py --root . --commit verify --main-merge-sha verify

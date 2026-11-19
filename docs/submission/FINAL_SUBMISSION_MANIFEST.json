@@ -1,0 +1,33 @@
+{
+  "schema": "portfolio-var-final-submission-v1",
+  "date": "2026-11-19",
+  "selected_model": "C1_12F_FROZEN_PHASE2_2026_11_06",
+  "source_branch": "submission/c1-frozen-20261119",
+  "c1_frozen_commit": "a21a8556413d0c0c40fe03b3b6597389a5abf20d",
+  "main_merge_commit": "8784c56b69fd8076dac8b22f183de4acd6ebcdb1",
+  "input_sha256": "14ac5dd4ce7dd6090420b9cee06c8ac40935c54691b4daf95d063b71a075eccc",
+  "input_checkout_raw_sha256": "47111463ac816efc5f86817fa33d75af302a581b07ddee47848323f3105cd04c",
+  "input_line_endings_equivalent": true,
+  "artifact_hash_policy": "SHA256 of LF-normalized text, raw bytes for binary",
+  "holdout_pinball": 0.0016369612941317788,
+  "holdout_breaches": 25,
+  "holdout_n": 468,
+  "artifact_sha256": {
+    "configs/c1_final_frozen.json": "bc1344bfa197304f85882a8c2aefd0e9a6cc4b70c562081d50c1e5b736776609",
+    "scripts/final_c1/run_final_c1.py": "f849311e2921e9b5f0ab9427a16b5376ec41964041de3b30871ac92fcef8b06c",
+    "tests/test_final_c1_frozen.py": "778124e6f93da18a2fd0a690483a910b7dbbc64b4fe230fe13aeb12c0f4658b0",
+    ".github/workflows/c1_frozen_reproduction.yml": "0392563817677957732098e7b95a363a09d39a5651bd33daabe1ead22a5cc5d4",
+    "results/phase2/a/features_2026-11-06.csv": "47111463ac816efc5f86817fa33d75af302a581b07ddee47848323f3105cd04c",
+    "results/phase2/a/training_2026-11-06/holdout_predictions.csv": "41e6ba7a707c34a8fb8a97dab4c519f60b9270a4f6c7d3a2f3435367dc405061",
+    "results/final_C1_frozen_2026-11-19/01_C1_VaR_with_Breaches.png": "054a769b4f73f74932fd5a82397bcb5f374073a973ea0eff1ca106cff2a946ba",
+    "results/final_C1_frozen_2026-11-19/02_C1_Coverage.png": "b3ddf3e8ed40fde2b75197f25ebe1d7ab3d00e85bc410ccaef8f598adb8bd455",
+    "results/final_C1_frozen_2026-11-19/03_C1_Training_Validation_Loss.png": "f1cdd6107866c468adae1d210f5a17d2c86b2057d57f77e4c54e885dd5140aad",
+    "results/final_C1_frozen_2026-11-19/FINAL_C1_BACKTEST.json": "86f920df2a949816436bdc94fcaa128f4c7628f5e3397c5cd7143fbe449b0be9",
+    "results/final_C1_frozen_2026-11-19/FINAL_C1_MODEL.joblib": "c5deb4989a1fc8a61613833e94aeb036908b3a57a6071c3519d3c95dffdae77c",
+    "results/final_C1_frozen_2026-11-19/FINAL_C1_HOLDOUT.csv": "f21fb7ef7ab9cdc1bc61725eee4742ee81116731ddb9b501342fdb9cdbe3e539",
+    "results/final_C1_frozen_2026-11-19/FINAL_C1_CV_METRICS.csv": "ed15476abaf2f4f11204395b84f6f29bf14ce6e186046929a4ebc8b0e27ef725",
+    "results/final_C1_frozen_2026-11-19/ARTIFACT_SHA256.json": "7a452d8cfb215335f06afae3e80a7a16db5243ba56d5aff16b47a8ac7d3a63bc",
+    "app/app.py": "11fe55dafd8674945448abdb7519ca9fe6b6fe1170a3b73612236b39afa1d8f7",
+    "requirements.txt": "3684e41540e1787af309ea67cefd59c03780d2c4b0faf2296ab0e07ea0267298"
+  }
+}
