@@ -33,6 +33,20 @@ def sha(path: Path) -> str:
     return hashlib.sha256(path.read_bytes()).hexdigest()
 
 
+
+def sha_matches_eol(path: Path, expected: str) -> bool:
+    raw = path.read_bytes()
+    if hashlib.sha256(raw).hexdigest() == expected:
+        return True
+    if path.suffix.lower() not in {'.json', '.csv', '.md', '.yml', '.yaml'}:
+        return False
+    lf = raw.replace(b'\r\n', b'\n')
+    if hashlib.sha256(lf).hexdigest() == expected:
+        return True
+    crlf = lf.replace(b'\n', b'\r\n')
+    return hashlib.sha256(crlf).hexdigest() == expected
+
+
 def assert_close(actual, expected, *, label, atol=3e-10):
     if not np.isclose(float(actual), float(expected), atol=atol, rtol=0):
         raise AssertionError(f'{label} DOES NOT MATCH reference: actual={actual}, expected={expected}')
@@ -296,7 +310,7 @@ def main():
 
     if args.verify_only:
         old=read_metrics(outdir/'FINAL_C1_BACKTEST.json')
-        if old['input_features_sha256']!=digest or old['config_sha256']!=sha(cfg_path): raise AssertionError('Saved input/config hash differs')
+        if old['input_features_sha256']!=digest or not sha_matches_eol(cfg_path, old['config_sha256']): raise AssertionError('Saved input/config hash differs')
         for key in ['cv_mean_pinball','cv_breach_rate']:
             assert_close(report[key],old[key],label=f'Saved {key}')
         for key in ['pinball_loss','breach_rate','kupiec_p','christoffersen_independence_p']:
@@ -309,7 +323,7 @@ def main():
         manifest=read_metrics(outdir/'ARTIFACT_SHA256.json')
         for filename, expected_sha in manifest.items():
             fp=outdir/filename
-            if not fp.is_file() or sha(fp)!=expected_sha:
+            if not fp.is_file() or not sha_matches_eol(fp, expected_sha):
                 raise AssertionError(f'Frozen submission file is missing or modified: {filename}')
         archived=joblib.load(outdir/'FINAL_C1_MODEL.joblib')
         archived_q=np.asarray(archived.predict(hold[cfg['feature_names']]),float)
