@@ -1,0 +1,73 @@
+{
+  "model_id": "C1_12F_FROZEN_PHASE2_2026_11_06",
+  "config_sha256": "bc1344bfa197304f85882a8c2aefd0e9a6cc4b70c562081d50c1e5b736776609",
+  "input_features_sha256": "14ac5dd4ce7dd6090420b9cee06c8ac40935c54691b4daf95d063b71a075eccc",
+  "original_reference_branch": "phase2/develop",
+  "evaluation": "retrospective_holdout_not_pristine",
+  "model_params": {
+    "class": "sklearn.ensemble.GradientBoostingRegressor",
+    "loss": "quantile",
+    "alpha": 0.05,
+    "n_estimators": 150,
+    "learning_rate": 0.03,
+    "max_depth": 2,
+    "min_samples_leaf": 10,
+    "subsample": 1.0,
+    "random_state": 42
+  },
+  "feature_names": [
+    "return_lag_1",
+    "return_lag_2",
+    "return_lag_5",
+    "rolling_vol_5",
+    "rolling_vol_20",
+    "rolling_vol_60",
+    "drawdown",
+    "momentum_5",
+    "momentum_20",
+    "downside_vol_20",
+    "rolling_q05_60",
+    "rolling_range_20"
+  ],
+  "cv_mean_pinball": 0.0020802674466814082,
+  "cv_breach_rate": 0.07142857142857142,
+  "cv_n": 980,
+  "holdout": {
+    "n": 468,
+    "breaches": 25,
+    "breach_rate": 0.053418803418803416,
+    "coverage_rate": 0.9465811965811965,
+    "expected_breach_rate": 0.05,
+    "pinball_loss": 0.0016369612941317788,
+    "mean_var": 0.022302134916723882,
+    "kupiec_lr_uc": 0.11275502955217576,
+    "kupiec_p": 0.7370291132072336,
+    "christoffersen_lr_ind": 0.38554762173762924,
+    "christoffersen_independence_p": 0.5346490952164324,
+    "conditional_coverage_lr": 0.498302651289805,
+    "conditional_coverage_p": 0.7794620118680012,
+    "transition_counts": {
+      "n00": 420,
+      "n01": 23,
+      "n10": 22,
+      "n11": 2
+    }
+  },
+  "reference_reproduction": {
+    "reference_csv": "results/phase2/a/training_2026-11-06/holdout_predictions.csv",
+    "max_abs_quantile_difference": 0.0,
+    "reproduced_reference_predictions": true
+  },
+  "environment": {
+    "python": "3.12.10",
+    "scikit_learn": "1.9.0",
+    "numpy": "2.2.6",
+    "pandas": "2.3.3"
+  },
+  "reproducible_metrics": true,
+  "notes": [
+    "This is original frozen C1, not the later experimental C1 Optimized.",
+    "Not a live forecast; snapshot cutoff 2026-11-06.",
+    "Retrospective holdout overlaps historical Phase1 evaluation; not a pristine prospective test"
+  ]
+}

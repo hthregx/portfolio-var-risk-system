@@ -1,0 +1,23 @@
+name: C1 frozen reproducibility
+on:
+  push:
+    branches: [submission/c1-frozen-20261119]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  reproducibility:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout complete submission
+        uses: actions/checkout@v4
+      - name: Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install pinned research dependencies
+        run: python -m pip install numpy==2.2.6 pandas==2.3.3 matplotlib==3.11.1 scikit-learn==1.9.0 scipy pytest
+      - name: Replay original C1 against frozen outputs
+        run: python scripts/final_c1/run_final_c1.py --root . --verify-only
+      - name: Unit checks
+        run: python -m pytest -q tests/test_final_c1_frozen.py
